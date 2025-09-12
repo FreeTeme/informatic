@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АСМО - Автоматизированные системы управления</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <img src="/logoinf-1.png" alt="АСМО" class="logo-img">
+                    </div>
+                    
+                    <nav class="nav" id="nav">
+                        <ul class="nav-list">
+                            <li><a href="#company">Компания</a></li>
+                            <li><a href="#solutions">Решения АСМО</a></li>
+                            <li><a href="#platform">Платформа АСМО</a></li>
+                            <li><a href="#career">Карьера</a></li>
+                            <li><a href="#partners">Партнеры</a></li>
+                            <li><a href="#blog">Блог</a></li>
+                            <li><a href="#contacts">Контакты</a></li>
+                        </ul>
+                    </nav>
+                    
+                    <div class="header-actions">
+                        <div class="contact-info">
+                            <a href="tel:88005500037" class="contact-link">8 800 550-00-37</a>
+                            <a href="mailto:asmo@inform.ivanovo.ru" class="contact-link">asmo@inform.ivanovo.ru</a>
+                        </div>
+                        <button class="search-btn" aria-label="Поиск">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M7.333 12.667A5.333 5.333 0 1 0 7.333 2a5.333 5.333 0 0 0 0 10.667ZM14 14l-2.9-2.9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button class="cta-btn">Обратный звонок</button>
+                    </div>
+                    
+                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Меню">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        
+        <div class="hero-content">
+            <div class="container">
+                <h1 class="hero-title">РАЗРАБАТЫВАЕМ СИСТЕМЫ АВТОМАТИЗАЦИИ ДЕЯТЕЛЬНОСТИ ПРЕДПРИЯТИЙ</h1>
+                <p class="hero-description">Предлагаем инновационные решения для вашего бизнеса</p>
+                <button class="hero-cta-btn">Узнать подробнее</button>
+            </div>
+        </div>
+        
+        <div class="hero-pagination">
+            <div class="container">
+                <div class="pagination-dots">
+                    <button class="dot active" data-slide="0"></button>
+                    <button class="dot" data-slide="1"></button>
+                    <button class="dot" data-slide="2"></button>
+                    <button class="dot" data-slide="3"></button>
+                    <button class="dot" data-slide="4"></button>
+                    <button class="dot" data-slide="5"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="company">
+        <div class="container">
+            <h2 class="section-title">О КОМПАНИИ</h2>
+            
+            <div class="about-content">
+                <div class="about-left">
+                    <p class="about-text-large">Российский разработчик в сфере автоматизированных систем управления с 1957 года.</p>
+                    <p class="about-text-large">Предоставляет готовые решения в области производственно-технологической и финансово‑хозяйственной деятельности предприятий, а также работы служб по управлению персоналом и социальной сферы.</p>
+                </div>
+                
+                <div class="about-right">
+                    <p class="about-text">Все программные решения, разработанные АО «Информатика», созданы на базе собственной инструментальной платформы для разработки «АСМО» и представляют собой целую экосистему с едиными механизмами и интерфейсами.</p>
+                    <p class="about-text">Компания проводит полный цикл разработки от анализа потребностей клиента до внедрения, обучения и технической поддержки. Специалисты вендора готовы к персональным доработкам и развитию любого из существующих решений.</p>
+                    
+                    <div class="mission">
+                        <h3 class="mission-title">Наша миссия</h3>
+                        <p class="mission-text">Разрабатывать инновационное программное обеспечение, которое обеспечивает динамичное развитие бизнеса предприятий и эффективную работу их персонала, используя весь накопленный опыт и креативное мышление наших сотрудников. Стать лидером в области разработки автоматизированных систем управления, инженерной и деловой векторной графики.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="marquee-container">
+                <div class="marquee-text">ИННОВАЦИИ&nbsp;&nbsp;КРЕАТИВНОСТЬ&nbsp;&nbsp;ЛИДЕРСТВО</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="solutions">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">РЕШЕНИЯ АСМО</h2>
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev" id="productsPrev" aria-label="Предыдущий">
+                        <svg width="12" height="21" viewBox="0 0 12 21" fill="none">
+                            <path d="M10.5 1.5L1.5 10.5L10.5 19.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="carousel-btn next" id="productsNext" aria-label="Следующий">
+                        <svg width="12" height="21" viewBox="0 0 12 21" fill="none">
+                            <path d="M1.5 1.5L10.5 10.5L1.5 19.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="products-carousel" id="productsCarousel">
+                <div class="product-card">
+                    <div class="product-content">
+                        <h3 class="product-title">АСМОграф</h3>
+                        <p class="product-description">Кроссплатформенный векторный графический редактор для создания инженерных и деловых схем. Поддерживает совместную работу, импорт и экспорт схем Visio и AutoCAD, заменяет иностранные решения.</p>
+                    </div>
+                    <img src="/products-3.svg" alt="АСМОграф" class="product-image">
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-content">
+                        <h3 class="product-title">АСМО-ТОиР</h3>
+                        <p class="product-description">Автоматизирует процессы планирования, учёта и документооборота по техническому обслуживанию и ремонту оборудования.</p>
+                    </div>
+                    <img src="/products.svg" alt="АСМО-ТОиР" class="product-image">
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-content">
+                        <h3 class="product-title">АСМО-диспетчер</h3>
+                        <p class="product-description">Обработка оперативной и планово‑экономической информации в диспетчерских службах. Обеспечивает контроль за технологическим режимом.</p>
+                    </div>
+                    <img src="/products-2.svg" alt="АСМО-диспетчер" class="product-image">
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-content">
+                        <h3 class="product-title">АСМО-ВТиПО</h3>
+                        <p class="product-description">Учёт и сопровождение вычислительной техники и программного обеспечения на предприятии. Оптимизирует управление ИТ-активами и их жизненным циклом.</p>
+                    </div>
+                    <img src="/products-1.svg" alt="АСМО-ВТиПО" class="product-image">
+                </div>
+            </div>
+            
+            <button class="view-all-btn">Смотреть все решения</button>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="benefits-content">
+                <h2 class="section-title benefits-title">НАШИ ПРЕИМУЩЕСТВА</h2>
+                
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <img src="/icon-4.svg" alt="" class="benefit-icon">
+                        <div class="benefit-content">
+                            <h3 class="benefit-title">Эксперты IT-рынка</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <img src="/icon-1.svg" alt="" class="benefit-icon">
+                        <div class="benefit-content">
+                            <h3 class="benefit-title">Импортозамещение</h3>
+                            <p class="benefit-description">Наши решения — это на 100% российское ПО, которое создаётся, учитывая потребности заказчиков и рынка в целом</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <img src="/icon.svg" alt="" class="benefit-icon">
+                        <div class="benefit-content">
+                            <h3 class="benefit-title">Полный цикл</h3>
+                            <p class="benefit-description">Наша компания оказывает услуги по внедрению, сопровождению, технической поддержке и развитию программного обеспечения</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <img src="/icon-5.svg" alt="" class="benefit-icon">
+                        <div class="benefit-content">
+                            <h3 class="benefit-title">Проектный опыт</h3>
+                            <p class="benefit-description">Более 500 успешных внедрений решений на крупнейших промышленных предприятиях страны</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section">
+        <div class="container">
+            <h2 class="section-title">ВЫПОЛНЕННЫЕ ПРОЕКТЫ</h2>
+            
+            <div class="projects-list">
+                <div class="project-item" data-project="1">
+                    <div class="project-header">
+                        <div class="project-number">01</div>
+                        <div class="project-company">ООО «ИНВЕСТ ТРЕЙД»</div>
+                        <div class="project-description">Поставка компании лицензий на АСМОГРАФ</div>
+                        <button class="project-toggle" aria-label="Развернуть проект">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="project-item" data-project="2">
+                    <div class="project-header">
+                        <div class="project-number">02</div>
+                        <div class="project-company">ООО «НСТЭЦ»</div>
+                        <div class="project-description">Поставка компании лицензий на АСМОГРАФ</div>
+                        <button class="project-toggle" aria-label="Развернуть проект">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="project-item expanded" data-project="3">
+                    <div class="project-header">
+                        <div class="project-number">03</div>
+                        <div class="project-company">ООО «АРГОС»</div>
+                        <div class="project-description">Поставка компании лицензий на АСМОГРАФ</div>
+                        <button class="project-toggle" aria-label="Свернуть проект">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M15 12.5L10 7.5L5 12.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="project-details">
+                        <p class="project-details-text">В рамках программы импортозамещения была успешно осуществлена поставка программного обеспечения АСМОграф. Решение стало ключевым инструментом для оптимизации работы и сокращения зависимости от зарубежных продуктов.</p>
+                        <button class="project-details-btn">Читать подробнее</button>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="view-all-btn">Смотреть все проекты</button>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news-section">
+        <div class="container">
+            <h2 class="section-title">НОВОСТИ</h2>
+            
+            <div class="news-grid">
+                <article class="news-featured">
+                    <div class="news-banner">
+                        <div class="news-banner-content">
+                            <h3 class="news-banner-title">ВОШЛИ В ТОП-100 БИЗНЕСА СТРАНЫ!</h3>
+                            <p class="news-banner-subtitle">Наш успех на всероссийской премии «Индекс Дела»</p>
+                        </div>
+                    </div>
+                    <div class="news-content">
+                        <time class="news-date">01.01.2025</time>
+                        <h4 class="news-title">ПОДТВЕРЖДЕНИЕ ЛИДЕРСТВА: ИТОГИ ПРЕМИИ «ИНДЕКС ДЕЛА»</h4>
+                        <p class="news-excerpt">17 июня в Санкт-Петербурге прошёл финал всероссийской государственной премии «Индекс Дела», организованной при поддержке Минэкономразвития России...</p>
+                    </div>
+                </article>
+                
+                <div class="news-regular">
+                    <article class="news-item">
+                        <div class="news-content">
+                            <time class="news-date">01.01.2025</time>
+                            <h4 class="news-title">АСМОГРАФ 2.0. ПОЛНАЯ ПЕРЕЗАГРУЗКА</h4>
+                            <div class="news-text">
+                                <p>Рады поделиться новой версией программного комплекса АСМОграф!</p>
+                                <p>Главное нововведение — два интерфейса на выбор. Теперь пользователи могут настроить визуальное окружение под себя:</p>
+                                <p>Ленточный интерфейс — современный и дружелюбный стиль, привычный для знатоков MS Visio. Классический интерфейс — привычное рабочее пространство для тех, кто работает в АСМОграфе много лет.</p>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <article class="news-item">
+                        <div class="news-content">
+                            <time class="news-date">01.01.2025</time>
+                            <h4 class="news-title">ПОБЫВАЛИ НА КОНФЕРЕНЦИИ ПО ЛОКАЛИЗАЦИИ ИТ-РЕШЕНИЙ В МОСКВЕ</h4>
+                            <div class="news-text">
+                                <p>23 апреля в Москве состоялось мероприятие, посвящённое современным технологиям на российском рынке, где собрались представители российских компаний из разных отраслей для обмена опытом и обсуждения актуальных задач.</p>
+                                <p>Мы рассказали о современных решениях для автоматизации внутренних процессов, подчеркнув важность удобной интеграции и снижения затрат при внедрении новых ИТ-инструментов.</p>
+                                <p>Благодарим Тринити Интеграция за отличную возможность обсудить перспективы развития отрасли и поделиться практическим опытом!</p>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <article class="news-item">
+                        <div class="news-content">
+                            <time class="news-date">01.01.2025</time>
+                            <h4 class="news-title">ИТ-ХИТЫ В ЭФИРЕ: КАК МЫ ЗВУЧАЛИ НА AXOFT ПЛАТФОРМЕ</h4>
+                            <div class="news-text">
+                                <p>Мы представили наши ключевые программные решения, в том числе кроссплатформенный графический редактор АСМОграф, и провели ряд встреч с действующими и потенциальными партнёрами.</p>
+                                <p>Заместитель генерального директора Михаил Козлов выступил в блиц-панели, рассказав о преимуществах наших продуктов и их роли в развитии цифровой инфраструктуры.</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            
+            <button class="view-all-btn">Перейти ко всем новостям</button>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contacts">
+        <div class="container">
+            <div class="contact-content">
+                <h2 class="section-title contact-title">ЗАКАЗАТЬ КОНСУЛЬТАЦИЮ</h2>
+                <p class="contact-description">Расскажите о вашей задаче. Подготовим решение, проведём демонстрацию, рассчитаем стоимость.</p>
+                <button class="contact-cta-btn">Заказать консультацию</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-cta">
+                    <h4 class="footer-cta-title">ВАС ИНТЕРЕСУЮТ НАШИ УСЛУГИ ИЛИ ПРОДУКЦИЯ?</h4>
+                    <p class="footer-cta-text">Оставьте свой номер телефона, и мы перезвоним вам в удобное для вас время!</p>
+                    <button class="footer-cta-btn">Обратный звонок</button>
+                </div>
+                
+                <div class="footer-contact">
+                    <div class="footer-social">
+                        <a href="#" class="social-link">Вконтакте</a>
+                        <a href="#" class="social-link">Rutube</a>
+                        <a href="#" class="social-link">YouTube</a>
+                        <a href="#" class="social-link">Telegram</a>
+                    </div>
+                    
+                    <div class="footer-contact-info">
+                        <a href="mailto:asmo@inform.ivanovo.ru" class="footer-contact-link">asmo@inform.ivanovo.ru</a>
+                        <a href="tel:88005500037" class="footer-contact-link">8 800 550-00-37</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-main">
+                <div class="footer-company-info">
+                    <p>ИHH: 3731000788</p>
+                    <p>КПП: 370201001</p>
+                    <p>ОГРН: 1023700538454</p>
+                    <p>Адрес: 153032, область Ивановская, город Иваново, улица Ташкентская, 90</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h5 class="footer-column-title">О компании</h5>
+                        <ul class="footer-links-list">
+                            <li><a href="#">Выполненные проекты</a></li>
+                            <li><a href="#">Отзывы</a></li>
+                            <li><a href="#">История</a></li>
+                            <li><a href="#">Карьера</a></li>
+                            <li><a href="#">Информация эмитента</a></li>
+                            <li><a href="#">Прочие услуги</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h5 class="footer-column-title">Услуги</h5>
+                        <ul class="footer-links-list">
+                            <li><a href="#">Внедрение</a></li>
+                            <li><a href="#">Обучение</a></li>
+                            <li><a href="#">Техподдержка</a></li>
+                            <li><a href="#">Адаптация</a></li>
+                            <li><a href="#">Разработка</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h5 class="footer-column-title">Платформа АСМО</h5>
+                        <ul class="footer-links-list">
+                            <li><a href="#">Платформа АСМО</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h5 class="footer-column-title">Также</h5>
+                        <ul class="footer-links-list">
+                            <li><a href="#">Решения АСМО</a></li>
+                            <li><a href="#">Партнёры</a></li>
+                            <li><a href="#">Новости</a></li>
+                            <li><a href="#">Статьи</a></li>
+                            <li><a href="#">Контакты</a></li>
+                            <li><a href="#">Документы</a></li>
+                            <li><a href="#">Политика конфиденциальности</a></li>
+                            <li><a href="#">Пользовательское соглашение</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <img src="/logoinf.png" alt="АСМО" class="footer-logo">
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="callbackModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Заказать обратный звонок</h3>
+                <button class="modal-close" id="modalClose" aria-label="Закрыть">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <form class="modal-form" id="callbackForm">
+                <div class="form-group">
+                    <label for="name">Имя</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Телефон</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Сообщение (необязательно)</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+                </div>
+                <button type="submit" class="form-submit-btn">Отправить заявку</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/carousel.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/projects.js"></script>
+</body>
+</html>
