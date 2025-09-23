@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -9,6 +10,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .loading {
+            opacity: 0.7;
+        }
+        .loading::after {
+            content: ' (Загрузка...)';
+            font-style: italic;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
     <!-- Hero Section -->
@@ -56,9 +67,9 @@
         
         <div class="hero-content">
             <div class="container">
-                <h1 class="hero-title">РАЗРАБАТЫВАЕМ СИСТЕМЫ АВТОМАТИЗАЦИИ ДЕЯТЕЛЬНОСТИ ПРЕДПРИЯТИЙ</h1>
-                <p class="hero-description">Предлагаем инновационные решения для вашего бизнеса</p>
-                <button class="hero-cta-btn">Узнать подробнее</button>
+                <h1 class="hero-title loading">РАЗРАБАТЫВАЕМ СИСТЕМЫ АВТОМАТИЗАЦИИ ДЕЯТЕЛЬНОСТИ ПРЕДПРИЯТИЙ</h1>
+                <p class="hero-description loading">Предлагаем инновационные решения для вашего бизнеса</p>
+                <button class="hero-cta-btn loading">Узнать подробнее</button>
             </div>
         </div>
         
@@ -124,36 +135,11 @@
             </div>
             
             <div class="products-carousel" id="productsCarousel">
-                <div class="product-card">
+                <div class="product-card loading">
                     <div class="product-content">
-                        <h3 class="product-title">АСМОграф</h3>
-                        <p class="product-description">Кроссплатформенный векторный графический редактор для создания инженерных и деловых схем. Поддерживает совместную работу, импорт и экспорт схем Visio и AutoCAD, заменяет иностранные решения.</p>
+                        <h3 class="product-title">Загрузка решений...</h3>
+                        <p class="product-description">Загружаем данные о наших решениях</p>
                     </div>
-                    <img src="/products-3.svg" alt="АСМОграф" class="product-image">
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-content">
-                        <h3 class="product-title">АСМО-ТОиР</h3>
-                        <p class="product-description">Автоматизирует процессы планирования, учёта и документооборота по техническому обслуживанию и ремонту оборудования.</p>
-                    </div>
-                    <img src="/products.svg" alt="АСМО-ТОиР" class="product-image">
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-content">
-                        <h3 class="product-title">АСМО-диспетчер</h3>
-                        <p class="product-description">Обработка оперативной и планово‑экономической информации в диспетчерских службах. Обеспечивает контроль за технологическим режимом.</p>
-                    </div>
-                    <img src="/products-2.svg" alt="АСМО-диспетчер" class="product-image">
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-content">
-                        <h3 class="product-title">АСМО-ВТиПО</h3>
-                        <p class="product-description">Учёт и сопровождение вычислительной техники и программного обеспечения на предприятии. Оптимизирует управление ИТ-активами и их жизненным циклом.</p>
-                    </div>
-                    <img src="/products-1.svg" alt="АСМО-ВТиПО" class="product-image">
                 </div>
             </div>
             
@@ -168,34 +154,10 @@
                 <h2 class="section-title benefits-title">НАШИ ПРЕИМУЩЕСТВА</h2>
                 
                 <div class="benefits-list">
-                    <div class="benefit-item">
-                        <img src="/icon-4.svg" alt="" class="benefit-icon">
+                    <div class="benefit-item loading">
                         <div class="benefit-content">
-                            <h3 class="benefit-title">Эксперты IT-рынка</h3>
-                        </div>
-                    </div>
-                    
-                    <div class="benefit-item">
-                        <img src="/icon-1.svg" alt="" class="benefit-icon">
-                        <div class="benefit-content">
-                            <h3 class="benefit-title">Импортозамещение</h3>
-                            <p class="benefit-description">Наши решения — это на 100% российское ПО, которое создаётся, учитывая потребности заказчиков и рынка в целом</p>
-                        </div>
-                    </div>
-                    
-                    <div class="benefit-item">
-                        <img src="/icon.svg" alt="" class="benefit-icon">
-                        <div class="benefit-content">
-                            <h3 class="benefit-title">Полный цикл</h3>
-                            <p class="benefit-description">Наша компания оказывает услуги по внедрению, сопровождению, технической поддержке и развитию программного обеспечения</p>
-                        </div>
-                    </div>
-                    
-                    <div class="benefit-item">
-                        <img src="/icon-5.svg" alt="" class="benefit-icon">
-                        <div class="benefit-content">
-                            <h3 class="benefit-title">Проектный опыт</h3>
-                            <p class="benefit-description">Более 500 успешных внедрений решений на крупнейших промышленных предприятиях страны</p>
+                            <h3 class="benefit-title">Загрузка преимуществ...</h3>
+                            <p class="benefit-description">Загружаем информацию о наших преимуществах</p>
                         </div>
                     </div>
                 </div>
@@ -209,46 +171,16 @@
             <h2 class="section-title">ВЫПОЛНЕННЫЕ ПРОЕКТЫ</h2>
             
             <div class="projects-list">
-                <div class="project-item" data-project="1">
+                <div class="project-item loading" data-project="1">
                     <div class="project-header">
                         <div class="project-number">01</div>
-                        <div class="project-company">ООО «ИНВЕСТ ТРЕЙД»</div>
-                        <div class="project-description">Поставка компании лицензий на АСМОГРАФ</div>
+                        <div class="project-company">Загрузка проектов...</div>
+                        <div class="project-description">Загружаем информацию о выполненных проектах</div>
                         <button class="project-toggle" aria-label="Развернуть проект">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                                 <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </button>
-                    </div>
-                </div>
-                
-                <div class="project-item" data-project="2">
-                    <div class="project-header">
-                        <div class="project-number">02</div>
-                        <div class="project-company">ООО «НСТЭЦ»</div>
-                        <div class="project-description">Поставка компании лицензий на АСМОГРАФ</div>
-                        <button class="project-toggle" aria-label="Развернуть проект">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="project-item expanded" data-project="3">
-                    <div class="project-header">
-                        <div class="project-number">03</div>
-                        <div class="project-company">ООО «АРГОС»</div>
-                        <div class="project-description">Поставка компании лицензий на АСМОГРАФ</div>
-                        <button class="project-toggle" aria-label="Свернуть проект">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <path d="M15 12.5L10 7.5L5 12.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="project-details">
-                        <p class="project-details-text">В рамках программы импортозамещения была успешно осуществлена поставка программного обеспечения АСМОграф. Решение стало ключевым инструментом для оптимизации работы и сокращения зависимости от зарубежных продуктов.</p>
-                        <button class="project-details-btn">Читать подробнее</button>
                     </div>
                 </div>
             </div>
@@ -261,60 +193,17 @@
     <section class="news-section">
         <div class="container">
             <h2 class="section-title">НОВОСТИ</h2>
-            
+
             <div class="news-grid">
-                <article class="news-featured">
-                    <div class="news-banner">
-                        <div class="news-banner-content">
-                            <h3 class="news-banner-title">ВОШЛИ В ТОП-100 БИЗНЕСА СТРАНЫ!</h3>
-                            <p class="news-banner-subtitle">Наш успех на всероссийской премии «Индекс Дела»</p>
-                        </div>
-                    </div>
+                <article class="news-featured loading">
                     <div class="news-content">
-                        <time class="news-date">01.01.2025</time>
-                        <h4 class="news-title">ПОДТВЕРЖДЕНИЕ ЛИДЕРСТВА: ИТОГИ ПРЕМИИ «ИНДЕКС ДЕЛА»</h4>
-                        <p class="news-excerpt">17 июня в Санкт-Петербурге прошёл финал всероссийской государственной премии «Индекс Дела», организованной при поддержке Минэкономразвития России...</p>
+                        <time class="news-date">Загрузка...</time>
+                        <h4 class="news-title">Загрузка новостей...</h4>
+                        <p class="news-excerpt">Загружаем последние новости компании</p>
                     </div>
                 </article>
-                
-                <div class="news-regular">
-                    <article class="news-item">
-                        <div class="news-content">
-                            <time class="news-date">01.01.2025</time>
-                            <h4 class="news-title">АСМОГРАФ 2.0. ПОЛНАЯ ПЕРЕЗАГРУЗКА</h4>
-                            <div class="news-text">
-                                <p>Рады поделиться новой версией программного комплекса АСМОграф!</p>
-                                <p>Главное нововведение — два интерфейса на выбор. Теперь пользователи могут настроить визуальное окружение под себя:</p>
-                                <p>Ленточный интерфейс — современный и дружелюбный стиль, привычный для знатоков MS Visio. Классический интерфейс — привычное рабочее пространство для тех, кто работает в АСМОграфе много лет.</p>
-                            </div>
-                        </div>
-                    </article>
-                    
-                    <article class="news-item">
-                        <div class="news-content">
-                            <time class="news-date">01.01.2025</time>
-                            <h4 class="news-title">ПОБЫВАЛИ НА КОНФЕРЕНЦИИ ПО ЛОКАЛИЗАЦИИ ИТ-РЕШЕНИЙ В МОСКВЕ</h4>
-                            <div class="news-text">
-                                <p>23 апреля в Москве состоялось мероприятие, посвящённое современным технологиям на российском рынке, где собрались представители российских компаний из разных отраслей для обмена опытом и обсуждения актуальных задач.</p>
-                                <p>Мы рассказали о современных решениях для автоматизации внутренних процессов, подчеркнув важность удобной интеграции и снижения затрат при внедрении новых ИТ-инструментов.</p>
-                                <p>Благодарим Тринити Интеграция за отличную возможность обсудить перспективы развития отрасли и поделиться практическим опытом!</p>
-                            </div>
-                        </div>
-                    </article>
-                    
-                    <article class="news-item">
-                        <div class="news-content">
-                            <time class="news-date">01.01.2025</time>
-                            <h4 class="news-title">ИТ-ХИТЫ В ЭФИРЕ: КАК МЫ ЗВУЧАЛИ НА AXOFT ПЛАТФОРМЕ</h4>
-                            <div class="news-text">
-                                <p>Мы представили наши ключевые программные решения, в том числе кроссплатформенный графический редактор АСМОграф, и провели ряд встреч с действующими и потенциальными партнёрами.</p>
-                                <p>Заместитель генерального директора Михаил Козлов выступил в блиц-панели, рассказав о преимуществах наших продуктов и их роли в развитии цифровой инфраструктуры.</p>
-                            </div>
-                        </div>
-                    </article>
-                </div>
             </div>
-            
+
             <button class="view-all-btn">Перейти ко всем новостям</button>
         </div>
     </section>
@@ -363,7 +252,7 @@
                     <p>Адрес: 153032, область Ивановская, город Иваново, улица Ташкентская, 90</p>
                 </div>
                 
-                <div class="footer-links">
+                <div class="footer-links-grid">
                     <div class="footer-column">
                         <h5 class="footer-column-title">О компании</h5>
                         <ul class="footer-links-list">
@@ -446,6 +335,7 @@
     </div>
 
     <script src="js/main.js"></script>
+    <script src="js/api.js"></script>
     <script src="js/carousel.js"></script>
     <script src="js/modal.js"></script>
     <script src="js/projects.js"></script>

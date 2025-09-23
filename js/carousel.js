@@ -20,6 +20,14 @@ class ProductCarousel {
         this.updateButtons();
     }
 
+     scrollNext() {
+        this.carousel.scrollBy({ left: this.cardWidth, behavior: 'smooth' });
+    }
+
+    scrollPrev() {
+        this.carousel.scrollBy({ left: -this.cardWidth, behavior: 'smooth' });
+    }
+    
     setupEventListeners() {
         if (this.prevBtn) {
             this.prevBtn.addEventListener('click', () => this.prev());

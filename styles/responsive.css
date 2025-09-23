@@ -248,7 +248,7 @@
     /* Benefits Mobile */
     .benefit-item {
         flex-direction: column;
-        text-align: center;
+        text-align: left;
         gap: 15px;
     }
     
@@ -265,7 +265,7 @@
     .project-header {
         grid-template-columns: 1fr;
         gap: 10px;
-        text-align: center;
+        text-align: left;
     }
     
     .project-number {
@@ -323,7 +323,7 @@
     }
     
     /* Footer Mobile */
-    .footer {
+    /* .footer {
         padding: 60px 0;
     }
     
@@ -371,7 +371,7 @@
     
     .footer-logo {
         height: 100px;
-    }
+    } */
     
     /* Buttons Mobile */
     .cta-btn, .hero-cta-btn, .contact-cta-btn, .footer-cta-btn {
