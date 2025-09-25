@@ -112,28 +112,68 @@ class App {
         window.projectsManager = new ProjectsManager();
         window.productCarousel = new Carousel('productsCarousel');
         window.newsCarousel = new Carousel('newsGrid', 'news');
+        
+        // Дополнительная проверка аккордеона
+        setTimeout(() => {
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            console.log('Финальная проверка: найдено блоков аккордеона:', accordionItems.length);
+            accordionItems.forEach((item, index) => {
+                const header = item.querySelector('.accordion-header');
+                const content = item.querySelector('.accordion-content');
+                console.log(`Блок ${index + 1}: "${header?.textContent.trim()}", активен: ${item.classList.contains('active')}, контент: ${content ? 'есть' : 'нет'}`);
+            });
+        }, 500);
     }
 
     setupAccordion() {
-        const items = document.querySelectorAll('.accordion-item');
-        console.log('Found accordion items:', items.length);
-        if (!items.length) return;
-        items.forEach((item, index) => {
-            const header = item.querySelector('.accordion-header');
+        console.log('Настройка аккордеона...');
+        
+        // Делегирование событий: надёжнее при любых изменениях DOM
+        document.addEventListener('click', (event) => {
+            const header = event.target.closest('.accordion-header');
             if (!header) return;
-            header.addEventListener('click', (e) => {
-                e.preventDefault();
-                console.log('Accordion clicked:', index);
-                const isActive = item.classList.contains('active');
-                // Закрываем все открытые блоки
-                document.querySelectorAll('.accordion-item.active').forEach(opened => opened.classList.remove('active'));
-                // Если блок был закрыт, открываем его
-                if (!isActive) {
-                    item.classList.add('active');
-                    console.log('Opening accordion item:', index);
+            const item = header.closest('.accordion-item');
+            if (!item) return;
+            event.preventDefault();
+
+            console.log('Клик по аккордеону:', header.textContent.trim());
+            const isActive = item.classList.contains('active');
+            
+            // Переключаем только текущий элемент
+            if (isActive) {
+                item.classList.remove('active');
+                const content = item.querySelector('.accordion-content');
+                if (content) {
+                    content.style.maxHeight = '0px';
+                }
+                console.log('Закрыт блок:', header.textContent.trim());
+            } else {
+                item.classList.add('active');
+                const content = item.querySelector('.accordion-content');
+                if (content) {
+                    const scrollH = content.scrollHeight + 40;
+                    content.style.maxHeight = `${scrollH}px`;
+                }
+                console.log('Открыт блок:', header.textContent.trim());
+            }
+        });
+
+        // Инициализация высоты для уже открытых по умолчанию
+        setTimeout(() => {
+            const items = document.querySelectorAll('.accordion-item');
+            console.log('Найдено элементов аккордеона:', items.length);
+            
+            items.forEach((item) => {
+                if (item.classList.contains('active')) {
+                    const content = item.querySelector('.accordion-content');
+                    if (content) {
+                        const scrollH = content.scrollHeight + 40;
+                        content.style.maxHeight = `${scrollH}px`;
+                        console.log('Инициализирован активный блок:', item.querySelector('.accordion-header').textContent.trim());
+                    }
                 }
             });
-        });
+        }, 100);
     }
 
     setupMobileMenu() {
@@ -295,6 +335,7 @@ class App {
 
 // Initialize app when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM загружен, инициализация приложения...');
     window.app = new App();
     
     // Add loading animation
