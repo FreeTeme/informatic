@@ -59,11 +59,14 @@ class App {
     }
 
     init() {
+        console.log('Initializing main.js');
         this.setupMobileMenu();
         this.setupSmoothScrolling();
         this.setupScrollAnimations();
         this.setupHeroPagination();
         this.setupCallbackButtons();
+        this.setupAccordion();
+        // HTML5 видео заменено на встроенный YouTube iframe — инициализация не нужна
 
         // From product.js DOMContentLoaded
         const links = document.querySelectorAll('a[href^="#"]');
@@ -111,31 +114,65 @@ class App {
         window.newsCarousel = new Carousel('newsGrid', 'news');
     }
 
+    setupAccordion() {
+        const items = document.querySelectorAll('.accordion-item');
+        console.log('Found accordion items:', items.length);
+        if (!items.length) return;
+        items.forEach((item, index) => {
+            const header = item.querySelector('.accordion-header');
+            if (!header) return;
+            header.addEventListener('click', (e) => {
+                e.preventDefault();
+                console.log('Accordion clicked:', index);
+                const isActive = item.classList.contains('active');
+                // Закрываем все открытые блоки
+                document.querySelectorAll('.accordion-item.active').forEach(opened => opened.classList.remove('active'));
+                // Если блок был закрыт, открываем его
+                if (!isActive) {
+                    item.classList.add('active');
+                    console.log('Opening accordion item:', index);
+                }
+            });
+        });
+    }
+
     setupMobileMenu() {
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const nav = document.getElementById('nav');
+        const navOffcanvas = document.getElementById('navOffcanvas');
+        const backdrop = document.getElementById('navBackdrop');
+        const closeOffcanvas = () => {
+            mobileMenuBtn && mobileMenuBtn.classList.remove('active');
+            navOffcanvas && navOffcanvas.classList.remove('active');
+            backdrop && backdrop.classList.remove('active');
+            navOffcanvas && navOffcanvas.setAttribute('aria-hidden', 'true');
+        };
+        const openOffcanvas = () => {
+            mobileMenuBtn && mobileMenuBtn.classList.add('active');
+            navOffcanvas && navOffcanvas.classList.add('active');
+            backdrop && backdrop.classList.add('active');
+            navOffcanvas && navOffcanvas.setAttribute('aria-hidden', 'false');
+        };
 
-        if (mobileMenuBtn && nav) {
+        if (mobileMenuBtn && navOffcanvas && backdrop) {
             mobileMenuBtn.addEventListener('click', () => {
-                mobileMenuBtn.classList.toggle('active');
-                nav.classList.toggle('active');
-            });
-
-            // Close menu when clicking on nav links
-            const navLinks = nav.querySelectorAll('a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenuBtn.classList.remove('active');
-                    nav.classList.remove('active');
-                });
-            });
-
-            // Close menu when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!mobileMenuBtn.contains(e.target) && !nav.contains(e.target)) {
-                    mobileMenuBtn.classList.remove('active');
-                    nav.classList.remove('active');
+                if (navOffcanvas.classList.contains('active')) {
+                    closeOffcanvas();
+                } else {
+                    openOffcanvas();
                 }
+            });
+
+            // Close on backdrop click
+            backdrop.addEventListener('click', closeOffcanvas);
+
+            // Close on ESC
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeOffcanvas();
+            });
+
+            // Close when clicking on any link/button inside offcanvas
+            navOffcanvas.querySelectorAll('a, button').forEach(el => {
+                el.addEventListener('click', closeOffcanvas);
             });
         }
     }
@@ -229,6 +266,29 @@ class App {
                     alert('Спасибо за интерес! Мы свяжемся с вами в ближайшее время.');
                 }
             });
+        });
+    }
+
+    // Simple video play overlay
+    setupVideoPlayer() {
+        const video = document.getElementById('promoVideo');
+        const playBtn = document.getElementById('promoVideoPlay');
+        const wrapper = document.getElementById('promoVideoWrapper');
+        if (!video || !playBtn || !wrapper) return;
+
+        const play = () => {
+            playBtn.style.display = 'none';
+            video.play();
+        };
+        playBtn.addEventListener('click', play);
+        wrapper.addEventListener('click', (e) => {
+            if (e.target === wrapper) play();
+        });
+        video.addEventListener('pause', () => {
+            playBtn.style.display = '';
+        });
+        video.addEventListener('play', () => {
+            playBtn.style.display = 'none';
         });
     }
 }

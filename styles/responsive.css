@@ -1,7 +1,7 @@
 /* Tablet Styles */
 @media (max-width: 1200px) {
     .container {
-        padding: 0 60px;
+        padding: 0 48px;
     }
     
     .hero-title {
@@ -44,7 +44,7 @@
 
 @media (max-width: 1024px) {
     .container {
-        padding: 0 40px;
+        padding: 0 32px;
     }
     
     .products-carousel {
@@ -110,34 +110,25 @@
         position: relative;
     }
     
-    .nav {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: var(--primary-black);
-        padding: 20px;
-        border-radius: var(--border-radius);
-        margin-top: 10px;
-    }
-    
-    .nav.active {
-        display: block;
-    }
+    /* Прячем обычную навигацию, используем сайдбар */
+    .nav { display: none; }
     
     .nav-list {
         flex-direction: column;
         gap: 15px;
     }
+
+    /* показываем пункты, которые должны быть только в бургер-меню */
+    .only-mobile { display: block; }
+
+    /* скрываем дубликаты контактов и кнопки снаружи меню */
+    .header-actions { display: none; }
     
     .header-actions {
         display: none;
     }
     
-    .mobile-menu-btn {
-        display: flex;
-    }
+    .mobile-menu-btn { display: flex; }
     
     .mobile-menu-btn.active span:nth-child(1) {
         transform: rotate(45deg) translate(5px, 5px);
