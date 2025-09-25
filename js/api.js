@@ -1,3 +1,4 @@
+// api.js
 
 // Bitrix24 API configuration
 const BITRIX_CONFIG = {
@@ -11,54 +12,35 @@ const BITRIX_CONFIG = {
     }
 };
 
-// Fallback data
-const FALLBACK_DATA = {
-    banner: {
-        title: "РАЗРАБАТЫВАЕМ СИСТЕМЫ АВТОМАТИЗАЦИИ ДЕЯТЕЛЬНОСТИ ПРЕДПРИЯТИЙ",
-        description: "Предлагаем инновационные решения для вашего бизнеса",
-        buttonText: "Узнать подробнее",
-        buttonLink: "#"
-    },
+// Static images configuration
+const STATIC_IMAGES = {
     solutions: [
-        {
-            title: "АСМОграф",
-            description: "Кроссплатформенный векторный графический редактор для создания инженерных и деловых схем. Поддерживает совместную работу, импорт и экспорт схем Visio и AutoCAD, заменяет иностранные решения.",
-            image: "/products-3.svg"
-        }
+        "/products-3.svg",
+        "/products.svg", 
+        "/products-2.svg",
+        "/products-1.svg"
     ],
     benefits: [
-        {
-            title: "Эксперты IT-рынка",
-            description: "Компания АО «Информатика» основана в 1957 г.",
-            icon: "/icon-4.svg"
-        }
+        "/icon-4.svg",
+        "/icon-1.svg",
+        "/icon.svg",
+        "/icon-5.svg"
     ],
-    projects: [
-        {
-            company: "ООО «ИНВЕСТ ТРЕЙД»",
-            shortDescription: "Поставка компании лицензий на АСМОГРАФ",
-            fullDescription: "В рамках программы импортозамещения была успешно осуществлена поставка программного обеспечения АСМОграф.",
-            readMoreText: "Читать подробнее",
-            readMoreLink: "#"
-        }
-    ],
-    news: [
-        {
-            title: "ПОДТВЕРЖДЕНИЕ ЛИДЕРСТВА: ИТОГИ ПРЕМИИ «ИНДЕКС ДЕЛА»",
-            shortDescription: "17 июня в Санкт-Петербурге прошёл финал всероссийской государственной премии «Индекс Дела»...",
-            fullText: "17 июня в Санкт-Петербурге прошёл финал всероссийской государственной премии «Индекс Дела»",
-            image: "",
-            newsLink: "#"
-        }
-    ]
+    news: "/news-banner.jpg" // Заглушка для новостей
 };
 
 class BitrixAPI {
     constructor() {
         this.useFallback = false;
+        this.cache = new Map();
     }
 
     async fetchData(entityTypeId) {
+        if (this.cache.has(entityTypeId)) {
+            console.log(`Using cache for entity ${entityTypeId}`);
+            return this.cache.get(entityTypeId);
+        }
+
         if (this.useFallback) {
             console.log(`Using fallback for entity ${entityTypeId}`);
             return null;
@@ -84,6 +66,7 @@ class BitrixAPI {
             }
             
             console.log(`Found ${data.result.items.length} items for entity ${entityTypeId}`);
+            this.cache.set(entityTypeId, data);
             return data;
         } catch (error) {
             console.error(`API request failed for entity ${entityTypeId}:`, error);
@@ -92,54 +75,29 @@ class BitrixAPI {
         }
     }
 
-    extractImageUrl(fileData) {
-        if (!fileData) {
-            console.log('No file data provided');
-            return null;
-        }
-        
-        console.log('File data structure:', fileData);
-        
-        // Try different possible image URL fields
-        if (fileData.url) {
-            console.log('Found image URL in url field:', fileData.url);
-            return fileData.url;
-        }
-        if (fileData.urlMachine) {
-            console.log('Found image URL in urlMachine field:', fileData.urlMachine);
-            return fileData.urlMachine;
-        }
-        if (fileData.downloadUrl) {
-            console.log('Found image URL in downloadUrl field:', fileData.downloadUrl);
-            return fileData.downloadUrl;
-        }
-        
-        console.log('No valid image URL found in file data');
-        return null;
-    }
-
     async getBannerData() {
         console.log('=== GETTING BANNER DATA ===');
         const data = await this.fetchData(BITRIX_CONFIG.entities.banner);
         
         if (!data || !data.result || !data.result.items || data.result.items.length === 0) {
-            console.log('Using fallback banner data');
-            return FALLBACK_DATA.banner;
+            console.log('No banner data from API, using defaults');
+            return {
+                title: "РАЗРАБАТЫВАЕМ СИСТЕМЫ АВТОМАТИЗАЦИИ ДЕЯТЕЛЬНОСТИ ПРЕДПРИЯТИЙ",
+                description: "Предлагаем инновационные решения для вашего бизнеса",
+                buttonText: "Узнать подробнее",
+                buttonLink: "#"
+            };
         }
 
         const item = data.result.items[0];
         console.log('Banner item:', item);
         
-        const bannerData = {
-            title: item.title || FALLBACK_DATA.banner.title,
-            description: item.ufCrm9_1758575077917 || FALLBACK_DATA.banner.description,
-            buttonText: item.ufCrm9_1758575177325 || FALLBACK_DATA.banner.buttonText,
-            buttonLink: item.ufCrm9_1758575241102 || FALLBACK_DATA.banner.buttonLink,
-            image: this.extractImageUrl(item.ufCrm9_1758575313219)
+        return {
+            title: item.title || "РАЗРАБАТЫВАЕМ СИСТЕМЫ АВТОМАТИЗАЦИИ ДЕЯТЕЛЬНОСТИ ПРЕДПРИЯТИЙ",
+            description: item.ufCrm9_1758575077917 || "Предлагаем инновационные решения для вашего бизнеса",
+            buttonText: item.ufCrm9_1758575177325 || "Узнать подробнее",
+            buttonLink: item.ufCrm9_1758575241102 || "#"
         };
-        
-        console.log('Processed banner data:', bannerData);
-        return bannerData;
     }
 
     async getSolutionsData() {
@@ -147,24 +105,36 @@ class BitrixAPI {
         const data = await this.fetchData(BITRIX_CONFIG.entities.solutions);
         
         if (!data || !data.result || !data.result.items || data.result.items.length === 0) {
-            console.log('Using fallback solutions data');
-            return FALLBACK_DATA.solutions;
+            console.log('No solutions data from API, using defaults');
+            return [
+                {
+                    title: "АСМОграф",
+                    description: "Кроссплатформенный векторный графический редактор для создания инженерных и деловых схем. Поддерживает совместную работу, импорт и экспорт схем Visio и AutoCAD, заменяет иностранные решения.",
+                    image: STATIC_IMAGES.solutions[0]
+                },
+                {
+                    title: "АСМО-ТОиР",
+                    description: "Автоматизирует процессы планирования, учёта и документооборота по техническому обслуживанию и ремонту оборудования.",
+                    image: STATIC_IMAGES.solutions[1]
+                },
+                {
+                    title: "АСМО-диспетчер",
+                    description: "Обработка оперативной и планово‑экономической информации в диспетчерских службах. Обеспечивает контроль за технологическим режимом.",
+                    image: STATIC_IMAGES.solutions[2]
+                },
+                {
+                    title: "АСМО-ВТиПО",
+                    description: "Учёт и сопровождение вычислительной техники и программного обеспечения на предприятии. Оптимизирует управление ИТ-активами и их жизненным циклом.",
+                    image: STATIC_IMAGES.solutions[3]
+                }
+            ];
         }
 
-        const solutions = data.result.items.map((item, index) => {
-            console.log(`Solution item ${index}:`, item);
-            
-            const solution = {
-                title: item.title || `Решение ${index + 1}`,
-                description: item.ufCrm13_1758570658765 || 'Описание решения',
-                image: this.extractImageUrl(item.ufCrm13_1758570688028)
-            };
-            
-            console.log(`Processed solution ${index}:`, solution);
-            return solution;
-        });
-
-        return solutions;
+        return data.result.items.map((item, index) => ({
+            title: item.title || `Решение ${index + 1}`,
+            description: item.ufCrm13_1758570658765 || 'Описание решения',
+            image: STATIC_IMAGES.solutions[index] || STATIC_IMAGES.solutions[0]
+        }));
     }
 
     async getBenefitsData() {
@@ -172,24 +142,36 @@ class BitrixAPI {
         const data = await this.fetchData(BITRIX_CONFIG.entities.benefits);
         
         if (!data || !data.result || !data.result.items || data.result.items.length === 0) {
-            console.log('Using fallback benefits data');
-            return FALLBACK_DATA.benefits;
+            console.log('No benefits data from API, using defaults');
+            return [
+                {
+                    title: "Эксперты IT-рынка",
+                    description: "Компания АО «Информатика» основана в 1957 г.",
+                    icon: STATIC_IMAGES.benefits[0]
+                },
+                {
+                    title: "Импортозамещение",
+                    description: "Наши решения — это на 100% российское ПО, которое создаётся, учитывая потребности заказчиков и рынка в целом",
+                    icon: STATIC_IMAGES.benefits[1]
+                },
+                {
+                    title: "Полный цикл",
+                    description: "Наша компания оказывает услуги по внедрению, сопровождению, технической поддержке и развитию программного обеспечения",
+                    icon: STATIC_IMAGES.benefits[2]
+                },
+                {
+                    title: "Проектный опыт",
+                    description: "Более 500 успешных внедрений решений на крупнейших промышленных предприятиях страны",
+                    icon: STATIC_IMAGES.benefits[3]
+                }
+            ];
         }
 
-        const benefits = data.result.items.map((item, index) => {
-            console.log(`Benefit item ${index}:`, item);
-            
-            const benefit = {
-                title: item.title || `Преимущество ${index + 1}`,
-                description: item.ufCrm15_1758604933734 || 'Описание преимущества',
-                icon: this.extractImageUrl(item.ufCrm15_1758604988689)
-            };
-            
-            console.log(`Processed benefit ${index}:`, benefit);
-            return benefit;
-        });
-
-        return benefits;
+        return data.result.items.map((item, index) => ({
+            title: item.title || `Преимущество ${index + 1}`,
+            description: item.ufCrm15_1758604933734 || 'Описание преимущества',
+            icon: STATIC_IMAGES.benefits[index] || STATIC_IMAGES.benefits[0]
+        }));
     }
 
     async getProjectsData() {
@@ -197,28 +179,39 @@ class BitrixAPI {
         const data = await this.fetchData(BITRIX_CONFIG.entities.projects);
         
         if (!data || !data.result || !data.result.items || data.result.items.length === 0) {
-            console.log('Using fallback projects data');
-            return FALLBACK_DATA.projects;
+            console.log('No projects data from API, using defaults');
+            return [
+                {
+                    company: "ООО «ИНВЕСТ ТРЕЙД»",
+                    shortDescription: "Поставка компании лицензий на АСМОГРАФ",
+                    fullDescription: "В рамках программы импортозамещения была успешно осуществлена поставка программного обеспечения АСМОграф. Решение стало ключевым инструментом для оптимизации работы и сокращения зависимости от зарубежных продуктов.",
+                    readMoreText: "Читать подробнее",
+                    readMoreLink: "#"
+                },
+                {
+                    company: "ООО «НСТЭЦ»",
+                    shortDescription: "Поставка компании лицензий на АСМОГРАФ",
+                    fullDescription: "Успешная поставка лицензий на программное обеспечение АСМОграф для оптимизации работы с инженерными схемами и документооборотом.",
+                    readMoreText: "Читать подробнее",
+                    readMoreLink: "#"
+                },
+                {
+                    company: "ООО «АРГОС»",
+                    shortDescription: "Поставка компании лицензий на АСМОГРАФ",
+                    fullDescription: "В рамках программы импортозамещения была успешно осуществлена поставка программного обеспечения АСМОграф. Решение стало ключевым инструментом для оптимизации работы и сокращения зависимости от зарубежных продуктов.",
+                    readMoreText: "Читать подробнее",
+                    readMoreLink: "#"
+                }
+            ];
         }
 
-        const projects = data.result.items.map((item, index) => {
-            console.log(`Project item ${index}:`, item);
-            
-            const project = {
-                company: item.title || `Компания ${index + 1}`,
-                shortDescription: item.ufCrm17_1758605563770 || 'Краткое описание проекта',
-                fullDescription: item.ufCrm17_1758605593150 || 'Полное описание проекта',
-                readMoreText: item.ufCrm17_1758605628876 || 'Читать подробнее',
-                readMoreLink: item.ufCrm17_1758606055746 || '#',
-                viewAllText: item.ufCrm17_1758606099754 || 'Смотреть все проекты',
-                viewAllLink: item.ufCrm17_1758606129103 || '#'
-            };
-            
-            console.log(`Processed project ${index}:`, project);
-            return project;
-        });
-
-        return projects;
+        return data.result.items.map((item, index) => ({
+            company: item.title || `Компания ${index + 1}`,
+            shortDescription: item.ufCrm17_1758605563770 || 'Краткое описание проекта',
+            fullDescription: item.ufCrm17_1758605593150 || 'Полное описание проекта',
+            readMoreText: item.ufCrm17_1758605628876 || 'Читать подробнее',
+            readMoreLink: item.ufCrm17_1758606055746 || '#'
+        }));
     }
 
     async getNewsData() {
@@ -226,28 +219,22 @@ class BitrixAPI {
         const data = await this.fetchData(BITRIX_CONFIG.entities.news);
         
         if (!data || !data.result || !data.result.items || data.result.items.length === 0) {
-            console.log('Using fallback news data');
-            return FALLBACK_DATA.news;
+            console.log('No news data from API, using defaults');
+            return [
+                {
+                    title: "ПОДТВЕРЖДЕНИЕ ЛИДЕРСТВА: ИТОГИ ПРЕМИИ «ИНДЕКС ДЕЛА»",
+                    shortDescription: "17 июня в Санкт-Петербурге прошёл финал всероссийской государственной премии «Индекс Дела», организованной при поддержке Минэкономразвития России...",
+                    fullDescription: "Полное описание новости..."
+                },
+                // Add more defaults if needed, but truncated in original
+            ];
         }
 
-        const news = data.result.items.map((item, index) => {
-            console.log(`News item ${index}:`, item);
-            
-            const newsItem = {
-                title: item.title || `Новость ${index + 1}`,
-                shortDescription: item.ufCrm19_1758608108818 || 'Краткое описание новости',
-                fullText: item.ufCrm19_1758608198531 || 'Полный текст новости',
-                image: this.extractImageUrl(item.ufCrm19_1758608297600),
-                newsLink: item.ufCrm19_1758608787313 || '#',
-                allNewsText: item.ufCrm19_1758608817346 || 'Перейти ко всем новостям',
-                allNewsLink: item.ufCrm19_1758608866947 || '#'
-            };
-            
-            console.log(`Processed news item ${index}:`, newsItem);
-            return newsItem;
-        });
-
-        return news;
+        return data.result.items.map(item => ({
+            title: item.title,
+            shortDescription: item.ufCrm19_1758606468 || 'Краткое описание',
+            fullDescription: item.ufCrm19_1758606495 || 'Полное описание'
+        }));
     }
 }
 
@@ -256,11 +243,13 @@ class DataRenderer {
         this.api = new BitrixAPI();
     }
 
-    escapeHtml(text) {
-        if (!text) return '';
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
+    escapeHtml(unsafe) {
+        return unsafe
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
     }
 
     updateElement(selector, content) {
@@ -291,14 +280,6 @@ class DataRenderer {
                     button.onclick = () => window.location.href = data.buttonLink;
                 }
             }
-
-            if (data.image) {
-                const heroSection = document.querySelector('.hero-section');
-                if (heroSection) {
-                    heroSection.style.backgroundImage = `url('${data.image}')`;
-                    console.log('Set background image:', data.image);
-                }
-            }
             
             console.log('Banner rendering completed');
         } catch (error) {
@@ -324,7 +305,7 @@ class DataRenderer {
                         <h3 class="product-title">${this.escapeHtml(item.title)}</h3>
                         <p class="product-description">${this.escapeHtml(item.description)}</p>
                     </div>
-                    ${item.image ? `<img src="${item.image}" alt="${this.escapeHtml(item.title)}" class="product-image" onerror="console.log('Failed to load image: ${item.image}')">` : ''}
+                    ${item.image ? `<img src="${item.image}" alt="${this.escapeHtml(item.title)}" class="product-image">` : ''}
                 </div>
             `).join('');
 
@@ -349,7 +330,7 @@ class DataRenderer {
 
             container.innerHTML = data.map(item => `
                 <div class="benefit-item">
-                    ${item.icon ? `<img src="${item.icon}" alt="${this.escapeHtml(item.title)}" class="benefit-icon" onerror="console.log('Failed to load icon: ${item.icon}')">` : ''}
+                    ${item.icon ? `<img src="${item.icon}" alt="${this.escapeHtml(item.title)}" class="benefit-icon">` : ''}
                     <div class="benefit-content">
                         <h3 class="benefit-title">${this.escapeHtml(item.title)}</h3>
                         ${item.description ? `<p class="benefit-description">${this.escapeHtml(item.description)}</p>` : ''}
@@ -395,7 +376,8 @@ class DataRenderer {
                 </div>
             `).join('');
 
-            this.initProjectToggles();
+            // Re-init toggles after render
+            window.projectsManager = new ProjectsManager();
             container.classList.remove('loading');
             console.log('Projects rendering completed, items:', data.length);
         } catch (error) {
@@ -421,14 +403,6 @@ class DataRenderer {
 
                 container.innerHTML = `
                     <article class="news-featured">
-                        ${featured.image ? `
-                        <div class="news-banner" style="background-image: url('${featured.image}')">
-                            <div class="news-banner-content">
-                                <h3 class="news-banner-title">${this.escapeHtml(featured.title)}</h3>
-                                <p class="news-banner-subtitle">${this.escapeHtml(featured.shortDescription)}</p>
-                            </div>
-                        </div>
-                        ` : ''}
                         <div class="news-content">
                             <time class="news-date">01.01.2025</time>
                             <h4 class="news-title">${this.escapeHtml(featured.title)}</h4>
@@ -458,30 +432,6 @@ class DataRenderer {
         }
     }
 
-    initProjectToggles() {
-        const items = document.querySelectorAll('.project-item');
-        console.log('Initializing project toggles, found items:', items.length);
-        
-        items.forEach(item => {
-            const toggle = item.querySelector('.project-toggle');
-            const details = item.querySelector('.project-details');
-            
-            if (toggle && details) {
-                toggle.addEventListener('click', () => {
-                    const isExpanded = item.classList.contains('expanded');
-                    
-                    // Close all items
-                    items.forEach(i => i.classList.remove('expanded'));
-                    
-                    // Open current if not expanded
-                    if (!isExpanded) {
-                        item.classList.add('expanded');
-                    }
-                });
-            }
-        });
-    }
-
     async init() {
         console.log('=== INITIALIZING DATA RENDERER ===');
         
@@ -495,6 +445,12 @@ class DataRenderer {
             ]);
             
             console.log('=== DATA RENDERING COMPLETED SUCCESSFULLY ===');
+            
+            // Убираем индикаторы загрузки со всей страницы
+            document.querySelectorAll('.loading').forEach(el => {
+                el.classList.remove('loading');
+            });
+            
         } catch (error) {
             console.error('Error during initialization:', error);
         }

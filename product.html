@@ -4,19 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>АСМОграф - Векторный графический редактор</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
     <!-- Hero Section -->
     <section class="hero-section">
         <header class="header">
-            <div class="container">
+            <div class="header-content">
                 <div class="logo">
-                    <img src="C:\Users\user\Downloads\image (9).png" alt="Логотип" class="logo-img">
+                    <img src="/logoinf-1.png" alt="Логотип" />
                 </div>
                 
-                <nav class="nav">
+                <nav class="navigation">
                     <a href="#" class="nav-link">Компания</a>
                     <a href="#" class="nav-link">Решения АСМО</a>
                     <a href="#" class="nav-link">Платформа АСМО</a>
@@ -26,139 +25,119 @@
                     <a href="#" class="nav-link">Контакты</a>
                 </nav>
                 
-                <div class="header-contact">
+                <div class="header-actions">
                     <div class="contact-info">
                         <span>8 800 550-00-37</span>
                         <span>asmo@inform.ivanovo.ru</span>
                     </div>
-                    <div class="header-search">
-                        <button class="btn-icon btn-search" aria-label="Поиск">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-                            </svg>
-                        </button>
-                        <input type="text" class="search-input" placeholder="Поиск..." aria-label="Строка поиска">
-                    </div>
-                    <button class="btn-callback">Обратный звонок</button>
+                    <button class="menu-btn">
+                        <img src="/icon-18.svg" alt="Меню" />
+                    </button>
+                    <button class="callback-btn">Обратный звонок</button>
                 </div>
             </div>
         </header>
         
         <div class="hero-content">
-            <div class="container hero-grid">
-                <div class="hero-left">
-                    <h1 class="hero-title">АСМОграф</h1>
-                    <p class="hero-description">
-                        Векторный графический редактор инженерной и деловой графики. 
-                        Подходит для замены иностранных решений
-                    </p>
-                    <button class="btn-primary">Скачать пробную версию</button>
-                </div>
-                <div class="hero-right">
-                    <img src="C:\Users\user\Downloads\image (10).png" alt="АСМОграф иллюстрация" class="hero-image">
-                </div>
-            </div>
+            <h1 class="hero-title">АСМОграф</h1>
+            <p class="hero-description">
+                Векторный графический редактор инженерной и деловой графики. 
+                Подходит для замены иностранных решений
+            </p>
+            <button class="download-btn">Скачать пробную версию</button>
         </div>
     </section>
 
-    <!-- About Product Section -->
-    <section class="section">
+    <!-- About Section -->
+    <section class="about-section">
         <div class="container">
             <h2 class="section-title">О ПРОДУКТЕ</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                    </div>
+                    <img src="/icon-15.svg" alt="Иконка" class="feature-icon">
                     <div class="feature-content">
-                        <h3>Универсальное применение</h3>
-                        <p>Может быть использован в организациях любого вида деятельности, в т.ч. на объектах КИИ (критическая информационная инфраструктура).</p>
+                        <h3 class="feature-title">Универсальное применение</h3>
+                        <p class="feature-description">
+                            Может быть использован в организациях любого вида деятельности, 
+                            в т.ч. на объектах КИИ (критическая информационная инфраструктура).
+                        </p>
                     </div>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-                        </svg>
-                    </div>
+                    <img src="/icon-7.svg" alt="Иконка" class="feature-icon">
                     <div class="feature-content">
-                        <h3>Все данные на схеме</h3>
-                        <p>Позволяет отображать данные из БД на схемах, настраивать связи объектов схем с объектами базы данных и другими схемами, выполнять расчёты и отображать их результаты</p>
+                        <h3 class="feature-title">Все данные на схеме</h3>
+                        <p class="feature-description">
+                            Позволяет отображать данные из БД на схемах, настраивать связи объектов схем 
+                            с объектами базы данных и другими схемами, выполнять расчёты и отображать их результаты
+                        </p>
                     </div>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                    </div>
+                    <img src="/icon-14.svg" alt="Иконка" class="feature-icon">
                     <div class="feature-content">
-                        <h3>Включён в реестр</h3>
-                        <p>№ 3132 от 14.03.2017 в Едином реестре российских программ для электронных вычислительных машин и баз данных</p>
+                        <h3 class="feature-title">Включён в реестр</h3>
+                        <p class="feature-description">
+                            № 3132 от 14.03.2017 в Едином реестре российских программ 
+                            для электронных вычислительных машин и баз данных
+                        </p>
                     </div>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zM4 18v-4h3v4h2v-7.5c0-1.1.9-2 2-2s2 .9 2 2V18h2v-4h3v4h2V9.5c0-1.1-.9-2-2-2h-3V6c0-1.1-.9-2-2-2s-2 .9-2 2v1.5H8c-1.1 0-2 .9-2 2V18h2z"/>
-                        </svg>
-                    </div>
+                    <img src="/icon-34.svg" alt="Иконка" class="feature-icon">
                     <div class="feature-content">
-                        <h3>Совместная работа</h3>
-                        <p>Редактор обеспечивает совместное редактирование схем и чертежей несколькими пользователями одновременно.</p>
+                        <h3 class="feature-title">Совместная работа</h3>
+                        <p class="feature-description">
+                            Редактор обеспечивает совместное редактирование схем и чертежей 
+                            несколькими пользователями одновременно.
+                        </p>
                     </div>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9L10,17Z"/>
-                        </svg>
-                    </div>
+                    <img src="/icon-45.svg" alt="Иконка" class="feature-icon">
                     <div class="feature-content">
-                        <h3>Безопасность</h3>
-                        <p>Контроль целостности файлов, логирование событий, автосохранение документа и другое</p>
+                        <h3 class="feature-title">Безопасность</h3>
+                        <p class="feature-description">
+                            Контроль целостности файлов, логирование событий, 
+                            автосохранение документа и другое
+                        </p>
                     </div>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M4,6H20V16H4M20,18A2,2 0 0,0 22,16V6C22,4.89 21.1,4 20,4H4C2.89,4 2,4.89 2,6V16A2,2 0 0,0 4,18H0V20H24V18H20Z"/>
-                        </svg>
-                    </div>
+                    <img src="/icon-27.svg" alt="Иконка" class="feature-icon">
                     <div class="feature-content">
-                        <h3>Широкая поддержка ОС</h3>
-                        <p>Работает на Windows, AlterOS, ALT Linux, РЕД ОС, Astra Linux, ROSA Linux, ОСнова и др.</p>
+                        <h3 class="feature-title">Широкая поддержка ОС</h3>
+                        <p class="feature-description">
+                            Работает на Windows, AlterOS, ALT Linux, РЕД ОС, 
+                            Astra Linux, ROSA Linux, ОСнова и др.
+                        </p>
                     </div>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6Z"/>
-                        </svg>
-                    </div>
+                    <img src="/icon-24.svg" alt="Иконка" class="feature-icon">
                     <div class="feature-content">
-                        <h3>Понятный интерфейс</h3>
-                        <p>Два варианта визуального окружения на выбор: ленточный и классический.</p>
+                        <h3 class="feature-title">Понятный интерфейс</h3>
+                        <p class="feature-description">
+                            Два варианта визуального окружения на выбор: 
+                            ленточный и классический.
+                        </p>
                     </div>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z"/>
-                        </svg>
-                    </div>
+                    <img src="/icon-32.svg" alt="Иконка" class="feature-icon">
                     <div class="feature-content">
-                        <h3>30K+ активных пользователей</h3>
-                        <p>Постоянное активное использование — лучшее подтверждение качества и удобства нашего сервиса.</p>
+                        <h3 class="feature-title">30K+ активных пользователей</h3>
+                        <p class="feature-description">
+                            Постоянное активное использование — лучшее подтверждение 
+                            качества и удобства нашего сервиса.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -166,64 +145,58 @@
     </section>
 
     <!-- Schemes Section -->
-    <section class="section">
+    <section class="schemes-section">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">СХЕМЫ</h2>
-                <div class="nav-buttons">
-                    <button class="nav-btn" onclick="previousScheme()">
-                        <svg width="12" height="21" viewBox="0 0 12 21" fill="currentColor">
-                            <path d="M10.5 21L0 10.5L10.5 0L12 1.5L3 10.5L12 19.5L10.5 21Z"/>
-                        </svg>
-                    </button>
-                    <button class="nav-btn" onclick="nextScheme()">
-                        <svg width="12" height="21" viewBox="0 0 12 21" fill="currentColor">
-                            <path d="M1.5 0L12 10.5L1.5 21L0 19.5L9 10.5L0 1.5L1.5 0Z"/>
-                        </svg>
-                    </button>
+                <div class="navigation-controls">
+                    <button class="nav-btn prev-btn">‹</button>
+                    <button class="nav-btn next-btn">›</button>
                 </div>
             </div>
             
             <div class="schemes-grid">
                 <div class="scheme-card">
-                    <img src="C:\Users\user\Downloads\image (11).png" alt="План этажа" class="scheme-image">
-                    <h3>ПЛАН ЭТАЖА</h3>
+                    <img src="/image-152344.png" alt="План этажа" class="scheme-image">
+                    <h3 class="scheme-title">ПЛАН ЭТАЖА</h3>
                 </div>
+                
                 <div class="scheme-card">
-                    <img src="C:\Users\user\Downloads\image (11).png" alt="Событийная цепочка процессов" class="scheme-image">
-                    <h3>СОБЫТИЙНАЯ ЦЕПОЧКА ПРОЦЕССОВ</h3>
+                    <img src="/image-152344-1.png" alt="Событийная цепочка процессов" class="scheme-image">
+                    <h3 class="scheme-title">СОБЫТИЙНАЯ ЦЕПОЧКА ПРОЦЕССОВ</h3>
                 </div>
+                
                 <div class="scheme-card">
-                    <img src="C:\Users\user\Downloads\image (11).png" alt="Схема бизнес-процессов" class="scheme-image">
-                    <h3>СХЕМА БИЗНЕС-ПРОЦЕССОВ</h3>
+                    <img src="/image-152344-2.png" alt="Схема бизнес-процессов" class="scheme-image">
+                    <h3 class="scheme-title">СХЕМА БИЗНЕС-ПРОЦЕССОВ</h3>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="section">
+    <!-- About Details Section -->
+    <section class="about-details-section">
         <div class="container">
-            <h2 class="section-title large">АСМОГРАФ — ВЕКТОРНЫЙ ГРАФИЧЕСКИЙ РЕДАКТОР</h2>
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="C:/Users/user/Downloads/image (14).png" alt="АСМОграф интерфейс" class="main-image">
-                </div>
-                <div class="about-cards">
-                    <div class="info-card">
-                        <h3>Современный интерфейс и выбор стиля работы</h3>
+            <h2 class="section-title">АСМОГРАФ — ВЕКТОРНЫЙ ГРАФИЧЕСКИЙ РЕДАКТОР</h2>
+            
+            <div class="details-content">
+                <img src="/img-2.png" alt="АСМОграф интерфейс" class="details-image">
+                
+                <div class="details-cards">
+                    <div class="detail-card">
+                        <h3 class="card-title">Современный интерфейс и выбор стиля работы</h3>
                         <ul class="feature-list">
                             <li>Полное соответствие современным стандартам импортозамещения</li>
                             <li>Импорт и экспорт схем программ Visio, AutoCAD, LibreOffice Draw, MapInfo и других</li>
-                            <li>Настройка визуального окружения под себя: ленточный интерфейс (для знатоков MS Visio) или классический интерфейс — привычное рабочее пространство для тех, кто работает в АСМОграфе много лет.</li>
+                            <li>Настройка визуального окружения под себя: ленточный интерфейс (для знатоков MS Visio) или классический интерфейс</li>
                             <li>Более 250 библиотек элементов (в том числе по ГОСТ) и 160 шаблонов схем</li>
                             <li>Собственный полнофункциональный редактор библиотек примитивов</li>
                         </ul>
-                        <button class="btn-secondary">Скачать презентацию</button>
+                        <button class="download-presentation-btn">Скачать презентацию</button>
                     </div>
                     
-                    <div class="info-card">
-                        <h3>Уникальный набор профессиональных инструментов</h3>
+                    <div class="detail-card">
+                        <h3 class="card-title">Уникальный набор профессиональных инструментов</h3>
                         <ul class="feature-list">
                             <li>Одновременная работа над схемами несколькими пользователями</li>
                             <li>Настройка прав и ролей доступа</li>
@@ -232,89 +205,70 @@
                             <li>Отображение данных на схеме; переходы к схемам и данным</li>
                             <li>Аудит изменений, ведение версий, согласование и личный кабинет для отслеживания движения схем</li>
                         </ul>
-                        <button class="btn-secondary">Скачать презентацию</button>
+                        <button class="download-presentation-btn">Скачать презентацию</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- Call to Action Section -->
     <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>ПОПРОБУЙТЕ «АСМОГРАФ» ДЛЯ РЕШЕНИЯ ЗАДАЧ ИНЖЕНЕРНОЙ И ДЕЛОВОЙ ГРАФИКИ</h2>
-                <p class="cta-subtitle">БЕСПЛАТНО в течение 30 дней</p>
-                <p class="cta-description">
-                    Вам будет доступна полнофункциональная версия АСМОграф. Оцените, 
-                    насколько быстро можно выполнять различные задачи с помощью нашего инструмента.
-                </p>
-                <button class="btn-primary">Скачать бесплатную пробную версию</button>
-            </div>
+        <div class="cta-content">
+            <h2 class="cta-title">ПОПРОБУЙТЕ «АСМОГРАФ» ДЛЯ РЕШЕНИЯ ЗАДАЧ ИНЖЕНЕРНОЙ И ДЕЛОВОЙ ГРАФИКИ</h2>
+            <p class="cta-subtitle">БЕСПЛАТНО в течение 30 дней</p>
+            <p class="cta-description">
+                Вам будет доступна полнофункциональная версия АСМОграф. Оцените, 
+                насколько быстро можно выполнять различные задачи с помощью нашего инструмента.
+            </p>
+            <button class="cta-btn">Скачать бесплатную пробную версию</button>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="section">
+    <section class="features-section">
         <div class="container">
-            <div class="features-layout">
-                <div class="features-title">
-                    <h2>ФУНКЦИОНАЛЬНЫЕ ВОЗМОЖНОСТИ</h2>
-                </div>
-                <div class="features-accordion">
-                    <div class="accordion-item active" onclick="toggleAccordion(this)">
-                        <div class="accordion-header">
-                            <h3>СОЗДАНИЕ И РЕДАКТИРОВАНИЕ ГРАФИЧЕСКИХ СХЕМ И ЧЕРТЕЖЕЙ</h3>
-                            <svg class="accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/>
-                            </svg>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item" onclick="toggleAccordion(this)">
-                        <div class="accordion-header">
-                            <h3>СОЗДАНИЕ БИБЛИОТЕК ЭЛЕМЕНТОВ И ШАБЛОНОВ СХЕМ</h3>
-                            <svg class="accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/>
-                            </svg>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item" onclick="toggleAccordion(this)">
-                        <div class="accordion-header">
-                            <h3>ИМПОРТ СХЕМ И БИБЛИОТЕК</h3>
-                            <svg class="accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/>
-                            </svg>
-                        </div>
-                        <div class="accordion-content">
-                            <div class="accordion-text">
-                                <p>импорт схем: Visio (vsdx, vsd, vsdm, vstx, vdw), AutoCAD (dwg, dxf, dwt), LibreOffice Draw (odg, fodg, otg), MapInfo (mif), svg, svgz, рисунки (png, jpg, jpeg, bmp, gif, ico, tif, tiff)</p>
-                                <p>импорт библиотек Visio (vssx, vssm, vss), AutoCAD (dwg)</p>
-                            </div>
-                            <img src="C:/Users/user/Downloads/image (15).png" alt="Импорт схем" class="accordion-image">
-                        </div>
-                    </div>
-                </div>
+            <div class="features-header">
+                <h2 class="section-title">ФУНКЦИОНАЛЬНЫЕ ВОЗМОЖНОСТИ</h2>
             </div>
-        </div>
-    </section>
-
-    <!-- Video Section -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">ВИДЕО ПРЕЗЕНТАЦИЯ</h2>
-            <div class="video-container">
-                <div class="video-placeholder" onclick="playVideo()">
-                    <img src="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=1200&h=700" alt="Видео превью" class="video-bg">
-                    <button class="play-button">
-                        <svg width="28" height="32" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M8,5.14V19.14L19,12.14L8,5.14Z"/>
-                        </svg>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        СОЗДАНИЕ И РЕДАКТИРОВАНИЕ ГРАФИЧЕСКИХ СХЕМ И ЧЕРТЕЖЕЙ
                     </button>
+                    <div class="accordion-content">
+                        <p>Полнофункциональный редактор для создания и редактирования различных типов схем и чертежей.</p>
+                    </div>
                 </div>
-                <div class="video-footer">
-                    <p>Смотрите видео уроки на нашем канале</p>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        СОЗДАНИЕ БИБЛИОТЕК ЭЛЕМЕНТОВ И ШАБЛОНОВ СХЕМ
+                    </button>
+                    <div class="accordion-content">
+                        <p>Создание собственных библиотек элементов и шаблонов для повторного использования.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item active">
+                    <button class="accordion-header">
+                        ИМПОРТ СХЕМ И БИБЛИОТЕК
+                    </button>
+                    <div class="accordion-content">
+                        <p>импорт схем: Visio (vsdx, vsd, vsdm, vstx, vdw), AutoCAD (dwg, dxf, dwt), LibreOffice Draw (odg, fodg, otg), MapInfo (mif), svg, svgz, рисунки (png, jpg, jpeg, bmp, gif, ico, tif, tiff)</p>
+                        <p>импорт библиотек Visio (vssx, vssm, vss), AutoCAD (dwg)</p>
+                        <img src="/img-1.png" alt="Импорт схем" class="feature-image">
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        ЭКСПОРТ ФАЙЛОВ
+                    </button>
+                    <div class="accordion-content">
+                        <p>Экспорт в различные форматы файлов для совместимости с другими системами.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -322,53 +276,46 @@
 
     <!-- Registry Section -->
     <section class="registry-section">
-        <div class="container">
-            <div class="registry-content">
-                <img src="C:/Users/user/Downloads/image (16).png" alt="Реестр" class="registry-image">
-                <h2>ВКЛЮЧЕН В РЕЕСТР</h2>
-                <p>№ 3132 от 14.03.2017 в Едином реестре российских программ для электронных вычислительных машин и баз данных</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Action Section -->
-    <section class="action-section">
-        <div class="container">
-            <div class="action-content">
-                <h2>ЗАКАЗАТЬ КОНСУЛЬТАЦИЮ</h2>
-                <p>Расскажите о вашей задаче. Подготовим решение, проведём демонстрацию, рассчитаем стоимость.</p>
-                <button class="btn-primary">Заказать консультацию</button>
-            </div>
+        <div class="registry-content">
+            <img src="/img.png" alt="Сертификат" class="registry-image">
+            <h2 class="registry-title">ВКЛЮЧЕН В РЕЕСТР</h2>
+            <p class="registry-description">
+                № 3132 от 14.03.2017 в Едином реестре российских программ для 
+                электронных вычислительных машин и баз данных
+            </p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
+        <div class="footer-content">
+            <div class="footer-main">
                 <div class="footer-cta">
-                    <h4>ВАС ИНТЕРЕСУЮТ НАШИ УСЛУГИ ИЛИ ПРОДУКЦИЯ?</h4>
-                    <p>Оставьте свой номер телефона, и мы перезвоним вам в удобное для вас время!</p>
-                    <button class="btn-primary">Обратный звонок</button>
+                    <h3 class="footer-title">ВАС ИНТЕРЕСУЮТ НАШИ УСЛУГИ ИЛИ ПРОДУКЦИЯ?</h3>
+                    <p class="footer-description">
+                        Оставьте свой номер телефона, и мы перезвоним вам в удобное для вас время!
+                    </p>
+                    <button class="footer-callback-btn">Обратный звонок</button>
                 </div>
                 
-                <div class="footer-contact">
+                <div class="footer-info">
                     <div class="social-links">
-                        <a href="#" class="social-link">Вконтакте</a>
-                        <a href="#" class="social-link">Rutube</a>
-                        <a href="#" class="social-link">YouTube</a>
-                        <a href="#" class="social-link">Telegram</a>
+                        <button class="social-btn">Вконтакте</button>
+                        <button class="social-btn">Rutube</button>
+                        <button class="social-btn">YouTube</button>
+                        <button class="social-btn">Telegram</button>
                     </div>
-                    <div class="contact-large">
-                        <a href="mailto:asmo@inform.ivanovo.ru">asmo@inform.ivanovo.ru</a>
-                        <a href="tel:88005500037">8 800 550-00-37</a>
+                    
+                    <div class="contact-links">
+                        <a href="mailto:asmo@inform.ivanovo.ru" class="contact-link">asmo@inform.ivanovo.ru</a>
+                        <a href="tel:88005500037" class="contact-link">8 800 550-00-37</a>
                     </div>
                 </div>
             </div>
             
-            <div class="footer-info">
+            <div class="footer-bottom">
                 <div class="company-info">
-                    <p>ИHH: 3731000788</p>
+                    <p>ИНН: 3731000788</p>
                     <p>КПП: 370201001</p>
                     <p>ОГРН: 1023700538454</p>
                     <p>Адрес: 153032, область Ивановская, город Иваново, улица Ташкентская, 90</p>
@@ -376,35 +323,33 @@
                 
                 <div class="footer-links">
                     <div class="link-column">
-                        <h5>О компании</h5>
-                        <a href="#">Выполненные проекты</a>
-                        <a href="#">Отзывы</a>
-                        <a href="#">История</a>
-                        <a href="#">Карьера</a>
+                        <h4 class="link-title">О компании</h4>
+                        <a href="#" class="footer-link">Выполненные проекты</a>
+                        <a href="#" class="footer-link">Отзывы</a>
+                        <a href="#" class="footer-link">История</a>
+                        <a href="#" class="footer-link">Карьера</a>
                     </div>
+                    
                     <div class="link-column">
-                        <h5>Услуги</h5>
-                        <a href="#">Внедрение</a>
-                        <a href="#">Обучение</a>
-                        <a href="#">Техподдержка</a>
-                        <a href="#">Адаптация</a>
+                        <h4 class="link-title">Услуги</h4>
+                        <a href="#" class="footer-link">Внедрение</a>
+                        <a href="#" class="footer-link">Обучение</a>
+                        <a href="#" class="footer-link">Техподдержка</a>
+                        <a href="#" class="footer-link">Адаптация</a>
                     </div>
+                    
                     <div class="link-column">
-                        <h5>Платформа АСМО</h5>
-                        <a href="#">Платформа АСМО</a>
-                    </div>
-                    <div class="link-column">
-                        <h5>Также</h5>
-                        <a href="#">Решения АСМО</a>
-                        <a href="#">Партнёры</a>
-                        <a href="#">Новости</a>
-                        <a href="#">Контакты</a>
+                        <h4 class="link-title">Также</h4>
+                        <a href="#" class="footer-link">Решения АСМО</a>
+                        <a href="#" class="footer-link">Партнёры</a>
+                        <a href="#" class="footer-link">Новости</a>
+                        <a href="#" class="footer-link">Контакты</a>
                     </div>
                 </div>
             </div>
             
             <div class="footer-logo">
-                <img src="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=400&h=170" alt="Логотип" class="footer-logo-img">
+                <img src="/logoinf.png" alt="Логотип" />
             </div>
         </div>
     </footer>

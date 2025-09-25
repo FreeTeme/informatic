@@ -8,14 +8,21 @@ export default defineConfig({
   },
   server: {
     port: 5173,
-    open: true
+    open: true,
+    // Для SPA роутинга
+    historyApiFallback: true
   },
-  build: {
-    rollupOptions: {
-      input: {
-        main: './index.html',          // Главная страница
-        product: './product.html',     // Новая страница продукта
-      },
-    },
-  }
+  plugins: [
+    // Плагин для обработки HTML
+    {
+      name: 'html-transform',
+      transformIndexHtml(html) {
+        return html.replace(
+          /<head>/,
+          `<head>
+            <script type="module" src="/js/router.js"></script>`
+        )
+      }
+    }
+  ]
 })

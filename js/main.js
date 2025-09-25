@@ -1,4 +1,58 @@
-// Main JavaScript functionality
+// main.js
+
+import { toggleAccordion, updateSchemesDisplay, nextScheme, previousScheme, playVideo, toggleMobileMenu, ModalManager, ProjectsManager, Carousel } from './ui.js';
+
+// Utility functions from main.js
+const utils = {
+    // Debounce function for performance
+    debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    },
+
+    // Throttle function for scroll events
+    throttle(func, limit) {
+        let inThrottle;
+        return function() {
+            const args = arguments;
+            const context = this;
+            if (!inThrottle) {
+                func.apply(context, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        };
+    },
+
+    // Check if element is in viewport
+    isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    },
+
+    // Format phone number
+    formatPhone(phone) {
+        const cleaned = phone.replace(/\D/g, '');
+        const match = cleaned.match(/^(\d{1})(\d{3})(\d{3})(\d{2})(\d{2})$/);
+        if (match) {
+            return `+${match[1]} (${match[2]}) ${match[3]}-${match[4]}-${match[5]}`;
+        }
+        return phone;
+    }
+};
+
 class App {
     constructor() {
         this.init();
@@ -10,6 +64,51 @@ class App {
         this.setupScrollAnimations();
         this.setupHeroPagination();
         this.setupCallbackButtons();
+
+        // From product.js DOMContentLoaded
+        const links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Initialize schemes display
+        updateSchemesDisplay();
+        
+        // Header search toggle from product.js
+        const searchContainer = document.querySelector('.header-search');
+        const searchButton = document.querySelector('.btn-search');
+        const searchInput = document.querySelector('.search-input');
+        if (searchButton && searchContainer && searchInput) {
+            searchButton.addEventListener('click', function() {
+                searchContainer.classList.toggle('active');
+                if (searchContainer.classList.contains('active')) {
+                    setTimeout(() => searchInput.focus(), 10);
+                }
+            });
+
+            // Close on Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && searchContainer.classList.contains('active')) {
+                    searchContainer.classList.remove('active');
+                }
+            });
+        }
+
+        // Initialize managers
+        window.modalManager = new ModalManager();
+        window.projectsManager = new ProjectsManager();
+        window.productCarousel = new Carousel('productsCarousel');
+        window.newsCarousel = new Carousel('newsGrid', 'news');
     }
 
     setupMobileMenu() {
@@ -68,13 +167,18 @@ class App {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('animate-in');
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
         }, observerOptions);
 
-        // Observe elements for animation
-        const animateElements = document.querySelectorAll('.section-title, .product-card, .benefit-item, .news-item');
+        // Observe all elements for animation (merged from product.js, main.js, projects.js)
+        const animateElements = document.querySelectorAll('.section-title, .product-card, .benefit-item, .news-item, .section, .hero-section, .cta-section, .registry-section, .action-section');
         animateElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(el);
         });
 
@@ -129,57 +233,6 @@ class App {
     }
 }
 
-// Utility functions
-const utils = {
-    // Debounce function for performance
-    debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    },
-
-    // Throttle function for scroll events
-    throttle(func, limit) {
-        let inThrottle;
-        return function() {
-            const args = arguments;
-            const context = this;
-            if (!inThrottle) {
-                func.apply(context, args);
-                inThrottle = true;
-                setTimeout(() => inThrottle = false, limit);
-            }
-        };
-    },
-
-    // Check if element is in viewport
-    isInViewport(element) {
-        const rect = element.getBoundingClientRect();
-        return (
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
-    },
-
-    // Format phone number
-    formatPhone(phone) {
-        const cleaned = phone.replace(/\D/g, '');
-        const match = cleaned.match(/^(\d{1})(\d{3})(\d{3})(\d{2})(\d{2})$/);
-        if (match) {
-            return `+${match[1]} (${match[2]}) ${match[3]}-${match[4]}-${match[5]}`;
-        }
-        return phone;
-    }
-};
-
 // Initialize app when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     window.app = new App();
@@ -194,6 +247,40 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(`Page loaded in ${loadTime}ms`);
         });
     }
+
+    // Animate hero section from product.js
+    const heroTitle = document.querySelector('.hero-title');
+    const heroDescription = document.querySelector('.hero-description');
+    const heroButton = document.querySelector('.hero-content .btn-primary');
+    
+    if (heroTitle) {
+        setTimeout(() => {
+            heroTitle.style.opacity = '1';
+            heroTitle.style.transform = 'translateY(0)';
+        }, 300);
+    }
+    
+    if (heroDescription) {
+        setTimeout(() => {
+            heroDescription.style.opacity = '1';
+            heroDescription.style.transform = 'translateY(0)';
+        }, 600);
+    }
+    
+    if (heroButton) {
+        setTimeout(() => {
+            heroButton.style.opacity = '1';
+            heroButton.style.transform = 'translateY(0)';
+        }, 900);
+    }
+
+    // Initial hero animation CSS from product.js
+    const heroElements = document.querySelectorAll('.hero-title, .hero-description, .hero-content .btn-primary');
+    heroElements.forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(30px)';
+        element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+    });
 });
 
 // Handle window resize

@@ -1,97 +1,82 @@
 // Accordion functionality
-function toggleAccordion(element) {
-    const allItems = document.querySelectorAll('.accordion-item');
-    const isActive = element.classList.contains('active');
+document.addEventListener('DOMContentLoaded', function() {
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
     
-    // Close all accordion items
-    allItems.forEach(item => {
-        item.classList.remove('active');
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+            const accordionItem = this.parentElement;
+            const isActive = accordionItem.classList.contains('active');
+            
+            // Close all accordion items
+            document.querySelectorAll('.accordion-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Open clicked item if it wasn't active
+            if (!isActive) {
+                accordionItem.classList.add('active');
+            }
+        });
     });
     
-    // If the clicked item wasn't active, open it
-    if (!isActive) {
-        element.classList.add('active');
-    }
-}
-
-// Scheme navigation
-let currentSchemeIndex = 0;
-const schemes = [
-    {
-        image: "C:/Users/user/Downloads/image (11).png",
-        title: "ПЛАН ЭТАЖА"
-    },
-    {
-        image: "C:/Users/user/Downloads/image (12).png",
-        title: "СОБЫТИЙНАЯ ЦЕПОЧКА ПРОЦЕССОВ"
-    },
-    {
-        image: "C:/Users/user/Downloads/image (13).png",
-        title: "СХЕМА БИЗНЕС-ПРОЦЕССОВ"
-    },
-    {
-        image: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=400&h=300",
-        title: "ТЕХНИЧЕСКАЯ СХЕМА"
-    },
-    {
-        image: "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=400&h=300",
-        title: "ОРГАНИЗАЦИОННАЯ СТРУКТУРА"
-    }
-];
-
-function updateSchemesDisplay() {
+    // Schemes navigation
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
     const schemesGrid = document.querySelector('.schemes-grid');
-    if (!schemesGrid) return;
+    let currentIndex = 0;
     
-    schemesGrid.innerHTML = '';
-    
-    for (let i = 0; i < 3; i++) {
-        const schemeIndex = (currentSchemeIndex + i) % schemes.length;
-        const scheme = schemes[schemeIndex];
+    if (prevBtn && nextBtn && schemesGrid) {
+        const schemeCards = schemesGrid.querySelectorAll('.scheme-card');
+        const totalCards = schemeCards.length;
         
-        const schemeCard = document.createElement('div');
-        schemeCard.className = 'scheme-card';
-        schemeCard.innerHTML = `
-            <img src="${scheme.image}" alt="${scheme.title}" class="scheme-image">
-            <h3>${scheme.title}</h3>
-        `;
+        function updateSchemes() {
+            schemeCards.forEach((card, index) => {
+                if (window.innerWidth <= 768) {
+                    // Mobile: show one card at a time
+                    card.style.display = index === currentIndex ? 'block' : 'none';
+                } else if (window.innerWidth <= 1024) {
+                    // Tablet: show two cards at a time
+                    const startIndex = Math.floor(currentIndex / 2) * 2;
+                    card.style.display = (index >= startIndex && index < startIndex + 2) ? 'block' : 'none';
+                } else {
+                    // Desktop: show all cards
+                    card.style.display = 'block';
+                }
+            });
+        }
         
-        schemesGrid.appendChild(schemeCard);
+        prevBtn.addEventListener('click', function() {
+            if (window.innerWidth <= 768) {
+                currentIndex = currentIndex > 0 ? currentIndex - 1 : totalCards - 1;
+            } else if (window.innerWidth <= 1024) {
+                currentIndex = currentIndex > 1 ? currentIndex - 2 : totalCards - 2;
+            }
+            updateSchemes();
+        });
+        
+        nextBtn.addEventListener('click', function() {
+            if (window.innerWidth <= 768) {
+                currentIndex = currentIndex < totalCards - 1 ? currentIndex + 1 : 0;
+            } else if (window.innerWidth <= 1024) {
+                currentIndex = currentIndex < totalCards - 2 ? currentIndex + 2 : 0;
+            }
+            updateSchemes();
+        });
+        
+        // Initialize
+        updateSchemes();
+        
+        // Update on window resize
+        window.addEventListener('resize', updateSchemes);
     }
-}
-
-function nextScheme() {
-    currentSchemeIndex = (currentSchemeIndex + 1) % schemes.length;
-    updateSchemesDisplay();
-}
-
-function previousScheme() {
-    currentSchemeIndex = (currentSchemeIndex - 1 + schemes.length) % schemes.length;
-    updateSchemesDisplay();
-}
-
-// Video functionality
-function playVideo() {
-    const videoPlaceholder = document.querySelector('.video-placeholder');
-    if (videoPlaceholder) {
-        // In a real implementation, you would replace this with actual video player
-        alert('Видео будет воспроизведено. В реальной реализации здесь будет видеоплеер.');
-    }
-}
-
-// Smooth scrolling for anchor links
-document.addEventListener('DOMContentLoaded', function() {
-    const links = document.querySelectorAll('a[href^="#"]');
     
-    links.forEach(link => {
-        link.addEventListener('click', function(e) {
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
-            if (targetSection) {
-                targetSection.scrollIntoView({
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
@@ -99,10 +84,34 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Initialize schemes display
-    updateSchemesDisplay();
+    // Mobile menu toggle (if needed)
+    const menuBtn = document.querySelector('.menu-btn');
+    const navigation = document.querySelector('.navigation');
     
-    // Add scroll animations
+    if (menuBtn && navigation) {
+        menuBtn.addEventListener('click', function() {
+            navigation.classList.toggle('mobile-open');
+        });
+    }
+    
+    // Form handling for callback buttons
+    const callbackBtns = document.querySelectorAll('.callback-btn, .footer-callback-btn, .cta-btn, .download-btn, .download-presentation-btn');
+    
+    callbackBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Simple alert for demo purposes
+            // In a real application, you would open a modal or redirect to a form
+            if (this.textContent.includes('Скачать')) {
+                alert('Функция скачивания будет доступна после регистрации');
+            } else {
+                alert('Форма обратного звонка будет открыта');
+            }
+        });
+    });
+    
+    // Intersection Observer for animations
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -111,108 +120,43 @@ document.addEventListener('DOMContentLoaded', function() {
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('animate-in');
             }
         });
     }, observerOptions);
     
-    // Observe all sections for animation
-    const sections = document.querySelectorAll('.section, .hero-section, .cta-section, .registry-section, .action-section');
-    sections.forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(30px)';
-        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(section);
+    // Observe elements for animation
+    document.querySelectorAll('.feature-card, .scheme-card, .detail-card').forEach(el => {
+        observer.observe(el);
     });
-
-    // Header search toggle
-    const searchContainer = document.querySelector('.header-search');
-    const searchButton = document.querySelector('.btn-search');
-    const searchInput = document.querySelector('.search-input');
-    if (searchButton && searchContainer && searchInput) {
-        searchButton.addEventListener('click', function() {
-            searchContainer.classList.toggle('active');
-            if (searchContainer.classList.contains('active')) {
-                setTimeout(() => searchInput.focus(), 10);
-            }
-        });
-
-        // Close on Escape
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && searchContainer.classList.contains('active')) {
-                searchContainer.classList.remove('active');
-            }
-        });
-    }
-});
-
-// Mobile menu toggle (for future implementation)
-function toggleMobileMenu() {
-    const nav = document.querySelector('.nav');
-    nav.classList.toggle('mobile-open');
-}
-
-// Form handling (for callback buttons)
-document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('btn-callback') || 
-        (e.target.textContent && e.target.textContent.includes('Обратный звонок'))) {
-        e.preventDefault();
-        
-        // In a real implementation, this would open a modal or form
-        const phone = prompt('Введите ваш номер телефона:');
-        if (phone) {
-            alert(`Спасибо! Мы перезвоним вам по номеру ${phone} в ближайшее время.`);
+    
+    // Add animation styles
+    const style = document.createElement('style');
+    style.textContent = `
+        .feature-card, .scheme-card, .detail-card {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
-    }
-    
-    if (e.target.textContent && (
-        e.target.textContent.includes('Скачать') || 
-        e.target.textContent.includes('Заказать консультацию'))) {
-        e.preventDefault();
         
-        // In a real implementation, this would handle downloads or form submissions
-        alert('Функция будет реализована. Спасибо за интерес к нашему продукту!');
-    }
-});
-
-// Add loading animation
-window.addEventListener('load', function() {
-    document.body.classList.add('loaded');
-    
-    // Animate hero section
-    const heroTitle = document.querySelector('.hero-title');
-    const heroDescription = document.querySelector('.hero-description');
-    const heroButton = document.querySelector('.hero-content .btn-primary');
-    
-    if (heroTitle) {
-        setTimeout(() => {
-            heroTitle.style.opacity = '1';
-            heroTitle.style.transform = 'translateY(0)';
-        }, 300);
-    }
-    
-    if (heroDescription) {
-        setTimeout(() => {
-            heroDescription.style.opacity = '1';
-            heroDescription.style.transform = 'translateY(0)';
-        }, 600);
-    }
-    
-    if (heroButton) {
-        setTimeout(() => {
-            heroButton.style.opacity = '1';
-            heroButton.style.transform = 'translateY(0)';
-        }, 900);
-    }
-});
-
-// Add CSS for initial hero animation
-document.addEventListener('DOMContentLoaded', function() {
-    const heroElements = document.querySelectorAll('.hero-title, .hero-description, .hero-content .btn-primary');
-    heroElements.forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(30px)';
-        element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-    });
+        .animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 768px) {
+            .navigation.mobile-open {
+                display: flex;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(3, 11, 57, 0.95);
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+            }
+        }
+    `;
+    document.head.appendChild(style);
 });
