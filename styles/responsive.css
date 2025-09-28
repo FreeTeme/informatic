@@ -314,7 +314,7 @@
     }
     
     /* Footer Mobile */
-    /* .footer {
+    .footer {
         padding: 60px 0;
     }
     
@@ -324,12 +324,12 @@
     
     .footer-cta-title {
         font-size: 18px;
-        text-align: center;
+        text-align: left;
     }
     
     .footer-cta-text {
         font-size: 16px;
-        text-align: center;
+        text-align: left;
     }
     
     .footer-social {
@@ -339,11 +339,11 @@
     
     .footer-contact-link {
         font-size: 24px;
-        text-align: center;
+        text-align: left;
     }
     
     .footer-company-info {
-        text-align: center;
+        text-align: left;
     }
     
     .footer-company-info p {
@@ -353,7 +353,7 @@
     .footer-links {
         grid-template-columns: 1fr;
         gap: 30px;
-        text-align: center;
+        text-align: left;
     }
     
     .footer-main {
@@ -362,7 +362,7 @@
     
     .footer-logo {
         height: 100px;
-    } */
+    }
     
     /* Buttons Mobile */
     .cta-btn, .hero-cta-btn, .contact-cta-btn, .footer-cta-btn {
