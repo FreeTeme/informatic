@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>АСМО - Автоматизированные системы управления</title>
+    <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/responsive.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +28,7 @@
             <div class="container">
                 <div class="header-content">
                     <div class="logo">
-                        <img src="/logoinf-1.png" alt="АСМО" class="logo-img">
+                        <img src="/logoinf.svg" alt="АСМО" class="logo-img">
                     </div>
                     
                     <nav class="nav" id="nav">
@@ -39,6 +40,9 @@
                             <li><a href="#partners">Партнеры</a></li>
                             <li><a href="#blog">Блог</a></li>
                             <li><a href="#contacts">Контакты</a></li>
+                            <li class="only-mobile"><a href="tel:88005500037" class="contact-link">8 800 550-00-37</a></li>
+                            <li class="only-mobile"><a href="mailto:asmo@inform.ivanovo.ru" class="contact-link">asmo@inform.ivanovo.ru</a></li>
+                            <li class="only-mobile"><button class="cta-btn" style="width:100%">Обратный звонок</button></li>
                         </ul>
                     </nav>
                     <!-- Offcanvas elements for mobile -->
@@ -220,10 +224,12 @@
     <!-- Contact Section -->
     <section class="contact-section" id="contacts">
         <div class="container">
-            <div class="contact-content">
+            <div class="contact-inner">
+                <div class="contact-content">
                 <h2 class="section-title contact-title">ЗАКАЗАТЬ КОНСУЛЬТАЦИЮ</h2>
                 <p class="contact-description">Расскажите о вашей задаче. Подготовим решение, проведём демонстрацию, рассчитаем стоимость.</p>
                 <button class="contact-cta-btn">Заказать консультацию</button>
+                </div>
             </div>
         </div>
     </section>
@@ -309,7 +315,7 @@
             </div>
             
             <div class="footer-bottom">
-                <img src="/logoinf.png" alt="АСМО" class="footer-logo">
+                <img src="./logoinf.svg" alt="АСМО" class="footer-logo">
             </div>
         </div>
     </footer>
