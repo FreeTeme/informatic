@@ -55,7 +55,7 @@
                             <li><a href="#contacts">Контакты</a></li>
                             <li><a href="tel:88005500037" class="contact-link">8 800 550-00-37</a></li>
                             <li><a href="mailto:asmo@inform.ivanovo.ru" class="contact-link">asmo@inform.ivanovo.ru</a></li>
-                            <li><button class="cta-btn" style="width:100%">Обратный звонок</button></li>
+                            <li><button class="cta-btn" style="width:100%">обратный звонок</button></li>
                         </ul>
                     </nav>
                     
@@ -145,10 +145,34 @@
             </div>
             
             <div class="products-carousel" id="productsCarousel">
-                <div class="product-card loading">
+                <div class="product-card">
                     <div class="product-content">
-                        <h3 class="product-title">Загрузка решений...</h3>
-                        <p class="product-description">Загружаем данные о наших решениях</p>
+                        <h3 class="product-title">АСМОграф</h3>
+                        <p class="product-description">Векторный редактор инженерной и деловой графики.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-content">
+                        <h3 class="product-title">АСМО.Платформа</h3>
+                        <p class="product-description">Инструментальная платформа для создания корпоративных систем.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-content">
+                        <h3 class="product-title">АСМО.Кадры</h3>
+                        <p class="product-description">Управление персоналом и кадровыми процессами.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-content">
+                        <h3 class="product-title">АСМО.Склад</h3>
+                        <p class="product-description">Логистика и складской учет для предприятий.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-content">
+                        <h3 class="product-title">АСМО.Аналитика (тест)</h3>
+                        <p class="product-description">Отчёты и визуализация показателей. Тестовая карточка.</p>
                     </div>
                 </div>
             </div>
@@ -221,10 +245,12 @@
     <!-- Contact Section -->
     <section class="contact-section" id="contacts">
         <div class="container">
-            <div class="contact-content">
-                <h2 class="section-title contact-title">ЗАКАЗАТЬ КОНСУЛЬТАЦИЮ</h2>
-                <p class="contact-description">Расскажите о вашей задаче. Подготовим решение, проведём демонстрацию, рассчитаем стоимость.</p>
-                <button class="contact-cta-btn">Заказать консультацию</button>
+            <div class="contact-inner">
+                <div class="contact-content">
+                    <h2 class="section-title contact-title">ЗАКАЗАТЬ КОНСУЛЬТАЦИЮ</h2>
+                    <p class="contact-description">Расскажите о вашей задаче. Подготовим решение, проведём демонстрацию, рассчитаем стоимость.</p>
+                    <button class="contact-cta-btn">Заказать консультацию</button>
+                </div>
             </div>
         </div>
     </section>
@@ -344,9 +370,8 @@
         </div>
     </div>
 
-    <script src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
     <script src="js/api.js"></script>
-    <script src="js/ui.js"></script>
     <script src="js/projects.js"></script>    
 </body>
 </html>
