@@ -662,6 +662,19 @@ body {
     line-height: 1.1;
 }
 
+/* Make video caption link look like site style */
+.video-caption {
+    color: var(--primary-white);
+    text-decoration: none;
+}
+.video-caption:hover { opacity: 0.9; }
+/* Ссылка внутри подписи к видео (динамический рендер) */
+.video-caption a {
+    color: var(--primary-white);
+    text-decoration: none;
+}
+.video-caption a:hover { opacity: 0.9; }
+
 .news-content {
     padding: 20px;
 }

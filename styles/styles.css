@@ -951,7 +951,7 @@ body {
 .registry-image {
     width: 400px;
     height: 250px;
-    margin-bottom: 20px;
+    margin: 0 auto 20px;
 }
 
 .registry-title {
@@ -1504,4 +1504,16 @@ body {
     .accordion-content {
         padding: 0 16px 16px;
     }
+}
+
+/* ===== Header one-line layout tuning (desktop) ===== */
+@media (min-width: 1025px) {
+  .header .nav { flex: 1; min-width: 0; }
+  .header .nav-list { gap: 30px; flex-wrap: nowrap; }
+  .header .nav-list a { font-size: 18px; }
+  .header .logo img { height: 19px; width: auto; }
+  .header .header-actions { gap: 20px; }
+  .header .cta-btn { padding: 20px 40px; font-size: 18px; }
+  .header .container { padding: 0 100px; }
+  .header .header-content { padding: 0; column-gap: 30px; }
 }

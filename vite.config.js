@@ -1,19 +1,16 @@
 import { defineConfig } from 'vite'
+import basicSsl from '@vitejs/plugin-basic-ssl'
 
 export default defineConfig({
+  base: '/',
   root: '.',
   build: {
     outDir: 'dist',
     assetsDir: 'assets'
   },
-  server: {
-    port: 5173,
-    open: true,
-    // Для SPA роутинга
-    historyApiFallback: true
-  },
   plugins: [
-    // Плагин для обработки HTML
+    basicSsl(), // SSL плагин
+    // Правильное объявление кастомного плагина для HTML
     {
       name: 'html-transform',
       transformIndexHtml(html) {
@@ -24,5 +21,10 @@ export default defineConfig({
         )
       }
     }
-  ]
+  ],
+  server: {
+    host: '0.0.0.0',
+    port: 5173,
+    open: true
+  }
 })

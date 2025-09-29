@@ -24,7 +24,7 @@
             <div class="container">
                 <div class="header-content">
                     <div class="logo">
-                        <img src="/logoinf-1.png" alt="АСМО" class="logo-img">
+                        <img src="/logoinf.svg" alt="АСМО" class="logo-img">
                     </div>
                     
                     <nav class="nav" id="nav">
@@ -918,7 +918,7 @@
             </div>
             
             <div class="footer-bottom">
-                <img src="/logoinf.png" alt="АСМО" class="footer-logo">
+                <img src="/logoinf.svg" alt="АСМО" class="footer-logo">
             </div>
         </div>
     </footer>
@@ -953,77 +953,5 @@
     </div>
 
     <script type="module" src="js/main.js"></script>
-    <script>
-        // Schemes carousel functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const schemesGrid = document.querySelector('.schemes-grid');
-            const prevBtn = document.querySelector('.prev-btn');
-            const nextBtn = document.querySelector('.next-btn');
-            const schemeCards = document.querySelectorAll('.scheme-card');
-            
-            if (!schemesGrid || !prevBtn || !nextBtn || !schemeCards.length) return;
-            
-            let currentIndex = 0;
-            const cardsPerView = 3; // Показываем 3 карточки одновременно
-            const totalCards = schemeCards.length;
-            const maxIndex = Math.max(0, totalCards - cardsPerView);
-            
-            function updateSchemesDisplay() {
-                const translateX = -currentIndex * (100 / cardsPerView);
-                schemesGrid.style.transform = `translateX(${translateX}%)`;
-                
-                // Обновляем состояние кнопок
-                prevBtn.disabled = currentIndex === 0;
-                nextBtn.disabled = currentIndex >= maxIndex;
-                
-                prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
-                nextBtn.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
-            }
-            
-            function showPrev() {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    updateSchemesDisplay();
-                }
-            }
-            
-            function showNext() {
-                if (currentIndex < maxIndex) {
-                    currentIndex++;
-                    updateSchemesDisplay();
-                }
-            }
-            
-            // Добавляем обработчики событий
-            prevBtn.addEventListener('click', showPrev);
-            nextBtn.addEventListener('click', showNext);
-            
-            // Инициализация
-            updateSchemesDisplay();
-            
-            // Добавляем CSS для анимации
-            const style = document.createElement('style');
-            style.textContent = `
-                .schemes-section .schemes-grid {
-                    display: flex !important;
-                    grid-template-columns: none !important;
-                    width: ${(totalCards / cardsPerView) * 100}% !important;
-                    transition: transform 0.3s ease;
-                    gap: 20px;
-                }
-                
-                .schemes-section .scheme-card {
-                    flex: 0 0 calc(${100 / cardsPerView}% - ${20 * (cardsPerView - 1) / cardsPerView}px) !important;
-                    min-width: 0;
-                    margin: 0 !important;
-                }
-                
-                .nav-btn:disabled {
-                    cursor: not-allowed;
-                }
-            `;
-            document.head.appendChild(style);
-        });
-    </script>
 </body>
 </html>

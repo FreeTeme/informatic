@@ -200,6 +200,30 @@ class App {
             e.preventDefault();
             openModal();
         });
+
+        // Header: show under-construction modal on header buttons/links without real routes
+        document.addEventListener('click', (e) => {
+            const header = e.target.closest('.header');
+            if (!header) return;
+
+            const clickable = e.target.closest('a, button');
+            if (!clickable) return;
+
+            // Exclude burger toggle and offcanvas controls
+            if (clickable.id === 'mobileMenuBtn') return;
+
+            if (clickable.tagName === 'A') {
+                const href = clickable.getAttribute('href');
+                if (href && /^(mailto:|tel:|https?:)/i.test(href)) return;
+                if (!isInactiveHref(href)) return;
+            }
+
+            // For header buttons (e.g., .cta-btn) always show under-construction
+            e.preventDefault();
+            // prevent other listeners (like callback modal) from firing
+            e.stopImmediatePropagation();
+            openModal();
+        });
     }
 
     setupAccordion() {
