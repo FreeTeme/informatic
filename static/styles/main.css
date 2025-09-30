@@ -93,7 +93,7 @@ body {
 /* Hero Section */
 .hero-section {
     min-height: 900px;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/bg-2.png') center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../public/bg-2.png') center/cover;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -518,7 +518,7 @@ body {
 }
 
 .project-item.expanded {
-    background: linear-gradient(0deg, var(--primary-blue) 0%, var(--primary-black) 100%), url('/project.png') center/cover;
+    background: linear-gradient(0deg, var(--primary-blue) 0%, var(--primary-black) 100%), url('../public/project.png') center/cover;
     background-blend-mode: overlay;
     min-height: 440px;
     padding: 20px;
@@ -637,7 +637,7 @@ body {
 
 .news-banner {
     height: 362px;
-    background: url('/banner.png') center/cover;
+    background: url('../public/banner.png') center/cover;
     display: flex;
     align-items: flex-end;
     padding: 20px;
@@ -789,7 +789,7 @@ body {
 }
 
 .contact-inner {
-    background: url('/bg-1.png') center/cover;
+    background: url('../public/bg-1.png') center/cover;
     height: 700px;
     display: flex;
     align-items: center;
@@ -816,7 +816,7 @@ body {
 
 /* ===== FOOTER STYLES ===== */
 .footer {
-    background: linear-gradient(rgba(7, 25, 91, 0.95), rgba(3, 11, 57, 0.95)), url('/bg.png') center/cover;
+    background: linear-gradient(rgba(7, 25, 91, 0.95), rgba(3, 11, 57, 0.95)), url('../public/bg.png') center/cover;
     padding: 80px 0 40px;
     color: var(--primary-white);
     position: relative;

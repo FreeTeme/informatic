@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>АСМО - Автоматизированные системы управления</title>
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/responsive.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -28,7 +28,7 @@
             <div class="container">
                 <div class="header-content">
                     <div class="logo">
-                        <img src="/logoinf.svg" alt="АСМО" class="logo-img">
+                        <img src="{{ url_for('static', filename='public/logoinf.svg') }}" alt="АСМО" class="logo-img">
                     </div>
                     
                     <nav class="nav" id="nav">
@@ -301,7 +301,7 @@
                     <div class="footer-column">
                         <h5 class="footer-column-title">Также</h5>
                         <ul class="footer-links-list">
-                            <li><a href="/profile.html">Решения АСМО</a></li>
+                            <li><a href="/profile">Решения АСМО</a></li>
                             <li><a href="#">Партнёры</a></li>
                             <li><a href="#">Новости</a></li>
                             <li><a href="#">Статьи</a></li>
@@ -315,7 +315,7 @@
             </div>
             
             <div class="footer-bottom">
-                <img src="./logoinf.svg" alt="АСМО" class="footer-logo">
+                <img src="{{ url_for('static', filename='public/logoinf.svg') }}" alt="АСМО" class="footer-logo">
             </div>
         </div>
     </footer>
@@ -349,9 +349,9 @@
         </div>
     </div>
 
-    <script src="js/main.js"></script>
-    <script src="js/api.js"></script>
-    <script src="js/ui.js"></script>
-    <script src="js/projects.js"></script>    
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/ui.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/projects.js') }}"></script>  
 </body>
 </html>

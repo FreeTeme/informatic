@@ -136,7 +136,7 @@ class ContentRenderer {
 
         grid.innerHTML = items.map(item => `
             <div class="feature-card">
-                <img src="/icon-15.svg" alt="Иконка" class="feature-icon">
+                <img src="./static/public/icon-15.svg" alt="Иконка" class="feature-icon">
                 <div class="feature-content">
                     <h3 class="feature-title">${item.title || 'Заголовок'}</h3>
                     <p class="feature-description">${item.ufCrm21_1758633193449 || 'Описание'}</p>
@@ -154,7 +154,7 @@ class ContentRenderer {
 
         grid.innerHTML = items.map(item => `
             <div class="scheme-card">
-                <img src="/image-152344.png" alt="${item.title || 'Схема'}" class="scheme-image">
+                <img src="./static/public/image-152344.png" alt="${item.title || 'Схема'}" class="scheme-image">
                 <h3 class="scheme-title">${item.title || 'Название схемы'}</h3>
             </div>
         `).join('');
@@ -254,7 +254,7 @@ class ContentRenderer {
                             ${this.formatFeatureDescription(item.ufCrm31_1758637729665)}
                         </div>
                         <div class="accordion-image">
-                            <img src="/public/icon-${index + 1}.svg" alt="${item.title}" class="feature-image">
+                            <img src="./static/public/icon-${index + 1}.svg" alt="${item.title}" class="feature-image">
                         </div>
                     </div>
                 </div>
@@ -351,7 +351,7 @@ class ContentRenderer {
 
         const item = items[0];
         container.innerHTML = `
-            <img src="/img.png" alt="Сертификат" class="registry-image">
+            <img src="./static/public/img.png" alt="Сертификат" class="registry-image">
             <h2 class="registry-title">${item.title || 'ВКЛЮЧЕН В РЕЕСТР'}</h2>
             <p class="registry-description">${item.ufCrm41_1758873367930 || ''}</p>
         `;
