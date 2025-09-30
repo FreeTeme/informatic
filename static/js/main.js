@@ -66,6 +66,7 @@ class App {
         this.setupHeroPagination();
         this.setupCallbackButtons();
         this.setupAccordion();
+        this.setupFooterUnderConstruction();
         // HTML5 видео заменено на встроенный YouTube iframe — инициализация не нужна
 
         // From product.js DOMContentLoaded
@@ -123,6 +124,106 @@ class App {
                 console.log(`Блок ${index + 1}: "${header?.textContent.trim()}", активен: ${item.classList.contains('active')}, контент: ${content ? 'есть' : 'нет'}`);
             });
         }, 500);
+    }
+
+    setupFooterUnderConstruction() {
+        const ensureModalExists = () => {
+            if (document.getElementById('underConstructionModal')) return;
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.id = 'underConstructionModal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Страница в разработке</h3>
+                        <button class="modal-close" id="ucModalClose" aria-label="Закрыть">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div>
+                        <p style="margin-bottom: 16px; color: var(--primary-black); opacity: 0.8;">Мы работаем над этим разделом. Загляните позже, пожалуйста.</p>
+                        <button class="form-submit-btn" id="ucOkBtn">Понятно</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            const close = () => {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            };
+            modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+            modal.querySelector('#ucModalClose').addEventListener('click', close);
+            modal.querySelector('#ucOkBtn').addEventListener('click', close);
+        };
+
+        const openModal = () => {
+            ensureModalExists();
+            const modal = document.getElementById('underConstructionModal');
+            if (!modal) return;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        const isInactiveHref = (href) => {
+            if (!href) return true;
+            const trimmed = href.trim();
+            if (trimmed === '#' || trimmed === '') return true;
+            if (trimmed.startsWith('#')) return true;
+            if (trimmed.toLowerCase().startsWith('javascript:')) return true;
+            return false;
+        };
+
+        document.addEventListener('click', (e) => {
+            const footer = e.target.closest('.footer');
+            if (!footer) return;
+
+            const clickable = e.target.closest('a, button');
+            if (!clickable) return;
+
+            // Allow real links and functional buttons
+            if (clickable.tagName === 'A') {
+                const href = clickable.getAttribute('href');
+                // Skip mailto/tel/http(s)
+                if (href && /^(mailto:|tel:|https?:)/i.test(href)) return;
+                if (!isInactiveHref(href)) return; // real route
+            } else if (clickable.tagName === 'BUTTON') {
+                // If button has known functional classes, skip
+                if (clickable.classList.contains('footer-cta-btn')) {
+                    // let existing handler open callback modal
+                    return;
+                }
+            }
+
+            e.preventDefault();
+            openModal();
+        });
+
+        // Header: show under-construction modal on header buttons/links without real routes
+        document.addEventListener('click', (e) => {
+            const header = e.target.closest('.header');
+            if (!header) return;
+
+            const clickable = e.target.closest('a, button');
+            if (!clickable) return;
+
+            // Exclude burger toggle and offcanvas controls
+            if (clickable.id === 'mobileMenuBtn') return;
+
+            if (clickable.tagName === 'A') {
+                const href = clickable.getAttribute('href');
+                if (href && /^(mailto:|tel:|https?:)/i.test(href)) return;
+                if (!isInactiveHref(href)) return;
+            }
+
+            // For header buttons (e.g., .cta-btn) always show under-construction
+            e.preventDefault();
+            // prevent other listeners (like callback modal) from firing
+            e.stopImmediatePropagation();
+            openModal();
+        });
     }
 
     setupAccordion() {

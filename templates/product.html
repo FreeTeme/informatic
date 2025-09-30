@@ -7,8 +7,17 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/responsive.css') }}">
+    <style>
+        /* Более плотное прилегание бургера к правому краю только на странице продукта */
+        @media (max-width: 1024px) {
+            .product-page .header .container { padding-right: 8px; }
+        }
+        @media (min-width: 1025px) {
+            .product-page .header .container { padding-right: 40px; }
+        }
+    </style>
     </head>
-<body>
+<body class="product-page">
     <!-- Hero Section -->
     <section class="hero-section">
         <header class="header">
@@ -45,7 +54,7 @@
                             <li><a href="#contacts">Контакты</a></li>
                             <li><a href="tel:88005500037" class="contact-link">8 800 550-00-37</a></li>
                             <li><a href="mailto:asmo@inform.ivanovo.ru" class="contact-link">asmo@inform.ivanovo.ru</a></li>
-                            <li><button class="cta-btn" style="width:100%">Обратный звонок</button></li>
+                            <li><button class="cta-btn" style="width:100%; color: black" >обратный звонок</button></li>
                         </ul>
                     </nav>
                     
@@ -85,7 +94,7 @@
             <h2 class="section-title">О ПРОДУКТЕ</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <img  src="{{ url_for('static', filename='public/icon-15.svg') }}" alt="Иконка" class="feature-icon">
+                    <img src="{{ url_for('static', filename='public/icon-15.svg') }}" alt="Иконка" class="feature-icon">
                     <div class="feature-content">
                         <h3 class="feature-title">Универсальное применение</h3>
                         <p class="feature-description">
@@ -200,6 +209,16 @@
                 <div class="scheme-card">
                     <img src="{{ url_for('static', filename='public/image-152344-2.png') }}" alt="Схема бизнес-процессов" class="scheme-image">
                     <h3 class="scheme-title">СХЕМА БИЗНЕС-ПРОЦЕССОВ</h3>
+                </div>
+                
+                <div class="scheme-card">
+                    <img src="/bg-1.png" alt="Техническая схема" class="scheme-image">
+                    <h3 class="scheme-title">ТЕХНИЧЕСКАЯ СХЕМА</h3>
+                </div>
+                
+                <div class="scheme-card">
+                    <img src="/bg-2.png" alt="Организационная структура" class="scheme-image">
+                    <h3 class="scheme-title">ОРГАНИЗАЦИОННАЯ СТРУКТУРА</h3>
                 </div>
             </div>
         </div>
@@ -710,7 +729,7 @@
         <div class="container">
             <div class="registry-inner">
                 <div class="registry-content">
-                    <img  src="{{ url_for('static', filename='public/img.png') }}" alt="Сертификат" class="registry-image">
+                    <img src="{{ url_for('static', filename='public/img.png') }}" alt="Сертификат" class="registry-image">
                     <h2 class="registry-title">ВКЛЮЧЕН В РЕЕСТР</h2>
                     <p class="registry-description">
                         № 3132 от 14.03.2017 в Едином реестре российских программ для 
@@ -933,8 +952,6 @@
         </div>
     </div>
 
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/ui.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/product_api.js') }}"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>
