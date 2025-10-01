@@ -15,18 +15,18 @@ const BITRIX_CONFIG = {
 // Static images configuration
 const STATIC_IMAGES = {
     solutions: [
-        "/products-3.svg",
-        "/products.svg", 
-        "/products-2.svg",
-        "/products-1.svg"
+        "./static/public/products-3.svg",
+        "./static/public/products.svg", 
+        "./static/public/products-2.svg",
+        "./static/public/products-1.svg"
     ],
     benefits: [
-        "/icon-4.svg",
-        "/icon-1.svg",
-        "/icon.svg",
-        "/icon-5.svg"
+        "./static/public/icon-4.svg",
+        "./static/public/icon-1.svg",
+        "./static/public/icon.svg",
+        "./static/public/icon-5.svg"
     ],
-    news: "/news-banner.jpg" // Заглушка для новостей
+    news: "./static/public/news-banner.jpg" // Заглушка для новостей
 };
 
 class BitrixAPI {
@@ -299,6 +299,7 @@ class DataRenderer {
                 return;
             }
 
+            // Рендер карточек (fallback или API)
             carousel.innerHTML = data.map(item => `
                 <div class="product-card">
                     <div class="product-content">
@@ -309,12 +310,40 @@ class DataRenderer {
                 </div>
             `).join('');
 
+            // Инициализация карусели: добавляем слушатели на кнопки
+            this.initCarousel();
+
             carousel.classList.remove('loading');
             console.log('Solutions rendering completed, items:', data.length);
         } catch (error) {
             console.error('Error rendering solutions:', error);
         }
     }
+
+// Новая метод: инициализация карусели
+initCarousel() {
+    const carousel = document.getElementById('productsCarousel');
+    const prevBtn = document.querySelector('.carousel-btn.prev');
+    const nextBtn = document.querySelector('.carousel-btn.next');
+
+    if (!carousel || !prevBtn || !nextBtn) return;
+
+    const scrollStep = 380;  // Ширина карточки (360px) + gap (20px)
+
+    nextBtn.addEventListener('click', () => {
+        carousel.scrollBy({ left: scrollStep, behavior: 'smooth' });
+    });
+
+    prevBtn.addEventListener('click', () => {
+        carousel.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+    });
+
+    // Опционально: дизейбл кнопок на краях (если нужно)
+    carousel.addEventListener('scroll', () => {
+        prevBtn.disabled = carousel.scrollLeft <= 0;
+        nextBtn.disabled = carousel.scrollLeft >= (carousel.scrollWidth - carousel.clientWidth);
+    });
+}
 
     async renderBenefits() {
         try {

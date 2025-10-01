@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>АСМОграф - Векторный графический редактор</title>
-    <link rel="stylesheet" href="/styles/styles.css">
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/responsive.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/responsive.css') }}">
+
     <style>
         /* Более плотное прилегание бургера к правому краю только на странице продукта */
         @media (max-width: 1024px) {
@@ -24,7 +26,7 @@
             <div class="container">
                 <div class="header-content">
                     <div class="logo">
-                        <img src="/logoinf.svg" alt="АСМО" class="logo-img">
+                        <img src="{{ url_for('static', filename='public/logoinf.svg') }}" alt="АСМО" class="logo-img">
                     </div>
                     
                     <nav class="nav" id="nav">
@@ -94,7 +96,7 @@
             <h2 class="section-title">О ПРОДУКТЕ</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <img src="/icon-15.svg" alt="Иконка" class="feature-icon">
+                    <img src="{{ url_for('static', filename='public/icon-15.svg') }}" alt="Иконка" class="feature-icon">
                     <div class="feature-content">
                         <h3 class="feature-title">Универсальное применение</h3>
                         <p class="feature-description">
@@ -105,7 +107,7 @@
                 </div>
                 
                 <div class="feature-card">
-                    <img src="/icon-7.svg" alt="Иконка" class="feature-icon">
+                    <img src="{{ url_for('static', filename='public/icon-7.svg') }}" alt="Иконка" class="feature-icon">
                     <div class="feature-content">
                         <h3 class="feature-title">Все данные на схеме</h3>
                         <p class="feature-description">
@@ -116,7 +118,7 @@
                 </div>
                 
                 <div class="feature-card">
-                    <img src="/icon-14.svg" alt="Иконка" class="feature-icon">
+                    <img src="{{ url_for('static', filename='public/icon-14.svg') }}" alt="Иконка" class="feature-icon">
                     <div class="feature-content">
                         <h3 class="feature-title">Включён в реестр</h3>
                         <p class="feature-description">
@@ -127,7 +129,7 @@
                 </div>
                 
                 <div class="feature-card">
-                    <img src="/icon-34.svg" alt="Иконка" class="feature-icon">
+                    <img src="{{ url_for('static', filename='public/icon-34.svg') }}" alt="Иконка" class="feature-icon">
                     <div class="feature-content">
                         <h3 class="feature-title">Совместная работа</h3>
                         <p class="feature-description">
@@ -138,7 +140,7 @@
                 </div>
                 
                 <div class="feature-card">
-                    <img src="/icon-45.svg" alt="Иконка" class="feature-icon">
+                    <img src="{{ url_for('static', filename='public/icon-45.svg') }}" alt="Иконка" class="feature-icon">
                     <div class="feature-content">
                         <h3 class="feature-title">Безопасность</h3>
                         <p class="feature-description">
@@ -149,7 +151,7 @@
                 </div>
                 
                 <div class="feature-card">
-                    <img src="/icon-27.svg" alt="Иконка" class="feature-icon">
+                    <img src="{{ url_for('static', filename='public/icon-27.svg') }}" alt="Иконка" class="feature-icon">
                     <div class="feature-content">
                         <h3 class="feature-title">Широкая поддержка ОС</h3>
                         <p class="feature-description">
@@ -160,7 +162,7 @@
                 </div>
                 
                 <div class="feature-card">
-                    <img src="/icon-24.svg" alt="Иконка" class="feature-icon">
+                    <img src="{{ url_for('static', filename='public/icon-24.svg') }}" alt="Иконка" class="feature-icon">
                     <div class="feature-content">
                         <h3 class="feature-title">Понятный интерфейс</h3>
                         <p class="feature-description">
@@ -171,7 +173,7 @@
                 </div>
                 
                 <div class="feature-card">
-                    <img src="/icon-32.svg" alt="Иконка" class="feature-icon">
+                    <img src="{{ url_for('static', filename='public/icon-32.svg') }}" alt="Иконка" class="feature-icon">
                     <div class="feature-content">
                         <h3 class="feature-title">30K+ активных пользователей</h3>
                         <p class="feature-description">
@@ -197,17 +199,17 @@
             
             <div class="schemes-grid">
                 <div class="scheme-card">
-                    <img src="/public/image (11).png" alt="План этажа" class="scheme-image">
+                    <img src="{{ url_for('static', filename='public/image-152344.png') }}" alt="План этажа" class="scheme-image">
                     <h3 class="scheme-title">ПЛАН ЭТАЖА</h3>
                 </div>
                 
                 <div class="scheme-card">
-                    <img src="/public/image (12).png" alt="Событийная цепочка процессов" class="scheme-image">
+                    <img src="{{ url_for('static', filename='public/image-152344-1.png') }}" alt="Событийная цепочка процессов" class="scheme-image">
                     <h3 class="scheme-title">СОБЫТИЙНАЯ ЦЕПОЧКА ПРОЦЕССОВ</h3>
                 </div>
                 
                 <div class="scheme-card">
-                    <img src="/public/image (13).png" alt="Схема бизнес-процессов" class="scheme-image">
+                    <img src="{{ url_for('static', filename='public/image-152344-2.png') }}" alt="Схема бизнес-процессов" class="scheme-image">
                     <h3 class="scheme-title">СХЕМА БИЗНЕС-ПРОЦЕССОВ</h3>
                 </div>
                 
@@ -230,7 +232,7 @@
             <h2 class="section-title">АСМОГРАФ — ВЕКТОРНЫЙ<br>ГРАФИЧЕСКИЙ РЕДАКТОР</h2>
             
             <div class="details-content">
-                <img src="/img-2.png" alt="АСМОграф интерфейс" class="details-image">
+                <img src="{{ url_for('static', filename='public/img-2.png') }}" alt="АСМОграф интерфейс" class="details-image">
                 
                 <div class="details-cards">
                     <div class="detail-card">
@@ -300,7 +302,7 @@
                                 </ul>
                             </div>
                             <div class="accordion-image">
-                                <img src="/public/icon-1.svg" alt="Создание схем" class="feature-image">
+                                <img src="{{ url_for('static', filename='public/icon-1.svg') }}" alt="Создание схем" class="feature-image">
                             </div>
                         </div>
                     </div>
@@ -323,7 +325,7 @@
                                 </ul>
                             </div>
                             <div class="accordion-image">
-                                <img src="/public/icon-2.svg" alt="Библиотеки элементов" class="feature-image">
+                                <img src="{{ url_for('static', filename='public/icon-2.svg') }}" alt="Библиотеки элементов" class="feature-image">
                             </div>
                         </div>
                     </div>
@@ -347,7 +349,7 @@
                                 </ul>
                             </div>
                             <div class="accordion-image">
-                                <img src="/public/icon-3.svg" alt="Импорт схем" class="feature-image">
+                                <img src="{{ url_for('static', filename='public/icon-3.svg') }}" alt="Импорт схем" class="feature-image">
                             </div>
                         </div>
                     </div>
@@ -370,7 +372,7 @@
                                 </ul>
                             </div>
                             <div class="accordion-image">
-                                <img src="/public/icon-4.svg" alt="Экспорт файлов" class="feature-image">
+                                <img src="{{ url_for('static', filename='public/icon-4.svg') }}" alt="Экспорт файлов" class="feature-image">
                             </div>
                         </div>
                     </div>
@@ -393,7 +395,7 @@
                                 </ul>
                             </div>
                             <div class="accordion-image">
-                                <img src="/public/icon-5.svg" alt="Контейнеры и таблицы" class="feature-image">
+                                <img src="{{ url_for('static', filename='public/icon-5.svg') }}" alt="Контейнеры и таблицы" class="feature-image">
                             </div>
                         </div>
                     </div>
@@ -416,7 +418,7 @@
                                 </ul>
                             </div>
                             <div class="accordion-image">
-                                <img src="/public/icon-6.svg" alt="Печать схем" class="feature-image">
+                                <img src="{{ url_for('static', filename='public/icon-6.svg') }}" alt="Печать схем" class="feature-image">
                             </div>
                         </div>
                     </div>
@@ -439,7 +441,7 @@
                                 </ul>
                             </div>
                             <div class="accordion-image">
-                                <img src="/public/icon-7.svg" alt="Навигация и поиск" class="feature-image">
+                                <img src="{{ url_for('static', filename='public/icon-7.svg') }}" alt="Навигация и поиск" class="feature-image">
                             </div>
                         </div>
                     </div>
@@ -462,7 +464,7 @@
                                 </ul>
                             </div>
                             <div class="accordion-image">
-                                <img src="/public/icon.svg" alt="Безопасность" class="feature-image">
+                                <img src="{{ url_for('static', filename='public/icon.svg') }}" alt="Безопасность" class="feature-image">
                             </div>
                         </div>
                     </div>
@@ -485,7 +487,7 @@
                                 </ul>
                             </div>
                             <div class="accordion-image">
-                                <img src="/public/icon-1.svg" alt="Цифровая модель" class="feature-image">
+                                <img src="{{ url_for('static', filename='public/icon-1.svg') }}" alt="Цифровая модель" class="feature-image">
                             </div>
                         </div>
                     </div>
@@ -508,7 +510,7 @@
                                 </ul>
                             </div>
                             <div class="accordion-image">
-                                <img src="/public/icon-2.svg" alt="Права пользователей" class="feature-image">
+                                <img src="{{ url_for('static', filename='public/icon-2.svg') }}" alt="Права пользователей" class="feature-image">
                             </div>
                         </div>
                     </div>
@@ -531,7 +533,7 @@
                                 </ul>
                             </div>
                             <div class="accordion-image">
-                                <img src="/public/icon-3.svg" alt="Многопользовательский режим" class="feature-image">
+                                <img src="{{ url_for('static', filename='public/icon-3.svg') }}" alt="Многопользовательский режим" class="feature-image">
                             </div>
                         </div>
                     </div>
@@ -554,7 +556,7 @@
                                 </ul>
                             </div>
                             <div class="accordion-image">
-                                <img src="/public/icon-4.svg" alt="Привязка к БД" class="feature-image">
+                                <img src="{{ url_for('static', filename='public/icon-4.svg') }}" alt="Привязка к БД" class="feature-image">
                             </div>
                         </div>
                     </div>
@@ -577,7 +579,7 @@
                                 </ul>
                             </div>
                             <div class="accordion-image">
-                                <img src="/public/icon-5.svg" alt="Отображение данных" class="feature-image">
+                                <img src="{{ url_for('static', filename='public/icon-5.svg') }}" alt="Отображение данных" class="feature-image">
                             </div>
                         </div>
                     </div>
@@ -600,7 +602,7 @@
                                 </ul>
                             </div>
                             <div class="accordion-image">
-                                <img src="/public/icon-6.svg" alt="Переходы" class="feature-image">
+                                <img src="{{ url_for('static', filename='public/icon-6.svg') }}" alt="Переходы" class="feature-image">
                             </div>
                         </div>
                     </div>
@@ -623,7 +625,7 @@
                                 </ul>
                             </div>
                             <div class="accordion-image">
-                                <img src="/public/icon-7.svg" alt="Топология соединений" class="feature-image">
+                                <img src="{{ url_for('static', filename='public/icon-7.svg') }}" alt="Топология соединений" class="feature-image">
                             </div>
                         </div>
                     </div>
@@ -646,7 +648,7 @@
                                 </ul>
                             </div>
                             <div class="accordion-image">
-                                <img src="/public/icon.svg" alt="Аудит и версии" class="feature-image">
+                                <img src="{{ url_for('static', filename='public/icon.svg') }}" alt="Аудит и версии" class="feature-image">
                             </div>
                         </div>
                     </div>
@@ -669,7 +671,7 @@
                                 </ul>
                             </div>
                             <div class="accordion-image">
-                                <img src="/public/icon-1.svg" alt="Средства разработки" class="feature-image">
+                                <img src="{{ url_for('static', filename='public/icon-1.svg') }}" alt="Средства разработки" class="feature-image">
                             </div>
                         </div>
                     </div>
@@ -729,7 +731,7 @@
         <div class="container">
             <div class="registry-inner">
                 <div class="registry-content">
-                    <img src="/img.png" alt="Сертификат" class="registry-image">
+                    <img src="{{ url_for('static', filename='public/img.png') }}" alt="Сертификат" class="registry-image">
                     <h2 class="registry-title">ВКЛЮЧЕН В РЕЕСТР</h2>
                     <p class="registry-description">
                         № 3132 от 14.03.2017 в Едином реестре российских программ для 
@@ -918,7 +920,7 @@
             </div>
             
             <div class="footer-bottom">
-                <img src="/logoinf.svg" alt="АСМО" class="footer-logo">
+                <img src="{{ url_for('static', filename='public/logoinf.svg') }}" alt="АСМО" class="footer-logo">
             </div>
         </div>
     </footer>
@@ -952,6 +954,11 @@
         </div>
     </div>
 
-    <script type="module" src="js/main.js"></script>
+
+     
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/ui.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/product_api.js') }}"></script>
+    <!-- <script src="{{ url_for('static', filename='js/product.js') }}"></script>  -->
 </body>
 </html>
