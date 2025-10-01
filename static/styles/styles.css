@@ -245,6 +245,7 @@ body {
 .section-header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 40px;
 }
 
@@ -254,29 +255,46 @@ body {
 }
 
 .nav-btn {
-    width: 30px;
+    width: 40px;
     height: 40px;
     background: #adbdff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 24px;
     color: #030b39;
-    transition: background-color 0.3s;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.nav-btn:hover {
+.nav-btn:hover:not(:disabled) {
     background-color: rgba(173, 189, 255, 0.8);
+    transform: scale(1.05);
+}
+
+.nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.schemes-wrapper {
+    position: relative;
+    overflow: hidden;
 }
 
 .schemes-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
     gap: 20px;
+    transition: transform 0.5s ease;
+    align-items: flex-start;
 }
 
 .scheme-card {
     background: transparent;
+    flex: 0 0 calc(33.333% - 14px);
+    min-width: 0;
 }
 
 .scheme-image {
@@ -293,6 +311,66 @@ body {
     color: #030b39;
     letter-spacing: -0.66px;
     line-height: 100%;
+}
+
+/* Адаптив для планшетов */
+@media (max-width: 1024px) {
+    .scheme-card {
+        flex: 0 0 calc(50% - 10px);
+    }
+    
+    .scheme-image {
+        height: 250px;
+    }
+    
+    .scheme-title {
+        font-size: 20px;
+    }
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+    .schemes-section {
+        padding: 80px 0;
+    }
+    
+    .section-header {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+    }
+    
+    .scheme-card {
+        flex: 0 0 100%;
+    }
+    
+    .scheme-image {
+        height: 200px;
+    }
+    
+    .scheme-title {
+        font-size: 18px;
+    }
+    
+    .nav-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .schemes-section {
+        padding: 60px 0;
+    }
+    
+    .scheme-image {
+        height: 180px;
+    }
+    
+    .scheme-title {
+        font-size: 16px;
+    }
 }
 
 /* About Details Section */
@@ -921,10 +999,45 @@ body {
 }
 @media (max-width: 768px) {
     .docs-grid { grid-template-columns: 1fr; }
-    .recommend-grid { grid-template-columns: 1fr; }
+    
+    .recommend-section {
+        padding: 60px 0 80px;
+    }
+    
+    .recommend-section .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    .recommend-section .section-title {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .recommend-grid {
+        display: flex;
+        overflow-x: auto;
+        overflow-y: hidden;
+        gap: 15px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+        padding-bottom: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .recommend-grid::-webkit-scrollbar {
+        display: none; /* Chrome, Safari */
+    }
     
     .recommend-card {
+        min-width: 280px;
+        max-width: 280px;
         min-height: 280px;
+        flex-shrink: 0;
+        scroll-snap-align: start;
     }
     
     .recommend-image {
@@ -1087,7 +1200,7 @@ body {
 .footer-contact-link {
     color: white;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 45px;
     font-weight: 400;
     transition: opacity 0.3s ease;
 }
@@ -1373,7 +1486,9 @@ img.footer-logo {
         height: 240px;
     }
     .cta-title {
-        font-size: 36px;
+        font-size: 28px;
+        letter-spacing: -0.84px;
+        line-height: 1.3;
     }
     .cta-subtitle {
         font-size: 28px;
@@ -1464,6 +1579,12 @@ img.footer-logo {
         margin: 100px 0;
     }
     
+    .registry-title {
+        font-size: 36px;
+        letter-spacing: -1.08px;
+        white-space: nowrap;
+    }
+    
     .footer-top {
         flex-direction: column;
         gap: 20px;
@@ -1473,20 +1594,73 @@ img.footer-logo {
         flex-direction: column;
     }
     
+    .footer {
+        padding: 40px 0 20px;
+    }
+    
+    .footer-top {
+        margin-bottom: 30px;
+    }
+    
+    .footer-cta {
+        margin-bottom: 20px;
+    }
+    
+    .footer-cta-title {
+        font-size: 15px;
+        text-align: center;
+        line-height: 1.3;
+        margin-bottom: 12px;
+        padding: 0 10px;
+    }
+    
+    .footer-cta-text {
+        font-size: 13px;
+        text-align: center;
+        line-height: 1.4;
+        margin-bottom: 20px;
+        padding: 0 10px;
+    }
+    
+    .footer-cta-btn {
+        margin: 0 auto;
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+    
     .footer-social {
-        gap: 5px;
+        gap: 6px;
         flex-direction: row;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 20px;
     }
     
     .footer-social .social-link {
-        font-size: 14px;
-        padding: 12px 24px;
+        font-size: 12px;
+        padding: 8px 14px;
     }
     
     .contact-link {
         font-size: 56px;
         letter-spacing: -1.68px;
+    }
+    
+    .footer-contact-link {
+        font-size: 40px;
+        text-align: center;
+        word-break: break-all;
+        line-height: 1.3;
+        width: 100%;
+        display: block;
+    }
+    
+    .footer-contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+        width: 100%;
     }
     
     .footer-links-grid {
@@ -1571,9 +1745,104 @@ img.footer-logo {
         padding: 14px 28px;
         font-size: 18px;
     }
+    
+    .contact-cta-btn {
+        padding: 14px 28px;
+        font-size: 16px;
+        width: auto;
+        max-width: 80%;
+    }
+}
+
+/* Средние мобильные устройства */
+@media (max-width: 640px) {
+    .cta-title {
+        font-size: 24px;
+        letter-spacing: -0.72px;
+        line-height: 1.3;
+    }
+    
+    .recommend-card {
+        min-width: 260px;
+        max-width: 260px;
+    }
+    
+    .registry-title {
+        font-size: 28px;
+        letter-spacing: -0.84px;
+        white-space: nowrap;
+    }
+    
+    .footer {
+        padding: 35px 0 18px;
+    }
+    
+    .footer-top {
+        margin-bottom: 25px;
+    }
+    
+    .footer-cta {
+        margin-bottom: 18px;
+    }
+    
+    .footer-cta-title {
+        font-size: 14px;
+        text-align: center;
+        line-height: 1.3;
+        margin-bottom: 10px;
+        padding: 0 8px;
+    }
+    
+    .footer-cta-text {
+        font-size: 12px;
+        text-align: center;
+        line-height: 1.3;
+        margin-bottom: 15px;
+        padding: 0 8px;
+    }
+    
+    .footer-cta-btn {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+    
+    .footer-social {
+        margin-bottom: 15px;
+    }
+    
+    .footer-social .social-link {
+        font-size: 11px;
+        padding: 7px 12px;
+    }
 }
 
 @media (max-width: 480px) {
+    .recommend-section .section-title {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    .recommend-grid {
+        padding-left: 15px;
+        padding-right: 15px;
+        gap: 12px;
+    }
+    
+    .recommend-card {
+        min-width: 240px;
+        max-width: 240px;
+        min-height: 260px;
+    }
+    
+    .recommend-title {
+        font-size: 20px;
+    }
+    
+    .recommend-text {
+        font-size: 15px;
+    }
+    
+
     .hero-title {
         font-size: 24px;
         letter-spacing: -0.72px;
@@ -1592,8 +1861,9 @@ img.footer-logo {
     }
     
     .cta-title {
-        font-size: 28px;
-        letter-spacing: -0.84px;
+        font-size: 22px;
+        letter-spacing: -0.66px;
+        line-height: 1.3;
     }
     
     .cta-subtitle {
@@ -1601,20 +1871,83 @@ img.footer-logo {
         letter-spacing: -0.72px;
     }
     
+    .footer {
+        padding: 30px 0 15px;
+    }
+    
+    .footer-top {
+        margin-bottom: 20px;
+    }
+    
+    .footer-cta {
+        margin-bottom: 15px;
+    }
+    
+    .footer-cta-title {
+        font-size: 13px;
+        text-align: center;
+        line-height: 1.2;
+        margin-bottom: 8px;
+        padding: 0 5px;
+    }
+    
+    .footer-cta-text {
+        font-size: 11px;
+        text-align: center;
+        line-height: 1.3;
+        margin-bottom: 12px;
+        padding: 0 5px;
+    }
+    
+    .footer-cta-btn {
+        padding: 10px 18px;
+        font-size: 12px;
+    }
+    
+    .footer-social {
+        margin-bottom: 12px;
+    }
+    
+    .footer-social .social-link {
+        font-size: 10px;
+        padding: 6px 8px;
+    }
+    
     .contact-link {
         font-size: 40px;
         letter-spacing: -1.2px;
     }
     
+    .footer-contact-link {
+        font-size: 36px;
+        word-break: break-all;
+        line-height: 1.2;
+        width: 100%;
+        display: block;
+    }
+    
+    .footer-cta-title {
+        text-align: center;
+    }
+    
+    .footer-cta-text {
+        text-align: center;
+    }
+    
+    .footer-cta-btn {
+        margin: 0 auto;
+    }
+    
     .footer-social {
-        gap: 4px;
+        gap: 5px;
         flex-direction: row;
         flex-wrap: wrap;
+        justify-content: center;
     }
     
     .footer-social .social-link {
-        font-size: 13px;
-        padding: 10px 20px;
+        font-size: 12px;
+        padding: 8px 14px;
     }
 
     .logo img {
@@ -1647,6 +1980,24 @@ img.footer-logo {
         width: 100%;
         height: auto;
     }
+    
+    .registry-title {
+        font-size: 22px;
+        letter-spacing: -0.66px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+    }
+    
+    .registry-section {
+        padding: 60px 0;
+    }
+    
+    .registry-inner {
+        padding: 40px 15px;
+    }
+    
     .contact-links .contact-link,
     .footer-link,
     .link-title {
@@ -1671,6 +2022,12 @@ img.footer-logo {
     .contact-section .cta-btn {
         padding: 12px 24px;
         font-size: 16px;
+    }
+    
+    .contact-cta-btn {
+        padding: 12px 24px;
+        font-size: 15px;
+        max-width: 75%;
     }
     
     .footer-main {

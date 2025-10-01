@@ -163,36 +163,69 @@ class ContentRenderer {
     }
 
     initSchemesNavigation() {
-        // Базовая реализация навигации для схем
         const prevBtn = document.querySelector('.prev-btn');
         const nextBtn = document.querySelector('.next-btn');
+        const grid = document.querySelector('.schemes-grid');
         const cards = document.querySelectorAll('.scheme-card');
         
-        if (!prevBtn || !nextBtn) return;
+        if (!prevBtn || !nextBtn || !grid || cards.length === 0) return;
 
         let currentIndex = 0;
 
-        const updateVisibility = () => {
-            cards.forEach((card, index) => {
-                card.style.display = Math.abs(index - currentIndex) <= 1 ? 'block' : 'none';
-            });
+        // Функция для определения количества видимых карточек
+        const getVisibleCards = () => {
+            const width = window.innerWidth;
+            if (width <= 768) return 1;
+            if (width <= 1024) return 2;
+            return 3;
+        };
+
+        const updateButtons = () => {
+            const visibleCards = getVisibleCards();
+            const maxIndex = Math.max(0, cards.length - visibleCards);
+            
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex >= maxIndex;
+        };
+
+        const updatePosition = () => {
+            const cardWidth = cards[0].offsetWidth;
+            const gap = 20;
+            const offset = -(currentIndex * (cardWidth + gap));
+            grid.style.transform = `translateX(${offset}px)`;
+            updateButtons();
         };
 
         prevBtn.addEventListener('click', () => {
             if (currentIndex > 0) {
                 currentIndex--;
-                updateVisibility();
+                updatePosition();
             }
         });
 
         nextBtn.addEventListener('click', () => {
-            if (currentIndex < cards.length - 1) {
+            const visibleCards = getVisibleCards();
+            const maxIndex = Math.max(0, cards.length - visibleCards);
+            if (currentIndex < maxIndex) {
                 currentIndex++;
-                updateVisibility();
+                updatePosition();
             }
         });
 
-        updateVisibility();
+        // Обработка изменения размера окна
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                const visibleCards = getVisibleCards();
+                const maxIndex = Math.max(0, cards.length - visibleCards);
+                currentIndex = Math.min(currentIndex, maxIndex);
+                updatePosition();
+            }, 100);
+        });
+
+        // Инициализация
+        updatePosition();
     }
 
     // 4. Детали о продукте
