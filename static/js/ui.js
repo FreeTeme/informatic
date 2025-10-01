@@ -448,6 +448,114 @@ class ModalManager {
     }
 }
 
+// ConsultationModal - управление модальным окном консультации
+class ConsultationModal {
+    constructor() {
+        this.modal = document.getElementById('consultationModal');
+        this.modalClose = document.getElementById('consultationModalClose');
+        this.consultationForm = document.getElementById('consultationForm');
+        
+        this.init();
+    }
+
+    init() {
+        if (!this.modal) return;
+        
+        this.setupEventListeners();
+    }
+
+    setupEventListeners() {
+        // Close modal events
+        if (this.modalClose) {
+            this.modalClose.addEventListener('click', () => this.closeModal());
+        }
+
+        // Close modal when clicking outside
+        this.modal.addEventListener('click', (e) => {
+            if (e.target === this.modal) {
+                this.closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.modal.classList.contains('active')) {
+                this.closeModal();
+            }
+        });
+
+        // Form submission
+        if (this.consultationForm) {
+            this.consultationForm.addEventListener('submit', (e) => this.handleFormSubmit(e));
+        }
+    }
+
+    openModal() {
+        if (!this.modal) return;
+        
+        this.modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Focus first input
+        const firstInput = this.modal.querySelector('input');
+        if (firstInput) {
+            setTimeout(() => firstInput.focus(), 100);
+        }
+    }
+
+    closeModal() {
+        if (!this.modal) return;
+        
+        this.modal.classList.remove('active');
+        document.body.style.overflow = '';
+        this.resetForm();
+    }
+
+    handleFormSubmit(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this.consultationForm);
+        const data = Object.fromEntries(formData.entries());
+        
+        console.log('Consultation form data:', data);
+        
+        // Показать сообщение об успехе
+        this.showSuccessMessage();
+        
+        // Закрыть модальное окно через 2 секунды
+        setTimeout(() => {
+            this.closeModal();
+        }, 2000);
+    }
+
+    showSuccessMessage() {
+        const form = this.consultationForm;
+        const successMessage = document.createElement('div');
+        successMessage.className = 'success-message';
+        successMessage.innerHTML = `
+            <div class="success-icon">✓</div>
+            <h3>Заявка отправлена!</h3>
+            <p>Мы свяжемся с вами в ближайшее время.</p>
+        `;
+        
+        form.style.display = 'none';
+        form.parentNode.appendChild(successMessage);
+    }
+
+    resetForm() {
+        if (!this.consultationForm) return;
+        
+        this.consultationForm.reset();
+        
+        // Remove success/error messages
+        const messages = this.modal.querySelectorAll('.success-message, .error-message');
+        messages.forEach(message => message.remove());
+        
+        // Show form again
+        this.consultationForm.style.display = 'block';
+    }
+}
+
 // ProjectsManager from projects.js
 class ProjectsManager {
     constructor() {
@@ -1195,10 +1303,30 @@ document.addEventListener('click', function(e) {
         e.target.textContent.includes('Заказать консультацию'))) {
         e.preventDefault();
         
-        // In a real implementation, this would handle downloads or form submissions
-        alert('Функция будет реализована. Спасибо за интерес к нашему продукту!');
+        // Открываем модальное окно консультации
+        if (window.consultationModal && e.target.textContent.includes('Заказать консультацию')) {
+            window.consultationModal.openModal();
+        } else if (e.target.textContent.includes('Скачать')) {
+            alert('Функция скачивания будет реализована.');
+        }
     }
 });
 
+// Инициализация модальных окон
+document.addEventListener('DOMContentLoaded', () => {
+    window.consultationModal = new ConsultationModal();
+    
+    // Добавляем обработчики для кнопок "Заказать консультацию"
+    const consultationButtons = document.querySelectorAll('.contact-cta-btn, .btn-consultation');
+    consultationButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (window.consultationModal) {
+                window.consultationModal.openModal();
+            }
+        });
+    });
+});
+
 // Export all
-export { toggleAccordion, updateSchemesDisplay, nextScheme, previousScheme, playVideo, toggleMobileMenu, ModalManager, ProjectsManager, Carousel };
+export { toggleAccordion, updateSchemesDisplay, nextScheme, previousScheme, playVideo, toggleMobileMenu, ModalManager, ProjectsManager, Carousel, ConsultationModal };
