@@ -269,26 +269,26 @@ class ContentRenderer {
         return `<p>${text.replace(/\n/g, '</p><p>')}</p>`;
     }
 
-    // initAccordion() {
-    //     const headers = document.querySelectorAll('.accordion-header');
+    initAccordion() {
+        const headers = document.querySelectorAll('.accordion-header');
         
-    //     headers.forEach(header => {
-    //         header.addEventListener('click', () => {
-    //             const item = header.parentElement;
-    //             const isActive = item.classList.contains('active');
+        headers.forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const isActive = item.classList.contains('active');
                 
-    //             // Закрываем все элементы
-    //             document.querySelectorAll('.accordion-item').forEach(i => {
-    //                 i.classList.remove('active');
-    //             });
+                // Закрываем все элементы
+                document.querySelectorAll('.accordion-item').forEach(i => {
+                    i.classList.remove('active');
+                });
                 
-    //             // Открываем текущий, если был закрыт
-    //             if (!isActive) {
-    //                 item.classList.add('active');
-    //             }
-    //         });
-    //     });
-    // }
+                // Открываем текущий, если был закрыт
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    }
 
     // 7. Лицензирование
     async renderLicensing() {

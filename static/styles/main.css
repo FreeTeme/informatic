@@ -388,23 +388,32 @@ body {
 }
 
 .products-carousel {
-  display: flex;
-  gap: 20px;
-  overflow-x: hidden; /* скрываем скролл, листаем только по кнопкам */
-  scroll-snap-type: x mandatory;
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;  /* Изменено: auto для скролла, но скрываем бар */
+    overflow-y: hidden;  /* Добавлено: убираем вертикальный скролл */
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;  /* Добавлено: плавный скролл при клике */
+    scrollbar-width: none;  /* Скрываем скроллбар в Firefox */
+    -ms-overflow-style: none;  /* Скрываем в IE/Edge */
+}
+
+.products-carousel::-webkit-scrollbar {
+    display: none;  /* Скрываем скроллбар в Chrome/Safari */
 }
 
 .product-card {
     background: linear-gradient(0deg, var(--primary-blue) 0%, var(--primary-black) 100%);
     padding: 20px;
     border-radius: var(--border-radius);
-    height: 460px;
+    height: 460px;  /* Фиксированная высота, как на фото */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     transition: var(--transition);
     scroll-snap-align: start;
-    flex: 0 0 360px;
+    flex: 0 0 360px;  /* Ширина карточки, как на фото */
+    min-width: 360px;  /* Чтобы не сжималась */
 }
 
 .product-card:hover {
@@ -432,8 +441,23 @@ body {
     width: 200px;
     height: 200px;
     align-self: flex-end;
+    object-fit: contain;  /* Добавлено: чтобы иконки не растягивались */
 }
 
+/* Адаптив: на мобильных показываем по 1-2 карточки */
+@media (max-width: 1200px) {
+    .product-card {
+        flex: 0 0 300px;
+        min-width: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-card {
+        flex: 0 0 100%;
+        min-width: 100%;
+    }
+}
 /* Benefits Section */
 .benefits-section {
     padding: 100px 0;

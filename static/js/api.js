@@ -299,6 +299,7 @@ class DataRenderer {
                 return;
             }
 
+            // Рендер карточек (fallback или API)
             carousel.innerHTML = data.map(item => `
                 <div class="product-card">
                     <div class="product-content">
@@ -309,12 +310,40 @@ class DataRenderer {
                 </div>
             `).join('');
 
+            // Инициализация карусели: добавляем слушатели на кнопки
+            this.initCarousel();
+
             carousel.classList.remove('loading');
             console.log('Solutions rendering completed, items:', data.length);
         } catch (error) {
             console.error('Error rendering solutions:', error);
         }
     }
+
+// Новая метод: инициализация карусели
+initCarousel() {
+    const carousel = document.getElementById('productsCarousel');
+    const prevBtn = document.querySelector('.carousel-btn.prev');
+    const nextBtn = document.querySelector('.carousel-btn.next');
+
+    if (!carousel || !prevBtn || !nextBtn) return;
+
+    const scrollStep = 380;  // Ширина карточки (360px) + gap (20px)
+
+    nextBtn.addEventListener('click', () => {
+        carousel.scrollBy({ left: scrollStep, behavior: 'smooth' });
+    });
+
+    prevBtn.addEventListener('click', () => {
+        carousel.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+    });
+
+    // Опционально: дизейбл кнопок на краях (если нужно)
+    carousel.addEventListener('scroll', () => {
+        prevBtn.disabled = carousel.scrollLeft <= 0;
+        nextBtn.disabled = carousel.scrollLeft >= (carousel.scrollWidth - carousel.clientWidth);
+    });
+}
 
     async renderBenefits() {
         try {
