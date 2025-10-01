@@ -93,7 +93,7 @@ body {
 /* Hero Section */
 .hero-section {
     min-height: 900px;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../public/bg-2.png') center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../public/image (21).png') center/cover;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -851,6 +851,44 @@ body {
     margin: 0 auto 40px;
 }
 
+/* CTA Section */
+.cta-section {
+    padding: 80px 60px;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../public/call-to-action.png') center/cover;
+    margin: 0 80px;
+    border-radius: 12px;
+}
+
+.cta-title {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -1.26px;
+    color: var(--primary-white);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cta-subtitle {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.72px;
+    color: var(--primary-white);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cta-description {
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: -0.54px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
 /* ===== FOOTER STYLES ===== */
 .footer {
     background: linear-gradient(rgba(7, 25, 91, 0.95), rgba(3, 11, 57, 0.95)), url('../public/bg.png') center/cover;
@@ -932,9 +970,9 @@ body {
 .footer-contact-link {
     color: var(--primary-white);
     text-decoration: none;
-    font-size: 24px;
+    font-size: 60px;
     font-weight: 500;
-    letter-spacing: -0.72px;
+    letter-spacing: -1.8px;
     transition: var(--transition);
     display: block;
     text-align: left;
@@ -1060,31 +1098,93 @@ body {
 }
 
 @media (max-width: 768px) {
-    .footer {
-        padding: 60px 0 30px;
+    .cta-section {
+        padding: 60px 40px;
+        margin: 0 40px;
     }
     
-    .footer-top, .footer-main {
-        margin-bottom: 60px;
+    .cta-title {
+        font-size: 28px;
+        letter-spacing: -0.84px;
+        line-height: 1.3;
+    }
+    
+    .cta-subtitle {
+        font-size: 20px;
+        letter-spacing: -0.6px;
+    }
+    
+    .cta-description {
+        font-size: 16px;
+        letter-spacing: -0.48px;
+    }
+    
+    .footer {
+        padding: 40px 0 20px;
+    }
+    
+    .footer-top {
+        margin-bottom: 30px;
+    }
+    
+    .footer-main {
+        margin-bottom: 40px;
+    }
+    
+    .footer-cta {
+        margin-bottom: 20px;
     }
     
     .footer-cta-title {
-        font-size: 20px;
+        font-size: 15px;
+        text-align: center;
+        line-height: 1.3;
+        margin-bottom: 12px;
+        padding: 0 10px;
     }
     
     .footer-cta-text {
-        font-size: 16px;
+        font-size: 13px;
+        text-align: center;
+        line-height: 1.4;
+        margin-bottom: 20px;
+        padding: 0 10px;
+    }
+    
+    .footer-cta-btn {
+        margin: 0 auto;
+        padding: 12px 24px;
+        font-size: 14px;
     }
     
     .footer-contact-link {
-        font-size: 20px;
+        font-size: 40px;
+        text-align: center;
+        word-break: break-all;
+        line-height: 1.3;
+        width: 100%;
+        display: block;
+    }
+    
+    .footer-contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+        width: 100%;
     }
     
     .footer-social {
         flex-direction: row;
-        gap: 10px;
-        margin-bottom: 40px;
+        gap: 6px;
+        margin-bottom: 30px;
         flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .footer-social .social-link {
+        font-size: 12px;
+        padding: 8px 14px;
     }
     
     .footer-links-grid {
@@ -1099,27 +1199,129 @@ body {
     .footer-links-list a {
         font-size: 15px;
     }
+    
+    .contact-cta-btn {
+        padding: 14px 28px;
+        font-size: 16px;
+        width: auto;
+        max-width: 80%;
+    }
+    
+    .registry-title {
+        font-size: 32px;
+        letter-spacing: -0.96px;
+        white-space: nowrap;
+    }
+}
+
+/* Средние мобильные устройства */
+@media (max-width: 640px) {
+    .cta-title {
+        font-size: 24px;
+        letter-spacing: -0.72px;
+        line-height: 1.3;
+    }
+    
+    .registry-title {
+        font-size: 26px;
+        letter-spacing: -0.78px;
+        white-space: nowrap;
+    }
 }
 
 @media (max-width: 480px) {
-    .footer {
-        padding: 40px 0 20px;
+    .cta-section {
+        padding: 40px 20px;
+        margin: 0 20px;
     }
     
-    .footer-top, .footer-main {
-        margin-bottom: 40px;
+    .cta-title {
+        font-size: 22px;
+        letter-spacing: -0.66px;
+        line-height: 1.3;
+    }
+    
+    .cta-subtitle {
+        font-size: 18px;
+        letter-spacing: -0.54px;
+    }
+    
+    .cta-description {
+        font-size: 15px;
+        letter-spacing: -0.45px;
+    }
+    
+    .contact-cta-btn {
+        padding: 12px 24px;
+        font-size: 15px;
+        max-width: 75%;
+    }
+    
+    .registry-title {
+        font-size: 20px;
+        letter-spacing: -0.6px;
+        white-space: nowrap;
+    }
+    
+    .footer {
+        padding: 30px 0 15px;
+    }
+    
+    .footer-top {
+        margin-bottom: 20px;
+    }
+    
+    .footer-main {
+        margin-bottom: 30px;
+    }
+    
+    .footer-cta {
+        margin-bottom: 15px;
     }
     
     .footer-cta-title {
-        font-size: 18px;
+        font-size: 13px;
+        text-align: center;
+        line-height: 1.2;
+        margin-bottom: 10px;
+        padding: 0 8px;
     }
     
-    .footer-cta-text, .footer-company-info p {
+    .footer-cta-text {
+        font-size: 11px;
+        text-align: center;
+        line-height: 1.3;
+        margin-bottom: 15px;
+        padding: 0 8px;
+    }
+    
+    .footer-cta-btn {
+        margin: 0 auto;
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+    
+    .footer-company-info p {
         font-size: 15px;
     }
     
+    .footer-social {
+        gap: 4px;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+    
+    .footer-social .social-link {
+        font-size: 10px;
+        padding: 7px 10px;
+    }
+    
     .footer-contact-link {
-        font-size: 18px;
+        font-size: 36px;
+        word-break: break-all;
+        line-height: 1.2;
+        width: 100%;
+        display: block;
     }
     
     .footer-logo {
@@ -1166,6 +1368,13 @@ body {
     font-size: 24px;
     font-weight: 600;
     color: var(--primary-black);
+}
+
+.modal-subtitle {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 25px;
 }
 
 .modal-close {
@@ -1218,5 +1427,43 @@ body {
 
 .form-submit-btn:hover {
     background: rgba(20, 57, 191, 0.9);
+}
+
+.form-checkbox {
+    margin-bottom: 15px;
+}
+
+.form-checkbox label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.form-checkbox input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    margin-top: 2px;
+    cursor: pointer;
+    accent-color: var(--primary-blue);
+}
+
+.form-checkbox span {
+    flex: 1;
+    color: #333;
+}
+
+.link-blue {
+    color: var(--primary-blue);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.link-blue:hover {
+    opacity: 0.8;
+    text-decoration: underline;
 }
 

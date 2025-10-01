@@ -1,6 +1,6 @@
 // main.js
 
-import { toggleAccordion, updateSchemesDisplay, nextScheme, previousScheme, playVideo, toggleMobileMenu, ModalManager, ProjectsManager, Carousel } from './ui.js';
+import { toggleAccordion, updateSchemesDisplay, nextScheme, previousScheme, playVideo, toggleMobileMenu, ModalManager, ProjectsManager, Carousel, initializeSchemes } from './ui.js';
 
 // Utility functions from main.js
 const utils = {
@@ -85,8 +85,12 @@ class App {
             });
         });
         
-        // Initialize schemes display
+        // Initialize schemes
+        initializeSchemes();
         updateSchemesDisplay();
+        
+        // Setup schemes navigation
+        this.setupSchemesNavigation();
         
         // Header search toggle from product.js
         const searchContainer = document.querySelector('.header-search');
@@ -408,6 +412,29 @@ class App {
                 }
             });
         });
+    }
+
+    setupSchemesNavigation() {
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        
+        if (prevBtn) {
+            prevBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                previousScheme();
+                console.log('Previous scheme clicked');
+            });
+        }
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                nextScheme();
+                console.log('Next scheme clicked');
+            });
+        }
+        
+        console.log('Schemes navigation setup complete');
     }
 
     // Simple video play overlay
