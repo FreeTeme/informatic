@@ -522,6 +522,134 @@ body {
     max-width: 500px;
 }
 
+
+/* Clients Section */
+.clients-section {
+    padding: 100px 0;
+    background: var(--primary-white);
+}
+
+.clients-section .section-title {
+    text-align: center;
+    line-height: 1.2; /* Подгоняем высоту для двух строк */
+    letter-spacing: -1.44px; /* Как в section-title */
+    margin-bottom: 40px;
+}
+
+.clients-marquee-container {
+    overflow: hidden;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.clients-marquee {
+    display: flex;
+    animation: clients-slide 20s linear infinite; /* Скорость анимации — подкрути, если надо */
+}
+
+.clients-logos {
+    display: flex;
+    gap: 60px; /* Расстояние между логотипами, как на твоём фото */
+    align-items: center;
+    flex-shrink: 0;
+    min-width: 100%; /* Для loop */
+}
+
+.client-logo {
+    height: 60px; /* Высота логотипов — подгони под свои изображения */
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(0%); /* Можно добавить grayscale для стиля, но по умолчанию цветные */
+    transition: var(--transition);
+}
+
+.client-logo:hover {
+    transform: scale(1.05); /* Лёгкий ховер-эффект */
+    filter: brightness(1.1);
+}
+
+@keyframes clients-slide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* -50% для seamless loop с двумя копиями */
+}
+
+/* Адаптив: Уменьшаем gaps и высоту на меньших экранах */
+@media (max-width: 1200px) {
+    .clients-logos {
+        gap: 50px;
+    }
+    
+    .client-logo {
+        height: 50px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .clients-logos {
+        gap: 40px;
+    }
+    
+    .client-logo {
+        height: 45px;
+    }
+    
+    .clients-section .section-title {
+        font-size: 42px; /* Немного уменьшаем на планшетах */
+    }
+    
+    @keyframes clients-slide {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+}
+
+@media (max-width: 768px) {
+    .clients-section {
+        padding: 80px 0;
+    }
+    
+    .clients-marquee-container {
+        overflow-x: auto; /* Добавляем горизонтальный скролл для touch-свайпа */
+        scrollbar-width: none; /* Скрываем скроллбар */
+        -ms-overflow-style: none;
+    }
+    
+    .clients-marquee-container::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .clients-marquee {
+        animation: none; /* На мобильном убираем анимацию, чтобы не конфликтовала со свайпом */
+        width: max-content; /* Для скролла */
+    }
+    
+    .clients-logos {
+        gap: 30px;
+    }
+    
+    .client-logo {
+        height: 40px;
+    }
+    
+    .clients-section .section-title {
+        font-size: 36px; /* Ещё меньше на мобильных */
+    }
+}
+
+@media (max-width: 480px) {
+    .clients-logos {
+        gap: 20px;
+    }
+    
+    .client-logo {
+        height: 35px;
+    }
+    
+    .clients-section .section-title {
+        font-size: 30px; /* Минимальный размер для маленьких экранов */
+    }
+}
+
 /* Projects Section */
 .projects-section {
     padding: 100px 0;
@@ -535,6 +663,7 @@ body {
 .project-item {
     border-bottom: 1px solid var(--primary-blue-light);
     transition: var(--transition);
+    max-height: 100px;
 }
 
 .project-item:not(.expanded):hover {
@@ -551,7 +680,7 @@ body {
 
 .project-header {
     display: grid;
-    grid-template-columns: 540px 1fr 1fr auto;
+    grid-template-columns: 520px 1fr 1fr auto;
     gap: 30px;
     align-items: center;
     padding: 20px;

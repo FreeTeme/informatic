@@ -205,81 +205,81 @@
     }
     
     /* Products Mobile */
-    .section-header {
-        flex-direction: column;
-        gap: 20px;
-        text-align: center;
+    .container {
+        padding: 0 20px;
     }
-    
-    .products-carousel {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-    
-    .product-card {
-        height: auto;
-        min-height: 300px;
-        text-align: center;
-    }
-    
-    .product-title {
-        font-size: 24px;
-    }
-    
-    .product-description {
-        font-size: 16px;
-    }
-    
-    .product-image {
-        width: 150px;
-        height: 150px;
-        align-self: center;
-    }
-    
-    /* Benefits Mobile */
-    .benefit-item {
-        flex-direction: column;
-        text-align: left;
-        gap: 15px;
-    }
-    
-    .benefit-title {
-        font-size: 24px;
-    }
-    
-    .benefit-description {
-        font-size: 16px;
-        max-width: none;
-    }
-    
+
     /* Projects Mobile */
     .project-header {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-wrap: wrap; /* Позволяем тексту переноситься */
+        justify-content: space-between;
+        align-items: center;
         gap: 10px;
+        width: 100%; /* Полная ширина контейнера */
+        padding: 10px 0; /* Добавляем немного воздуха */
         text-align: left;
     }
-    
+
     .project-number {
         font-size: 16px;
+        order: 1;
+        flex: 0 0 auto;
     }
-    
+
     .project-company {
         font-size: 18px;
+        order: 3;
+        flex: 1 1 100%; /* Полная ширина, если текст длинный */
+        margin-left: 0;
+        margin-top: 5px;
+        white-space: normal; /* Разрешаем перенос текста */
+        word-break: break-word; /* Ломаем длинные слова, если надо */
+        line-height: 1.3; /* Улучшаем читаемость */
+        max-width: 100%; /* Убедимся, что текст не выходит за контейнер */
     }
-    
-    .project-description {
-        font-size: 16px;
+
+    .project-toggle {
+        order: 2;
+        flex: 0 0 auto;
+        margin-left: auto; /* Кнопка всегда справа */
     }
-    
-    .project-item.expanded {
-        min-height: auto;
+
+    /* Полоса (если это border-top в .project-details) */
+    .project-details {
+        display: none;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 2px solid #eee; /* Увеличиваем толщину полосы для видимости */
+        width: 100%; /* Полоса на всю ширину */
+    }
+
+    .project-item.expanded .project-details {
+        display: block;
+    }
+
+    /* Убедимся, что сам item не обрезает контент */
+    .project-item {
         padding: 15px;
+        min-height: auto;
+        overflow: visible;
+        width: 100%; /* Полная ширина карточки */
     }
-    
+
+    /* Текст в деталях */
     .project-details-text {
         font-size: 16px;
-        max-width: none;
+        line-height: 1.4;
+        max-width: 100%;
+        word-break: break-word; /* Перенос длинных слов */
     }
+
+    /* Если есть видео */
+    .project-video video {
+        width: 100%;
+        height: auto;
+    }
+
     
     /* News Mobile */
     .news-banner {
