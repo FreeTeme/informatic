@@ -93,7 +93,7 @@ body {
 /* Hero Section */
 .hero-section {
     min-height: 900px;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../public/image (21).png') center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../public/bg-2.png') center/cover;
     position: relative;
     display: flex;
     flex-direction: column;
