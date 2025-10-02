@@ -37,7 +37,7 @@ body {
 /* Hero Section */
 .hero-section {
     min-height: 900px;
-    background: url('../public/bg-2.svg') center/cover;
+    background: url('../public/image (21).png') center/cover;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

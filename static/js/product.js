@@ -5,19 +5,36 @@ document.addEventListener('DOMContentLoaded', function() {
     accordionHeaders.forEach(header => {
         header.addEventListener('click', function() {
             const accordionItem = this.parentElement;
+            const accordionContent = accordionItem.querySelector('.accordion-content');
             const isActive = accordionItem.classList.contains('active');
             
             // Close all accordion items
             document.querySelectorAll('.accordion-item').forEach(item => {
                 item.classList.remove('active');
+                const content = item.querySelector('.accordion-content');
+                if (content) {
+                    content.style.maxHeight = '0px';
+                }
             });
             
             // Open clicked item if it wasn't active
             if (!isActive) {
                 accordionItem.classList.add('active');
+                if (accordionContent) {
+                    accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+                }
             }
         });
     });
+    
+    // Initialize active accordion item
+    const activeItem = document.querySelector('.accordion-item.active');
+    if (activeItem) {
+        const activeContent = activeItem.querySelector('.accordion-content');
+        if (activeContent) {
+            activeContent.style.maxHeight = activeContent.scrollHeight + 'px';
+        }
+    }
     
     // Schemes navigation
     const prevBtn = document.querySelector('.prev-btn');
