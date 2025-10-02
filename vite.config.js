@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite'
-import basicSsl from '@vitejs/plugin-basic-ssl'
 
 export default defineConfig({
   base: '/',
@@ -9,8 +8,6 @@ export default defineConfig({
     assetsDir: 'assets'
   },
   plugins: [
-    basicSsl(), // SSL плагин
-    // Правильное объявление кастомного плагина для HTML
     {
       name: 'html-transform',
       transformIndexHtml(html) {
