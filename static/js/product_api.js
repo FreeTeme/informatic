@@ -464,7 +464,7 @@ class ContentRenderer {
                 this.renderSchemes(),
                 this.renderProductDetails(),
                 this.renderCallToAction(),
-                this.renderFeatures(),
+                // this.renderFeatures(), // Отключено: используем статичный HTML с обработчиками из main.js
                 this.renderLicensing(),
                 this.renderVideo(),
                 this.renderRegistry(),
