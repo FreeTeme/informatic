@@ -2,13 +2,13 @@
 
 // Bitrix24 API configuration
 const BITRIX_CONFIG = {
-    baseUrl: 'https://b24-2ely1d.bitrix24.by/rest/1/lx0ka99op8lp6cyj',
+    baseUrl: 'https://b24-2qugrk.bitrix24.by/rest/1/uplzxppaf47xr7qt',
     entities: {
-        banner: 1044,
-        solutions: 1052,
-        benefits: 1056,
-        projects: 1060,
-        news: 1064
+        banner: 1036,
+        solutions: 1042,
+        benefits: 1046,
+        projects: 1050,
+        news: 1056
     }
 };
 
@@ -95,8 +95,8 @@ class BitrixAPI {
         return {
             title: item.title || "РАЗРАБАТЫВАЕМ СИСТЕМЫ АВТОМАТИЗАЦИИ ДЕЯТЕЛЬНОСТИ ПРЕДПРИЯТИЙ",
             description: item.ufCrm9_1758575077917 || "Предлагаем инновационные решения для вашего бизнеса",
-            buttonText: item.ufCrm9_1758575177325 || "Узнать подробнее",
-            buttonLink: item.ufCrm9_1758575241102 || "#"
+            buttonText: item.ufCrm5_1759384516772 || "Узнать подробнее",
+            buttonLink: item.ufCrm5_1759384550362 || "#"
         };
     }
 
@@ -132,7 +132,7 @@ class BitrixAPI {
 
         return data.result.items.map((item, index) => ({
             title: item.title || `Решение ${index + 1}`,
-            description: item.ufCrm13_1758570658765 || 'Описание решения',
+            description: item.ufCrm7_1759384956139 || 'Описание решения',
             image: STATIC_IMAGES.solutions[index] || STATIC_IMAGES.solutions[0]
         }));
     }
@@ -169,7 +169,7 @@ class BitrixAPI {
 
         return data.result.items.map((item, index) => ({
             title: item.title || `Преимущество ${index + 1}`,
-            description: item.ufCrm15_1758604933734 || 'Описание преимущества',
+            description: item.ufCrm9_1759385183843 || 'Описание преимущества',
             icon: STATIC_IMAGES.benefits[index] || STATIC_IMAGES.benefits[0]
         }));
     }
@@ -207,10 +207,10 @@ class BitrixAPI {
 
         return data.result.items.map((item, index) => ({
             company: item.title || `Компания ${index + 1}`,
-            shortDescription: item.ufCrm17_1758605563770 || 'Краткое описание проекта',
-            fullDescription: item.ufCrm17_1758605593150 || 'Полное описание проекта',
-            readMoreText: item.ufCrm17_1758605628876 || 'Читать подробнее',
-            readMoreLink: item.ufCrm17_1758606055746 || '#'
+            shortDescription: item.ufCrm11_1759385291858 || 'Краткое описание проекта',
+            fullDescription: item.ufCrm11_1759385311313 || 'Полное описание проекта',
+            readMoreText: item.ufCrm11_1759385338029 || 'Читать подробнее',
+            readMoreLink: item.ufCrm11_1759385380981 || '#'
         }));
     }
 
@@ -232,8 +232,8 @@ class BitrixAPI {
 
         return data.result.items.map(item => ({
             title: item.title,
-            shortDescription: item.ufCrm19_1758606468 || 'Краткое описание',
-            fullDescription: item.ufCrm19_1758606495 || 'Полное описание'
+            shortDescription: item.ufCrm13_1759385693438 || 'Краткое описание',
+            fullDescription: item.ufCrm13_1759385717488 || 'Полное описание'
         }));
     }
 }
