@@ -556,7 +556,7 @@ body {
 }
 
 .client-logo {
-    height: 60px; /* Высота логотипов — подгони под свои изображения */
+    height: 150px; /* Высота логотипов — подгони под свои изображения */
     width: auto;
     object-fit: contain;
     filter: grayscale(0%); /* Можно добавить grayscale для стиля, но по умолчанию цветные */
@@ -580,7 +580,7 @@ body {
     }
     
     .client-logo {
-        height: 50px;
+        height: 150px;
     }
 }
 
@@ -590,7 +590,7 @@ body {
     }
     
     .client-logo {
-        height: 45px;
+        height: 150px;
     }
     
     .clients-section .section-title {
@@ -610,7 +610,7 @@ body {
     
     .clients-marquee-container {
         overflow-x: auto; /* Добавляем горизонтальный скролл для touch-свайпа */
-        scrollbar-width: none; /* Скрываем скроллбар */
+        scrollbar-width: auto; /* Скрываем скроллбар */
         -ms-overflow-style: none;
     }
     
@@ -618,17 +618,12 @@ body {
         display: none;
     }
     
-    .clients-marquee {
-        animation: none; /* На мобильном убираем анимацию, чтобы не конфликтовала со свайпом */
-        width: max-content; /* Для скролла */
-    }
-    
     .clients-logos {
-        gap: 30px;
+        gap: 40px;
     }
     
     .client-logo {
-        height: 40px;
+        height: 150px;
     }
     
     .clients-section .section-title {
