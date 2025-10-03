@@ -1,7 +1,288 @@
-/* Tablet Styles */
+/* Desktop - гарантируем, что всё в одну строку (только на больших экранах >1200px) */
+@media (min-width: 1201px) {
+    .mobile-menu-btn {
+        display: none !important;
+    }
+    
+    .nav {
+        display: block !important;
+    }
+    
+    .header-content {
+        gap: 12px;
+        flex-wrap: nowrap;
+    }
+    
+    .header-actions {
+        display: flex !important;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: nowrap;
+    }
+    
+    .contact-info {
+        display: flex !important;
+        flex-direction: column;
+        gap: 2px;
+        align-items: flex-end;
+    }
+    
+    .contact-link {
+        font-size: 13px;
+        white-space: nowrap;
+        line-height: 1.2;
+    }
+    
+    .search-icon {
+        display: flex !important;
+        flex-shrink: 0;
+    }
+    
+    .search-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .header-actions .cta-btn {
+        display: inline-block !important;
+        flex-shrink: 0;
+        padding: 10px 18px;
+        font-size: 13px;
+    }
+    
+    .nav-list {
+        gap: 14px;
+    }
+    
+    .nav-list a {
+        font-size: 13px;
+        letter-spacing: -0.39px;
+    }
+}
+
+/* Средние экраны (1201px - 1600px) - скрываем контакты */
+@media (min-width: 1201px) and (max-width: 1600px) {
+    .contact-info {
+        display: none !important;
+    }
+    
+    .header-content {
+        gap: 15px;
+    }
+    
+    .header-actions {
+        gap: 15px;
+    }
+    
+    .nav-list {
+        gap: 15px;
+    }
+    
+    .nav-list a {
+        font-size: 14px;
+    }
+}
+
+/* Для очень больших экранов (>1440px) даем больше пространства */
+@media (min-width: 1441px) {
+    .container {
+        padding: 0 60px;
+    }
+    
+    .header-content {
+        gap: 20px;
+    }
+    
+    .header-actions {
+        gap: 20px;
+    }
+    
+    .nav-list {
+        gap: 20px;
+    }
+    
+    .nav-list a {
+        font-size: 15px;
+        letter-spacing: -0.45px;
+    }
+    
+    .contact-link {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+    
+    .header-actions .cta-btn {
+        padding: 12px 24px;
+        font-size: 15px;
+    }
+    
+    .hero-title {
+        font-size: 56px;
+    }
+    
+    .hero-description {
+        font-size: 26px;
+    }
+    
+    .section-title {
+        font-size: 48px;
+    }
+    
+    .about-text-large {
+        font-size: 36px;
+    }
+    
+    .about-text {
+        font-size: 20px;
+    }
+    
+    .product-title, .benefit-title {
+        font-size: 34px;
+    }
+    
+    .product-description, .benefit-description {
+        font-size: 20px;
+    }
+    
+    .news-title {
+        font-size: 22px;
+    }
+    
+    .news-excerpt, .news-text p {
+        font-size: 20px;
+    }
+}
+
+/* Для ультра-широких мониторов (>1920px) */
+@media (min-width: 1921px) {
+    .container {
+        padding: 0 80px;
+    }
+    
+    .header-content {
+        gap: 30px;
+    }
+    
+    .header-actions {
+        gap: 25px;
+    }
+    
+    .nav-list {
+        gap: 24px;
+    }
+    
+    .nav-list a {
+        font-size: 16px;
+    }
+    
+    .contact-link {
+        font-size: 15px;
+    }
+    
+    .header-actions .cta-btn {
+        padding: 14px 28px;
+        font-size: 16px;
+    }
+}
+
+/* Tablet (1025px - 1200px) - двухстрочный хедер для маленьких ноутбуков */
+@media (min-width: 1025px) and (max-width: 1200px) {
+    .container {
+        padding: 0 32px;
+    }
+    
+    .header {
+        padding: 15px 0;
+    }
+    
+    /* Делаем хедер двухстрочным */
+    .header-content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        align-items: center;
+    }
+    
+    /* Верхний ряд: Логотип слева */
+    .logo {
+        order: 1;
+        flex: 0 0 auto;
+    }
+    
+    .logo-img {
+        height: 17px;
+    }
+    
+    /* Верхний ряд: Контакты и кнопка справа */
+    .header-actions {
+        display: flex !important;
+        order: 2;
+        flex: 1 1 auto;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: nowrap;
+    }
+    
+    .contact-info {
+        display: flex !important;
+        flex-direction: row;
+        gap: 12px;
+        align-items: center;
+    }
+    
+    .contact-link {
+        font-size: 12px;
+        white-space: nowrap;
+        line-height: 1.2;
+    }
+    
+    .search-icon {
+        display: flex !important;
+        flex-shrink: 0;
+    }
+    
+    .search-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .header-actions .cta-btn {
+        display: inline-block !important;
+        padding: 10px 16px;
+        font-size: 13px;
+        flex-shrink: 0;
+    }
+    
+    /* Скрываем бургер-меню */
+    .mobile-menu-btn {
+        display: none !important;
+    }
+    
+    /* Нижний ряд: Навигация на всю ширину */
+    .nav {
+        display: flex !important;
+        order: 3;
+        flex: 1 1 100%;
+        justify-content: flex-start;
+    }
+    
+    .nav-list {
+        display: flex;
+        justify-content: flex-start;
+        gap: 14px;
+        flex-wrap: nowrap;
+    }
+    
+    .nav-list a {
+        font-size: 13px;
+        letter-spacing: -0.39px;
+    }
+}
+
 @media (max-width: 1200px) {
     .container {
-        padding: 0 48px;
+        padding: 0 32px;
     }
     
     .hero-title {
@@ -99,19 +380,30 @@
     }
 }
 
-/* Mobile Styles */
+/* Mobile Styles - дополнительные стили для телефонов */
 @media (max-width: 768px) {
     .container {
-        padding: 0 20px;
+        padding: 0 16px;
     }
     
     /* Header Mobile */
-    .header-content {
-        position: relative;
+    .header {
+        padding: 10px 0;
     }
     
-    /* Прячем обычную навигацию, используем сайдбар */
-    .nav { display: none; }
+    .header-content {
+        position: relative;
+        justify-content: space-between;
+    }
+    
+    .logo-img {
+        height: 14px;
+    }
+    
+    /* Скрываем навигацию на мобильных */
+    .nav {
+        display: none !important;
+    }
     
     .nav-list {
         flex-direction: column;
@@ -120,15 +412,16 @@
 
     /* показываем пункты, которые должны быть только в бургер-меню */
     .only-mobile { display: block; }
-
-    /* скрываем дубликаты контактов и кнопки снаружи меню */
-    .header-actions { display: none; }
     
+    /* СКРЫВАЕМ контакты, поиск и кнопку в хедере на телефонах */
     .header-actions {
-        display: none;
+        display: none !important;
     }
     
-    .mobile-menu-btn { display: flex; }
+    /* Показываем бургер-меню */
+    .mobile-menu-btn {
+        display: flex !important;
+    }
     
     .mobile-menu-btn.active span:nth-child(1) {
         transform: rotate(45deg) translate(5px, 5px);
@@ -149,17 +442,24 @@
     
     .hero-content {
         padding: 60px 0;
-        text-align: center;
     }
     
     .hero-title {
         font-size: 25px;
-        letter-spacing: -1px;  
+        letter-spacing: -1px;
+        text-align: left;
+        padding-left: 10%;
     }
     
     .hero-description {
         font-size: 18px;
         letter-spacing: -0.5px;
+        text-align: left;
+        padding-left: 8px;
+    }
+    
+    .hero-cta-btn {
+        margin-left: 8px;
     }
     
     .hero-pagination {
@@ -198,12 +498,12 @@
     
     .about-text-large {
         font-size: 22px;
-        text-align: center;
+        text-align: left;
     }
     
     .about-text, .mission-text {
         font-size: 16px;
-        text-align: center;
+        text-align: left;
     }
     
     .marquee-text {
@@ -436,15 +736,39 @@
 /* Small Mobile */
 @media (max-width: 480px) {
     .container {
-        padding: 0 15px;
+        padding: 0 12px;
+    }
+    
+    .logo-img {
+        height: 12px;
+    }
+    
+    /* Скрываем все элементы header-actions */
+    .header-actions {
+        display: none !important;
+    }
+    
+    /* Показываем только бургер-меню */
+    .mobile-menu-btn {
+        display: flex !important;
+    }
+    
+    .contact-link {
+        font-size: 11px;
     }
     
     .hero-title {
         font-size: 24px;
+        padding-left: 8px;
     }
     
     .hero-description {
         font-size: 16px;
+        padding-left: 10%;
+    }
+    
+    .hero-cta-btn {
+        margin-left: 8px;
     }
     
     .section-title {
@@ -646,18 +970,21 @@ body {
     .header {
         padding: 15px 0;
     }
-    .logo img {
-        width: 190px; /* Slight reduce */
+    .logo-img {
+        height: 18px;
     }
-    .nav-link {
-        font-size: 16px; /* Smaller fonts */
+    .nav-list {
+        gap: 15px;
     }
-    .contact-info span {
-        font-size: 16px;
+    .nav-list a {
+        font-size: 15px;
     }
-    .callback-btn {
-        padding: 8px 16px;
-        font-size: 16px;
+    .contact-link {
+        font-size: 15px;
+    }
+    .cta-btn {
+        padding: 12px 20px;
+        font-size: 15px;
     }
     .hero-title {
         font-size: 42px;
@@ -695,35 +1022,117 @@ body {
     }
 }
 
-/* Tablet (max-width: 1024px) */
+/* Tablet (768px - 1024px) - двухстрочный хедер */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        padding: 0 24px;
+    }
+    
+    .header {
+        padding: 15px 0;
+    }
+    
+    /* Делаем хедер двухстрочным */
+    .header-content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        align-items: center;
+    }
+    
+    /* Верхний ряд: Логотип слева */
+    .logo {
+        order: 1;
+        flex: 0 0 auto;
+    }
+    
+    .logo-img {
+        height: 17px;
+    }
+    
+    /* Верхний ряд: Контакты и кнопка справа */
+    .header-actions {
+        display: flex !important;
+        order: 2;
+        flex: 1 1 auto;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 15px;
+        flex-wrap: nowrap;
+    }
+    
+    .contact-info {
+        display: flex !important;
+        flex-direction: row;
+        gap: 15px;
+        align-items: center;
+    }
+    
+    .contact-link {
+        font-size: 13px;
+        white-space: nowrap;
+    }
+    
+    .search-icon {
+        display: flex !important;
+        flex-shrink: 0;
+    }
+    
+    .search-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .header-actions .cta-btn {
+        display: inline-block !important;
+        padding: 10px 18px;
+        font-size: 13px;
+        flex-shrink: 0;
+    }
+    
+    /* Скрываем бургер-меню на планшетах */
+    .mobile-menu-btn {
+        display: none !important;
+    }
+    
+    /* Нижний ряд: Навигация на всю ширину */
+    .nav {
+        display: flex !important;
+        order: 3;
+        flex: 1 1 100%;
+        justify-content: flex-start;
+    }
+    
+    .nav-list {
+        display: flex;
+        justify-content: flex-start;
+        gap: 16px;
+        flex-wrap: nowrap;
+    }
+    
+    .nav-list a {
+        font-size: 13px;
+        letter-spacing: -0.39px;
+    }
+}
+
+/* Mobile (max-width: 1024px) - для мобильных телефонов */
 @media (max-width: 1024px) {
     .container {
         padding: 0 24px;
     }
+    
+    .header {
+        padding: 12px 0;
+    }
+    
     .header-content {
         justify-content: space-between;
-        column-gap: 15px;
+        column-gap: 12px;
     }
-    .navigation {
-        display: none; /* Hide nav, show burger */
-    }
-    .menu-btn, .mobile-menu-btn {
-        display: flex; /* Show burger */
-    }
-    .logo img {
-        width: 170px;
-    }
-    .header-actions {
-        gap: 10px;
-    }
-    .contact-info {
-        gap: 10px;
-    }
-    .contact-info span {
-        font-size: 15px;
-    }
-    .callback-btn {
-        display: none; /* Hide if overflows, as in your screenshot */
+    
+    .logo-img {
+        height: 15px;
     }
     .hero-section {
         min-height: 70vh;
@@ -769,25 +1178,8 @@ body {
     }
 }
 
-/* Mobile (max-width: 768px) */
+/* Mobile (max-width: 768px) - additional styles */
 @media (max-width: 768px) {
-    .container {
-        padding: 0 16px;
-    }
-    .header {
-        padding: 10px 0;
-    }
-    .logo img {
-        width: 150px;
-    }
-    .contact-info {
-        flex-direction: column; /* Stack phone/email if too narrow */
-        gap: 5px;
-    }
-    .contact-info span {
-        font-size: 14px;
-        white-space: nowrap; /* Prevent wrap */
-    }
     .hero-section {
         min-height: 60vh;
         background-size: cover;
@@ -798,11 +1190,11 @@ body {
     }
     .hero-title {
         font-size: 28px;
-        text-align: center;
+        text-align: left;
     }
     .hero-description {
         font-size: 18px;
-        text-align: center;
+        text-align: left;
     }
     .download-btn {
         width: 100%;
@@ -813,7 +1205,7 @@ body {
     }
     .section-title {
         font-size: 32px;
-        text-align: center;
+        text-align: left;
     }
     .features-grid {
         grid-template-columns: 1fr;
@@ -852,17 +1244,8 @@ body {
     }
 }
 
-/* Small Mobile (max-width: 480px) */
+/* Small Mobile (max-width: 480px) - additional styles */
 @media (max-width: 480px) {
-    .container {
-        padding: 0 12px;
-    }
-    .logo img {
-        width: 130px;
-    }
-    .contact-info span {
-        font-size: 12px;
-    }
     .hero-title {
         font-size: 24px;
     }
