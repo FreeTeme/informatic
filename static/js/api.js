@@ -2,7 +2,8 @@
 
 // Bitrix24 API configuration
 const BITRIX_CONFIG = {
-    baseUrl: 'https://b24-2qugrk.bitrix24.by/rest/1/uplzxppaf47xr7qt',
+    baseUrl: 'https://lol',
+    // b24-2qugrk.bitrix24.by/rest/1/uplzxppaf47xr7qt
     entities: {
         banner: 1036,
         solutions: 1042,
