@@ -149,7 +149,7 @@
     
     .hero-content {
         padding: 60px 0;
-        text-align: center;
+        text-align: left;
     }
     
     .hero-title {
@@ -848,7 +848,7 @@ body {
     }
     .footer-contact-link {
         font-size: 32px;
-        text-align: center;
+        text-align: left;
     }
 }
 
