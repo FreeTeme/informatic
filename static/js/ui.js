@@ -20,15 +20,15 @@ function toggleAccordion(element) {
 let currentSchemeIndex = 0;
 const schemes = [
     {
-        image: "../public/image (11).png",
+        image: "/image (11).png",
         title: "ПЛАН ЭТАЖА"
     },
     {
-        image: "../public/image (12).png",
+        image: "/image (12).png",
         title: "СОБЫТИЙНАЯ ЦЕПОЧКА ПРОЦЕССОВ"
     },
     {
-        image: "../public/image (13).png",
+        image: "/image (13).png",
         title: "СХЕМА БИЗНЕС-ПРОЦЕССОВ"
     },
     {

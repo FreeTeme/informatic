@@ -15,18 +15,18 @@ const BITRIX_CONFIG = {
 // Static images configuration
 const STATIC_IMAGES = {
     solutions: [
-        "./static/public/products-3.svg",
-        "./static/public/products.svg", 
-        "./static/public/products-2.svg",
-        "./static/public/products-1.svg"
+        "/products-3.svg",
+        "/products.svg", 
+        "/products-2.svg",
+        "/products-1.svg"
     ],
     benefits: [
-        "./static/public/icon-4.svg",
-        "./static/public/icon-1.svg",
-        "./static/public/icon.svg",
-        "./static/public/icon-5.svg"
+        "/icon-4.svg",
+        "/icon-1.svg",
+        "/icon.svg",
+        "/icon-5.svg"
     ],
-    news: "./static/public/news-banner.jpg" // Заглушка для новостей
+    news: "/news-banner.jpg" // Заглушка для новостей
 };
 
 class BitrixAPI {

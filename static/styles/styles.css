@@ -37,7 +37,7 @@ body {
 /* Hero Section */
 .hero-section {
     min-height: 900px;
-    background: url('../public/image (21).png') center/cover;
+    background: url('/image (21).png') center/cover;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -459,7 +459,7 @@ body {
 .cta-section {
     height: 466px;
     background: linear-gradient(0deg, rgba(20, 57, 191, 1) 0%, rgba(3, 11, 57, 1) 100%);
-    background-image: url('../public/bg-3.svg');
+    background-image: url('/bg-3.svg');
     background-size: cover;
     background-position: center;
     display: flex;
