@@ -86,7 +86,7 @@ class App {
         });
         
         // Initialize schemes
-        initializeSchemes();
+        // initializeSchemes();
         updateSchemesDisplay();
         
         // Setup schemes navigation

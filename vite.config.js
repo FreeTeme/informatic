@@ -14,7 +14,7 @@ export default defineConfig({
         return html.replace(
           /<head>/,
           `<head>
-            <script type="module" src="/js/router.js"></script>`
+            <script type="module" src="/static/js/router.js"></script>`
         )
       }
     }
