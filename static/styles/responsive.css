@@ -118,10 +118,12 @@
     
     .hero-title {
         font-size: 56px;
+        text-align: left;
     }
     
     .hero-description {
         font-size: 26px;
+        text-align: left;
     }
     
     .section-title {
@@ -287,6 +289,7 @@
     
     .hero-title {
         font-size: 48px;
+        text-align: left;
     }
     
     .section-title {
@@ -442,20 +445,27 @@
     
     .hero-content {
         padding: 60px 0;
+        margin-top: 10%;
+    }
+    
+    .hero-content .container {
+        padding-left: 1px !important;
+        margin-left: 0 !important;
+        margin-right: auto;
     }
     
     .hero-title {
         font-size: 25px;
         letter-spacing: -1px;
         text-align: left;
-        padding-left: 10%;
+        padding-left: 0 !important;
     }
     
     .hero-description {
         font-size: 18px;
         letter-spacing: -0.5px;
         text-align: left;
-        padding-left: 8px;
+        padding-left: 0 !important;
     }
     
     .hero-cta-btn {
@@ -615,6 +625,12 @@
         padding: 80px 0;
     }
     
+    .section-title.contact-title {
+        font-size: 22px !important;
+        white-space: nowrap;
+        text-align: center !important;
+    }
+    
     .contact-description {
         font-size: 16px;
     }
@@ -759,16 +775,22 @@
     
     .hero-title {
         font-size: 24px;
-        padding-left: 8px;
+        padding-left: 3px !important;
+        text-align: left;
     }
     
     .hero-description {
         font-size: 16px;
-        padding-left: 10%;
+        padding-left: 3px !important;
+        text-align: left;
     }
     
     .hero-cta-btn {
         margin-left: 8px;
+    }
+    
+    .download-btn {
+        margin-left: 1px;
     }
     
     .section-title {
@@ -787,6 +809,11 @@
     
     .product-title, .benefit-title {
         font-size: 20px;
+    }
+    
+    .section-title.contact-title {
+        font-size: 18px !important;
+        white-space: nowrap;
     }
     
     .contact-cta-btn {
@@ -872,6 +899,7 @@
     
     .hero-title {
         font-size: 28px;
+        text-align: left;
     }
     
     .hero-pagination {
@@ -988,9 +1016,11 @@ body {
     }
     .hero-title {
         font-size: 42px;
+        text-align: left;
     }
     .hero-description {
         font-size: 22px;
+        text-align: left;
     }
     .section-title {
         font-size: 42px;
@@ -1140,9 +1170,11 @@ body {
     .hero-title {
         font-size: 36px;
         margin-top: 10%;
+        text-align: left;
     }
     .hero-description {
         font-size: 20px;
+        text-align: left;
     }
     .about-section {
         padding: 100px 0;
@@ -1185,20 +1217,28 @@ body {
         background-size: cover;
     }
     .hero-content .container {
-        padding-left: 16px;
-        margin-left: 0;
+        padding-left: 2px !important;
+        margin-left: 0 !important;
+        margin-right: auto;
+    }
+    
+    .hero-content {
+        margin-top: 40%;
     }
     .hero-title {
         font-size: 28px;
         text-align: left;
+        padding-left: 0 !important;
     }
     .hero-description {
         font-size: 18px;
         text-align: left;
+        padding-left: 0 !important;
     }
     .download-btn {
         width: 100%;
         padding: 15px;
+        margin-left: 1%;
     }
     .about-section, .schemes-section, .about-details-section, .cta-section {
         padding: 80px 0;
@@ -1211,11 +1251,11 @@ body {
         grid-template-columns: 1fr;
     }
     .schemes-grid {
-        flex-direction: column; /* Stack schemes */
-        gap: 20px;
+        flex-direction: row; /* Horizontal line */
+        gap: 10px;
     }
     .scheme-card {
-        flex: 0 0 100%;
+        flex: 0 0 calc(50% - 5px);
     }
     .scheme-image {
         height: 200px;
@@ -1248,9 +1288,13 @@ body {
 @media (max-width: 480px) {
     .hero-title {
         font-size: 24px;
+        text-align: left;
+        padding-left: 3px !important;
     }
     .hero-description {
         font-size: 16px;
+        text-align: left;
+        padding-left: 3px !important;
     }
     .section-title {
         font-size: 28px;
@@ -1269,6 +1313,10 @@ body {
     }
     .cta-title {
         font-size: 24px;
+    }
+    .section-title.contact-title {
+        font-size: 16px !important;
+        white-space: nowrap;
     }
     .footer-contact-link {
         font-size: 28px;
