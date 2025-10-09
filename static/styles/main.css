@@ -10,7 +10,7 @@
     --primary-blue-light: #adbdff;
     --primary-black: #030b39;
     --primary-white: #ffffff;
-    --bg-light: #f6f8fe;
+    --bg-light: #ffffff;
     --text-gray: rgba(3, 11, 57, 0.6);
     --white-10: rgba(255, 255, 255, 0.1);
     --white-60: rgba(255, 255, 255, 0.6);
@@ -989,7 +989,7 @@ body {
 }
 
 .contact-inner { display: flex; justify-content: center; width: 100%; }
-.contact-content { text-align: center; color: var(--primary-white); max-width: 960px; }
+.contact-content { text-align: center; color: var(--primary-white); max-width: 960px; margin: 0 auto; padding: 0 20px; }
 
 .contact-title {
     color: var(--primary-white);
