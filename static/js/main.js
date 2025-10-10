@@ -67,6 +67,8 @@ class App {
         this.setupCallbackButtons();
         this.setupAccordion();
         this.setupFooterUnderConstruction();
+        this.setupViewAllButtons();
+        this.setupLogoReload();
         // HTML5 видео заменено на встроенный YouTube iframe — инициализация не нужна
 
         // From product.js DOMContentLoaded
@@ -130,45 +132,126 @@ class App {
         }, 500);
     }
 
-    setupFooterUnderConstruction() {
-        const ensureModalExists = () => {
-            if (document.getElementById('underConstructionModal')) return;
-            const modal = document.createElement('div');
-            modal.className = 'modal';
-            modal.id = 'underConstructionModal';
-            modal.innerHTML = `
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title">Страница в разработке</h3>
-                        <button class="modal-close" id="ucModalClose" aria-label="Закрыть">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div>
-                        <p style="margin-bottom: 16px; color: var(--primary-black); opacity: 0.8;">Мы работаем над этим разделом. Загляните позже, пожалуйста.</p>
-                        <button class="form-submit-btn" id="ucOkBtn">Понятно</button>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(modal);
-            const close = () => {
-                modal.classList.remove('active');
-                document.body.style.overflow = '';
-            };
-            modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
-            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
-            modal.querySelector('#ucModalClose').addEventListener('click', close);
-            modal.querySelector('#ucOkBtn').addEventListener('click', close);
-        };
+    setupViewAllButtons() {
+        // Обработчики для кнопок "Смотреть все"
+        const viewAllButtons = document.querySelectorAll('.view-all-btn');
+        
+        viewAllButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.openUnderConstructionModal();
+            });
+        });
+        
+        // Обработчики для кнопок страницы продукта
+        const licensingBtn = document.querySelector('.licensing-cta');
+        if (licensingBtn) {
+            licensingBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.openUnderConstructionModal();
+            });
+        }
+        
+        const videoCaption = document.querySelector('.video-caption');
+        if (videoCaption) {
+            videoCaption.style.cursor = 'pointer';
+            videoCaption.style.textDecoration = 'underline';
+            videoCaption.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.openUnderConstructionModal();
+            });
+        }
+    }
 
+    setupLogoReload() {
+        // Обработчик для логотипа
+        const logoContainer = document.querySelector('.logo');
+        const logoImg = document.querySelector('.logo-img');
+        const footerLogo = document.querySelector('.footer-logo');
+        
+        // Определяем, на главной ли мы странице
+        const isHomePage = window.location.pathname === '/' || window.location.pathname === '/index' || window.location.pathname === '/index.html';
+        
+        // Header logo - обработчик на контейнер и изображение
+        if (logoContainer) {
+            logoContainer.style.cursor = 'pointer';
+            logoContainer.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (isHomePage) {
+                    // На главной странице - перезагружаем
+                    window.location.reload();
+                } else {
+                    // На других страницах - переходим на главную
+                    window.location.href = '/';
+                }
+            });
+        }
+        
+        if (logoImg) {
+            logoImg.style.cursor = 'pointer';
+        }
+        
+        // Footer logo
+        if (footerLogo) {
+            footerLogo.style.cursor = 'pointer';
+            footerLogo.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (isHomePage) {
+                    // На главной странице - перезагружаем
+                    window.location.reload();
+                } else {
+                    // На других страницах - переходим на главную
+                    window.location.href = '/';
+                }
+            });
+        }
+    }
+
+    openUnderConstructionModal() {
+        this.ensureUnderConstructionModalExists();
+        const modal = document.getElementById('underConstructionModal');
+        if (!modal) return;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    ensureUnderConstructionModalExists() {
+        if (document.getElementById('underConstructionModal')) return;
+        const modal = document.createElement('div');
+        modal.className = 'modal';
+        modal.id = 'underConstructionModal';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Страница в разработке</h3>
+                    <button class="modal-close" id="ucModalClose" aria-label="Закрыть">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div>
+                    <p style="margin-bottom: 16px; color: var(--primary-black); opacity: 0.8;">Мы работаем над этим разделом. Загляните позже, пожалуйста.</p>
+                    <button class="form-submit-btn" id="ucOkBtn">Понятно</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        const close = () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+        modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+        modal.querySelector('#ucModalClose').addEventListener('click', close);
+        modal.querySelector('#ucOkBtn').addEventListener('click', close);
+    }
+
+    setupFooterUnderConstruction() {
         const openModal = () => {
-            ensureModalExists();
-            const modal = document.getElementById('underConstructionModal');
-            if (!modal) return;
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            this.openUnderConstructionModal();
         };
 
         const isInactiveHref = (href) => {
@@ -187,6 +270,9 @@ class App {
             const clickable = e.target.closest('a, button');
             if (!clickable) return;
 
+            // Skip view-all-btn as it has its own handler
+            if (clickable.classList.contains('view-all-btn')) return;
+
             // Allow real links and functional buttons
             if (clickable.tagName === 'A') {
                 const href = clickable.getAttribute('href');
@@ -195,8 +281,9 @@ class App {
                 if (!isInactiveHref(href)) return; // real route
             } else if (clickable.tagName === 'BUTTON') {
                 // If button has known functional classes, skip
-                if (clickable.classList.contains('footer-cta-btn')) {
-                    // let existing handler open callback modal
+                if (clickable.classList.contains('footer-cta-btn') ||
+                    clickable.classList.contains('licensing-cta')) {
+                    // let existing handler open modal
                     return;
                 }
             }
@@ -215,6 +302,13 @@ class App {
 
             // Exclude burger toggle and offcanvas controls
             if (clickable.id === 'mobileMenuBtn') return;
+            
+            // Exclude logo - it has its own handler
+            if (clickable.closest('.logo')) return;
+            
+            // Exclude buttons with own handlers
+            if (clickable.classList.contains('view-all-btn') ||
+                clickable.classList.contains('licensing-cta')) return;
 
             if (clickable.tagName === 'A') {
                 const href = clickable.getAttribute('href');
